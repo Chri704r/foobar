@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <header></header>
-    <main>
-      <div class="top-wrapper">
-        <section id="clock"></section>
-        <section id="taps"></section>
-      </div>
-      <div class="bottom-wrapper">
-        <section id="queue"></section>
-        <section id="serving"></section>
-      </div>
-    </main>
-    <footer>
-      <div class="button-wrapper"></div>
-      <p></p>
-    </footer>
-    <script type="module" src="/main.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+			rel="stylesheet"
+		/>
+		<title>FoorBar Dashboard</title>
+	</head>
+	<body>
+		<header>
+			<img src="" alt="" />
+		</header>
+		<main>
+			<div class="top-wrapper">
+				<section id="clock"></section>
+				<section id="taps"></section>
+			</div>
+			<div class="bottom-wrapper">
+				<section id="queue">
+					<h2>queue</h2>
+					<div id="queue-container"></div>
+				</section>
+				<section id="serving">
+					<h2>serving</h2>
+					<div id="serving-container"></div>
+				</section>
+			</div>
+		</main>
+		<footer>
+			<div class="button-wrapper"></div>
+			<p></p>
+		</footer>
+
+		<template class="customer-dashboard">
+			<div>
+				<p class="number"></p>
+				<p class="order"></p>
+				<p class="ordernumber"></p>
+			</div>
+		</template>
+
+		<script type="module" src="/main.js"></script>
+	</body>
 </html>
