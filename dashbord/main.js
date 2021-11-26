@@ -1,6 +1,10 @@
-import './style.css'
+import "./style.scss";
 
-document.querySelector('#app').innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+window.addEventListener("DOMContentLoaded", init);
+
+async function init() {
+  const response = await fetch("https://groupfoobar.herokuapp.com/");
+
+  const data = await response.json();
+  console.log("data", data);
+}
