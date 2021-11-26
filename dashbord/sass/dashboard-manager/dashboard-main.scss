@@ -1,0 +1,20 @@
+#dash-content-wrapper {
+  section {
+    border: solid 5px;
+    margin-bottom: 10px;
+  }
+
+  #dash-queue {
+    height: 10vh;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+
+    .bar {
+      width: 30px;
+      background-color: red;
+      height: 0.1vh;
+    }
+  }
+}
