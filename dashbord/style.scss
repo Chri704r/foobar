@@ -1,6 +1,5 @@
-@use "sass/dashboard-manager/index";
+@use "sass/dashboard-manager/index" as a-style;
 
-@use "sass/variabels/index";
+@use "sass/variabels/index" as b-style;
 
 @use "sass/C-dashboard/layout";
-
