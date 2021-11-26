@@ -43,6 +43,7 @@ async function fetchfunction(url) {
   return data;
 }
 
+//Function creating the barchart
 function createBarchart(data) {
   let queue = data.queue.length;
   if (queue === 0) {
