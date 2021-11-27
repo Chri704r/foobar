@@ -1,20 +1,65 @@
+@use "../variabels/colors";
+
+body {
+  background-color: colors.$background-color;
+}
+
 #dash-content-wrapper {
   section {
-    border: solid 5px;
-    margin-bottom: 10px;
+    border: solid 5px colors.$primary-color;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    padding: 1rem;
   }
 
   #dash-queue {
-    height: 15vh;
+    height: 30vh;
     padding-bottom: 5px;
     display: flex;
-    justify-content: space-evenly;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
 
-    .bar {
-      width: 30px;
-      background-color: red;
-      height: 0.1vh;
+    #bar-wrapper {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-end;
+
+      .bar {
+        width: 30px;
+        background: colors.$gradient-1-1;
+        background: colors.$gradient-1-2;
+        height: 0.1vh;
+      }
+    }
+  }
+
+  #dash-income {
+    #chart-container {
+      canvas {
+        outline: none;
+        border: none;
+      }
+    }
+    #income-number {
+      text-align: center;
+      position: relative;
+    }
+  }
+
+  #dash-bartenders {
+    border: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  article {
+    border: solid 3px colors.$primary-color;
+    padding: 1rem;
+
+    h2 {
+      text-align: center;
     }
   }
 }

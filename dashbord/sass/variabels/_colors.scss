@@ -9,3 +9,10 @@ $brown-color: #c79e70;
 $red-color: #d27360;
 
 $third-green-color: #7a9673;
+
+$gradient-1-1: rgb(239, 215, 179);
+$gradient-1-2: linear-gradient(
+  180deg,
+  rgba(239, 215, 179, 1) 55%,
+  rgba(60, 69, 56, 1) 92%
+);

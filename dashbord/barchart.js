@@ -68,7 +68,9 @@ function createBarchart(data) {
   console.log("queue", queue);
 
   for (let i = 0; i < queueArray.length; i++) {
-    document.querySelector(`#bar-${i + 1}`).style.height = `${queueArray[i]}vh`;
+    document.querySelector(`#bar-${i + 1}`).style.height = `${
+      queueArray[i] * 2
+    }vh`;
   }
 }
 
@@ -89,11 +91,16 @@ function displayBartenders(data) {
     }
 
     //Insert bartender in clone
-    clone.querySelector("#bartender-name").textContent = bartender.name;
-    clone.querySelector("#status").textContent = bartender.status;
-    clone.querySelector("#status-detail").textContent =
+    clone.querySelector(".bartender-name").textContent = bartender.name;
+    clone.querySelector(".status").textContent = bartender.status;
+    clone.querySelector(".status-detail").textContent =
       workstatus[bartender.statusDetail];
-    clone.querySelector("#using-tap").textContent = bartender.usingTap;
+    clone.querySelector(".using-tap").textContent =
+      "Using tab: " + bartender.usingTap;
+
+    clone
+      .querySelector(".bart-article")
+      .setAttribute("id", `bart-${bartender.name}`);
 
     //Append clone to section
     document.querySelector("#dash-bartenders").appendChild(clone);
@@ -125,7 +132,8 @@ function countBeer(data) {
 }
 
 function displayIncome() {
-  document.querySelector("#income").textContent = calculateIncome();
+  document.querySelector("#income-number").textContent =
+    calculateIncome() + ",-";
 }
 
 function calculateIncome() {
@@ -147,7 +155,7 @@ function displayDonutChart() {
 
   const xValues = ["income", "none"];
   let yValues = [income, goal];
-  var barColors = ["#b91d47", "transparent"];
+  const barColors = ["#efd7b3", "transparent"];
 
   new Chart(donutChart, {
     type: "doughnut",
@@ -161,9 +169,10 @@ function displayDonutChart() {
     },
     options: {
       title: {
-        display: true,
-        text: "World Wide Wine Production 2018",
+        display: false,
+        text: "Income",
       },
+      borderColor: "transparent",
     },
   });
 }
