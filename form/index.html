@@ -5,28 +5,102 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
   </head>
   <body>
+    <header>
+      <h1>FooBar</h1>
+      <div class="shoppingcart">
+        <p>cart</p>
+      </div>
+    </header>
     <main>
       <form>
         <section id="menu">
           <div class="filters">
-            <button>Hefeweizen</button>
-            <button>IPA</button>
-            <button>Oktoberfest</button>
-            <button>Stout</button>
-            <button>Belgian Specialty Ale</button>
-            <button>California Common</button>
+            <button class="filter" data-action="filter" data-filter="Belgian Specialty Ale">Belgian Specialty Ale</button>
+            <button class="filter" data-action="filter" data-filter="IPA">IPA</button>
+            <button class="filter" data-action="filter" data-filter="California Common">California Common</button>
+            <button class="filter" data-action="filter" data-filter="Hefeweizen">Hefeweizen</button>
+            <button class="filter" data-action="filter" data-filter="Stout">Stout</button>
+            <button class="filter" data-action="filter" data-filter="Oktoberfest">Oktoberfest</button>
+      
           </div>
-          <div class="products">
-            <div class="product_container">
-              <div class="svg"></div>
+          <div class="products_container">
+          <template class="products">
+            <article class="product_container">
+              <h4 class="product"></h4>
+          <div class="svg"></div>
               <button>Read more</button>
+            </article>
+          </template>
+        </div>
+        </section>
+        <section id="payment">
+          <div class="product_overview">
+            <p>beer</p>
+            <p>beer</p>
+          </div>
+          <div class="input_wrapper">
+          <label for="mail">Your E-mail</label>
+							<input id="mail" type="email" placeholder=" " required />
+            </div>
+            <div class="payment_wrapper">
+            <p class="label_text">Payment</p>
+            <div class="payment_options">
+              <button class="card">Card</button>
+              <button class="applepay">ApplePay</button>
+              <button class="mobilepay">Mobilepay</button>
             </div>
           </div>
+      <div class="card_payment">
+            <div class="card_wrapper">
+              <div class="firstrow">
+              <div class="input_wrapper">
+                <label for="number">CARD NUMBER</label>
+                    <input id="cardNumber" type="cardNumber" placeholder="XXXX XXXX XXXX XXXX " required />
+                  </div>
+                  </div>
+             
+                  <div class="input_wrapper cardname">
+                    <label for="name">CARDHOLDERS NAME</label>
+                    <input type="text" id="name" name="fname" pattern="[^0-9]*" placeholder="" required />
+                    <!-- <div class="invalid_wrapper">
+                      <img src="img/Invalid.svg" alt="invalid sign" />
+                      <p>This field is required</p>
+                    </div> -->
+                  </div>
+              
+                  <div class="input_wrapper month_year">
+                    <label for="month/year">MONTH/YEAR</label>
+                        <input id="month_year" type="number" placeholder=" " required />
+                      </div>
+
+                      <div class="input_wrapper cvc">
+                        <label for="cvc">CVC</label>
+                            <input id="cvc" type="number" placeholder=" " required />
+                          </div>
+                </div>
+          </div> 
+      <div class="pay_button_container">
+          <button class="pay">Pay</button>
+        </div>
+            </section>
+        <section id="receipt">
+          <h2>THANK YOU FOR YOUR ORDER</h2>
+          <h3>YOUR ORDER NUMBER IS:</h3>
+          <span>345</span>
+          <p>Follow your order on the screen by 
+            finding your order number.
+            You will receive an email with your order 
+            and your order number. </p>
+            <div class="goback_container">
+            <button class="goback">Back to menu</button>
+          </div>
         </section>
-        <section id="payment"></section>
-        <section id="receipt"></section>
       </form>
     </main>
     <script type="module" src="/main.js"></script>
