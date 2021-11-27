@@ -13,33 +13,55 @@
 		<title>FoorBar Dashboard</title>
 	</head>
 	<body>
-		<header>
-			<img src="" alt="" />
-		</header>
-		<main>
-			<div class="top-wrapper">
-				<section id="clock"></section>
-				<section id="taps"></section>
+		<div id="main-container">
+			<div id="inner-container">
+				<header>
+					<img src="" alt="" />
+				</header>
+				<main>
+					<div class="top-wrapper">
+						<section id="clock">
+							<div class="clock-wrapper">
+								<div class="clock-base">
+									<div class="clock-indicator"></div>
+									<div class="clock-indicator"></div>
+									<div class="clock-indicator"></div>
+									<div class="clock-indicator"></div>
+									<div class="clock-face">
+										<div>
+											<div class="hand clock-hour"></div>
+											<div class="hand clock-minute"></div>
+											<div class="hand clock-seconds"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div>
+								<p class="digital-clock"></p>
+							</div>
+						</section>
+						<section id="taps"></section>
+					</div>
+					<div class="bottom-wrapper">
+						<section id="queue">
+							<h2>queue</h2>
+							<div id="queue-container"></div>
+						</section>
+						<section id="serving">
+							<h2>serving</h2>
+							<div id="serving-container"></div>
+						</section>
+					</div>
+				</main>
 			</div>
-			<div class="bottom-wrapper">
-				<section id="queue">
-					<h2>queue</h2>
-					<div id="queue-container"></div>
-				</section>
-				<section id="serving">
-					<h2>serving</h2>
-					<div id="serving-container"></div>
-				</section>
-			</div>
-		</main>
+		</div>
 		<footer>
-			<div class="button-wrapper"></div>
-			<p></p>
+			<button>go to dashboard</button>
+			<p>©Copyrights reserved, foobar 2021</p>
 		</footer>
 
 		<template class="customer-dashboard">
-			<div>
-				<p class="number"></p>
+			<div class="order-wrapper">
 				<p class="order"></p>
 				<p class="ordernumber"></p>
 			</div>
