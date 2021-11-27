@@ -4,10 +4,10 @@
 	height: 110px;
 	background: linear-gradient(41deg, rgba(62, 69, 56, 1) 40%, rgba(70, 82, 64, 1) 65%, rgba(62, 69, 56, 1) 100%);
 	border-radius: 50%;
-	padding: 40px;
+	padding: 30px;
 	position: relative;
 	display: block;
-	margin: 30px auto;
+	margin: 30px auto 10px;
 	border: 3px solid colors.$primary-color;
 }
 
@@ -20,7 +20,7 @@
 
 .hand {
 	width: 50%;
-	height: 6px;
+	height: 4px;
 	background: #ead2ae;
 	position: absolute;
 	top: 50%;
@@ -40,7 +40,7 @@
 
 .clock-indicator {
 	position: absolute;
-	width: 5px;
+	width: 4px;
 	height: 7%;
 	border-radius: 3px;
 	background: #ead2ae;
@@ -60,10 +60,16 @@
 
 .clock-indicator:nth-child(3) {
 	left: 50%;
-	top: 5%;
+	top: 3%;
 }
 
 .clock-indicator:nth-child(4) {
 	left: 50%;
 	top: 90%;
+}
+
+.digital-clock {
+	text-align: center;
+	font-size: 2rem;
+	margin-bottom: 20px;
 }
