@@ -1,0 +1,35 @@
+@use "../base/colors";
+
+h2 {
+  font-family: "EB Garamond", serif;
+  font-weight: 700;
+  color: colors.$primary-color;
+}
+
+h3 {
+  font-family: "EB Garamond", serif;
+  font-weight: 600;
+  color: colors.$brown-color;
+}
+
+h4 {
+  font-family: "EB Garamond", serif;
+  font-weight: 500;
+  color: colors.$primary-color;
+}
+
+p,
+button,
+label {
+  font-family: "EB Garamond", serif;
+  font-weight: 400;
+  color: colors.$primary-color;
+}
+button {
+  font-size: 1rem;
+}
+label,
+.label_text {
+  font-size: 0.8rem;
+  margin: 0;
+}

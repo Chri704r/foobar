@@ -1,5 +1,33 @@
 @use "../base/colors";
+@use "../base/typography";
 
 button {
-  width: auto;
+  background-color: transparent;
+  border-left: none;
+  border-right: none;
+  border-top: solid 2px colors.$primary-color;
+  border-bottom: solid 2px colors.$primary-color;
+  color: colors.$primary-color;
+}
+.filters button {
+  white-space: nowrap;
+  transform-origin: center;
+  transform: rotate(-90deg);
+  width: fit-content;
+}
+
+.payment_options button {
+  border: solid 2px colors.$primary-color;
+  height: 6vh;
+}
+.pay {
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.goback {
+  text-transform: uppercase;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
