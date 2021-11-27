@@ -3,6 +3,14 @@ import "./style.scss";
 window.addEventListener("DOMContentLoaded", init);
 
 const queueArray = [];
+const beerArray = [];
+
+const beer = {
+  beerArray: [],
+  lastCount: 0,
+  newCount: 0,
+};
+
 const workstatus = {
   waiting: "Waiting",
   pourBeer: "Pouring beer",
@@ -31,6 +39,7 @@ async function getData() {
     console.log("data", data);
     createBarchart(data);
     displayBartenders(data);
+    countBeer(data);
 
     setTimeout(dataLoop, 5000);
   }
@@ -75,6 +84,10 @@ function displayBartenders(data) {
       .querySelector("#temp-bartender")
       .content.cloneNode(true);
 
+    if (bartender.usingTap === null) {
+      bartender.usingTap = "None";
+    }
+
     //Insert bartender in clone
     clone.querySelector("#bartender-name").textContent = bartender.name;
     clone.querySelector("#status").textContent = bartender.status;
@@ -84,5 +97,73 @@ function displayBartenders(data) {
 
     //Append clone to section
     document.querySelector("#dash-bartenders").appendChild(clone);
+  });
+}
+
+function countBeer(data) {
+  const serving = data.serving;
+
+  beer.lastCount = beer.newCount;
+
+  serving.forEach((person) => {
+    if (!beer.beerArray.includes(person.id)) {
+      beer.beerArray.push(person.id);
+      beer.newCount = beer.newCount + person.order.length;
+    }
+  });
+
+  displayIncome();
+
+  console.log("last", beer.lastCount);
+  console.log("new", beer.newCount);
+
+  const isChange = beer.lastCount == beer.newCount;
+
+  if (!isChange) {
+    displayDonutChart();
+  }
+}
+
+function displayIncome() {
+  document.querySelector("#income").textContent = calculateIncome();
+}
+
+function calculateIncome() {
+  const income = beer.newCount * 50;
+  return income;
+}
+
+function displayDonutChart() {
+  const chartContainer = document.querySelector("#chart-container");
+  chartContainer.innerHTML = "";
+
+  const canvas = document.createElement("canvas");
+  chartContainer.appendChild(canvas);
+
+  const donutChart = chartContainer.querySelector("canvas");
+
+  const income = calculateIncome();
+  const goal = 10000 - income;
+
+  const xValues = ["income", "none"];
+  let yValues = [income, goal];
+  var barColors = ["#b91d47", "transparent"];
+
+  new Chart(donutChart, {
+    type: "doughnut",
+    data: {
+      datasets: [
+        {
+          backgroundColor: barColors,
+          data: yValues,
+        },
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: "World Wide Wine Production 2018",
+      },
+    },
   });
 }
