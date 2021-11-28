@@ -18,6 +18,7 @@ async function getData() {
 
 	showQueue(data);
 	showServing(data);
+	showBeer(data);
 
 	setTimeout(getData, 5000);
 }
@@ -96,4 +97,14 @@ function setDate() {
 
 	//show digital clock
 	document.querySelector(".digital-clock").innerHTML = `${hours}:${minutes}:${seconds}`;
+}
+
+function showBeer(data) {
+	document.querySelector("#beer-container").innerHTML = "";
+	data.taps.forEach((beer) => {
+		const beerContainer = document.createElement("p");
+		beerContainer.textContent = beer.beer;
+
+		document.querySelector("#beer-container").appendChild(beerContainer);
+	});
 }
