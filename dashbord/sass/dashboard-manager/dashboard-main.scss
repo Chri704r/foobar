@@ -4,6 +4,45 @@ body {
   background-color: colors.$background-color;
 }
 
+header {
+  nav {
+    border: solid 5px colors.$primary-color;
+    background-color: colors.$background-color;
+    position: absolute;
+    width: 50vw;
+
+    ul {
+      list-style-type: none;
+
+      li {
+        color: colors.$primary-color;
+        margin-bottom: 1rem;
+
+        a {
+          text-decoration: none;
+          color: colors.$primary-color;
+        }
+      }
+
+      #data-nav {
+        margin-bottom: auto;
+      }
+
+      #popup-button-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        button {
+          border: none;
+          background-color: transparent;
+          text-align: left;
+          color: colors.$primary-color;
+        }
+      }
+    }
+  }
+}
+
 #dash-content-wrapper {
   section {
     border: solid 5px colors.$primary-color;
@@ -62,4 +101,8 @@ body {
       text-align: center;
     }
   }
+}
+
+.hide {
+  display: none;
 }

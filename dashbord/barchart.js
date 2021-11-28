@@ -23,6 +23,14 @@ const workstatus = {
 
 function init() {
   getData();
+  registerButtons();
+}
+
+function registerButtons() {
+  document.querySelector("#burger-button").addEventListener("click", () => {
+    const element = document.querySelector("#dash-nav-mobil");
+    toggleHide(element);
+  });
 }
 
 async function getData() {
@@ -175,4 +183,13 @@ function displayDonutChart() {
       borderColor: "transparent",
     },
   });
+}
+
+//Function toggleling hide from object
+function toggleHide(element) {
+  if (element.classList.contains("hide")) {
+    element.classList.remove("hide");
+  } else {
+    element.classList.add("hide");
+  }
 }

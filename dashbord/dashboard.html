@@ -7,9 +7,30 @@
     <title>Document</title>
   </head>
   <body>
+    <header>
+      <button id="burger-button">Menu</button>
+      <nav id="dash-nav-mobil" class="hide">
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="index.html">Custumer dashboard</a></li>
+          <li id="data-nav">
+            <details>
+              <summary>Data</summary>
+              <div id="popup-button-wrapper">
+                <button id="poup-queue">Custumer queue</button>
+                <button id="popup-beer">Beer</button>
+                <button id="popup-income">Income</button>
+                <button id="popup-calendar">Calendar</button>
+                <button id="popup-bartender">Bartenders</button>
+              </div>
+            </details>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <main>
       <div id="dash-content-wrapper">
-        <nav id="dash-nav"></nav>
+        <nav id="dash-nav-web"></nav>
         <section id="dash-queue">
           <h2>Queue</h2>
           <div id="bar-wrapper">
