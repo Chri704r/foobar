@@ -115,9 +115,9 @@ function displayBartenders(data) {
   });
 }
 
+//Function counting how many beers have been sold
 function countBeer(data) {
   const serving = data.serving;
-
   beer.lastCount = beer.newCount;
 
   serving.forEach((person) => {
@@ -129,38 +129,52 @@ function countBeer(data) {
 
   displayIncome();
 
-  console.log("last", beer.lastCount);
-  console.log("new", beer.newCount);
-
   const isChange = beer.lastCount == beer.newCount;
 
+  //Checking if last count and new count are different, we only want a reload if the value have changed
   if (!isChange) {
     displayDonutChart();
   }
 }
 
+//Function to display the income
 function displayIncome() {
   document.querySelector("#income-number").textContent =
     calculateIncome() + ",-";
 }
 
+//Function calculating the income
 function calculateIncome() {
-  const income = beer.newCount * 50;
+  let income = beer.newCount * 50;
   return income;
 }
 
+//Function to display the donut chart
 function displayDonutChart() {
   const chartContainer = document.querySelector("#chart-container");
+  //Removing the old canvas, since clear and destroy is not working
   chartContainer.innerHTML = "";
 
+  //Creating a new canvas element to display the update
   const canvas = document.createElement("canvas");
   chartContainer.appendChild(canvas);
 
   const donutChart = chartContainer.querySelector("canvas");
 
+  //Using the calculate income to get the income for display
   const income = calculateIncome();
-  const goal = 10000 - income;
 
+  //Calculating how much is left before the dayly goal is met.
+  //If the income is higher than the goal income is set to max and goal to 0 every time
+  let goal = 10000;
+  if (income > 10000) {
+    income = 10000;
+    goal = 0;
+  } else {
+    goal = 10000 - income;
+  }
+
+  //Making the donut chart
   const xValues = ["income", "none"];
   let yValues = [income, goal];
   const barColors = ["#efd7b3", "transparent"];
