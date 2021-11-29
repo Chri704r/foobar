@@ -2,10 +2,17 @@
 
 body {
   background-color: colors.$background-color;
+  padding: 1rem;
 }
 
 header {
+  #burger-button {
+    border: none;
+    margin-left: 0;
+  }
+
   nav {
+    padding: 1rem;
     border: solid 5px colors.$primary-color;
     background-color: colors.$background-color;
     position: absolute;
@@ -17,10 +24,12 @@ header {
       li {
         color: colors.$primary-color;
         margin-bottom: 1rem;
+        text-transform: uppercase;
 
         a {
           text-decoration: none;
           color: colors.$primary-color;
+          text-transform: uppercase;
         }
       }
 
@@ -37,6 +46,7 @@ header {
           background-color: transparent;
           text-align: left;
           color: colors.$primary-color;
+          margin-left: 1rem;
         }
       }
     }
