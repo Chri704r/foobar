@@ -1,8 +1,10 @@
 #dash-income {
   #chart-container {
+    display: flex;
+    justify-content: center;
     canvas {
-      outline: none;
-      border: none;
+      width: 80% !important;
+      height: 80% !important;
     }
   }
   #income-number {
@@ -11,11 +13,12 @@
   }
 }
 
-@media only screen and (min-width: 1500px) {
+@media only screen and (min-width: 1000px) {
   #dash-income {
     grid-column-start: 7;
     grid-column-end: 10;
     grid-row-start: 4;
     grid-row-end: 7;
+    height: 90%;
   }
 }
