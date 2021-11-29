@@ -35,11 +35,18 @@
 }
 
 @media only screen and (min-width: 700px) {
+	#taps {
+		display: block;
+		margin: 0 auto;
+		width: 100%;
+	}
+
 	#beer-container {
-		display: inline-flex;
-		gap: 3vw;
-		margin: 0 15px 30px;
+		display: flex;
+		margin: 0 auto;
 		border: 2px solid colors.$primary-color;
+		width: 90%;
+		justify-content: space-evenly;
 	}
 
 	#beer-container p {
