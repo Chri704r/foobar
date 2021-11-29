@@ -7,7 +7,7 @@
 	padding: 30px;
 	position: relative;
 	display: block;
-	margin: 30px auto 10px;
+	margin: 10px auto 10px;
 	border: 3px solid colors.$primary-color;
 }
 
@@ -72,4 +72,18 @@
 	text-align: center;
 	font-size: 2rem;
 	margin-bottom: 20px;
+}
+
+.lastcall {
+	background: linear-gradient(41deg, rgba(181, 84, 49, 1) 40%, rgba(195, 95, 59, 1) 65%, rgba(181, 84, 49, 1) 100%);
+}
+
+.happyhour {
+	background: linear-gradient(41deg, rgba(93, 115, 87, 1) 40%, rgba(112, 135, 105, 1) 65%, rgba(93, 115, 87, 1) 100%);
+}
+
+.clock-event {
+	font-size: 1.5rem;
+	text-align: center;
+	text-transform: uppercase;
 }
