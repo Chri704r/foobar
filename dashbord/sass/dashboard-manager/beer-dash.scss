@@ -5,11 +5,12 @@
   }
 }
 
-@media only screen and (min-width: 1500px) {
+@media only screen and (min-width: 1000px) {
   #dash-taps {
     grid-column-start: 3;
     grid-column-end: 7;
     grid-row-start: 3;
     grid-row-end: 5;
+    height: 85%;
   }
 }

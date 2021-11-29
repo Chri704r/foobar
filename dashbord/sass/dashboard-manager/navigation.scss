@@ -10,7 +10,7 @@
   border: solid 5px colors.$primary-color;
   background-color: colors.$background-color;
   position: absolute;
-  width: 50vw;
+  width: 60vw;
 
   ul {
     list-style-type: none;
@@ -43,6 +43,17 @@
         margin-left: 1rem;
       }
     }
+
+    .bottom {
+      margin-top: 1rem;
+    }
+    .login {
+      border: 0;
+      background-color: transparent;
+      text-align: left;
+      margin-top: auto;
+      margin-left: 0;
+    }
   }
 }
 
@@ -50,7 +61,7 @@
   display: none;
 }
 
-@media only screen and (min-width: 1500px) {
+@media only screen and (min-width: 1000px) {
   #burger-button {
     display: none;
   }
@@ -70,5 +81,8 @@
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 5;
+
+    ul {
+    }
   }
 }

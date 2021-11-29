@@ -30,9 +30,14 @@ body {
   }
 }
 
-@media only screen and (min-width: 1500px) {
-  #dash-content-wrapper {
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+@media only screen and (min-width: 1000px) {
+  main {
+    height: 100vh;
+    max-height: 100vh;
+
+    #dash-content-wrapper {
+      grid-template-columns: repeat(9, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+    }
   }
 }

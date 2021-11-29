@@ -1,7 +1,6 @@
 @use "../variabels/colors";
 
 #dash-queue {
-  height: 30vh;
   padding-bottom: 5px;
   display: flex;
   flex-direction: column;
@@ -9,11 +8,11 @@
 
   #bar-wrapper {
     display: flex;
-    justify-content: space-evenly;
+    gap: 10px;
     align-items: flex-end;
 
     .bar {
-      width: 30px;
+      width: 100%;
       background: colors.$gradient-1-1;
       background: colors.$gradient-1-2;
       height: 0.1vh;
@@ -25,20 +24,15 @@
   #dash-queue {
     grid-column-start: 1;
     grid-column-end: -1;
-
-    #bar-wrapper {
-      .bar {
-        width: 55px;
-      }
-    }
   }
 }
 
-@media only screen and (min-width: 1500px) {
+@media only screen and (min-width: 1000px) {
   #dash-queue {
     grid-column-start: 3;
     grid-column-end: 7;
     grid-row-start: 1;
     grid-row-end: 3;
+    height: 85%;
   }
 }
