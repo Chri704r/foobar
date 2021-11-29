@@ -1,0 +1,15 @@
+@media only screen and (min-width: 760px) {
+  #dash-taps {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  #dash-taps {
+    grid-column-start: 3;
+    grid-column-end: 7;
+    grid-row-start: 3;
+    grid-row-end: 5;
+  }
+}

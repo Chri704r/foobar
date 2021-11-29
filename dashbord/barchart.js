@@ -145,7 +145,7 @@ function displayIncome() {
 
 //Function calculating the income
 function calculateIncome() {
-  let income = beer.newCount * 50;
+  const income = beer.newCount * 50;
   return income;
 }
 
@@ -162,7 +162,7 @@ function displayDonutChart() {
   const donutChart = chartContainer.querySelector("canvas");
 
   //Using the calculate income to get the income for display
-  const income = calculateIncome();
+  let income = calculateIncome();
 
   //Calculating how much is left before the dayly goal is met.
   //If the income is higher than the goal income is set to max and goal to 0 every time

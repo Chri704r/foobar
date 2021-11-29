@@ -18,3 +18,20 @@
     }
   }
 }
+
+@media only screen and (min-width: 760px) {
+  #dash-bartenders {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  #dash-bartenders {
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 5;
+    grid-row-end: 7;
+    height: 100%;
+  }
+}
