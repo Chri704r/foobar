@@ -20,6 +20,7 @@
     <main>
       <form>
         <section id="menu">
+          <div class="filters_border">
           <div class="filters">
             <button class="filter" data-action="filter" data-filter="Belgian Specialty Ale">Belgian Specialty Ale</button>
             <button class="filter" data-action="filter" data-filter="IPA">IPA</button>
@@ -27,23 +28,34 @@
             <button class="filter" data-action="filter" data-filter="Hefeweizen">Hefeweizen</button>
             <button class="filter" data-action="filter" data-filter="Stout">Stout</button>
             <button class="filter" data-action="filter" data-filter="Oktoberfest">Oktoberfest</button>
-      
+          </div>
           </div>
           <div class="products_container">
           <template class="products">
             <article class="product_container">
               <h4 class="product"></h4>
           <div class="svg"></div>
+          <div class="product_btn_cont">
               <button>Read more</button>
+              <button class="add_to_cart">+</button>
+            </div>
             </article>
           </template>
+        </div>
+        <div class="basket_border">
+        <div class="basket">
+<h2>Basket</h2>
+<button class="checkout">Checkout</button>
+        </div>
         </div>
         </section>
         <section id="payment">
           <div class="product_overview">
+            <h2>Your order</h2>
             <p>beer</p>
             <p>beer</p>
           </div>
+          <div class="pay_container">
           <div class="input_wrapper">
           <label for="mail">Your E-mail</label>
 							<input id="mail" type="email" placeholder=" " required />
@@ -52,8 +64,11 @@
             <p class="label_text">Payment</p>
             <div class="payment_options">
               <button class="card">Card</button>
-              <button class="applepay">ApplePay</button>
-              <button class="mobilepay">Mobilepay</button>
+              <button class="applepay"> 
+                 <img src="img/Apple_Pay_Mark_RGB_041619.svg" alt=""></button>
+              <button class="mobilepay">
+              <img src="img/MP_RGB_NoTM_Logo+Type Horisontal Blue.svg" alt="">
+              </button>
             </div>
           </div>
       <div class="card_payment">
@@ -88,6 +103,7 @@
       <div class="pay_button_container">
           <button class="pay">Pay</button>
         </div>
+      </div>
             </section>
         <section id="receipt">
           <h2>THANK YOU FOR YOUR ORDER</h2>
