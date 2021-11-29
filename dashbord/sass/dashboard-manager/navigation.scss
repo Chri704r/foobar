@@ -1,49 +1,74 @@
 @use "../variabels/colors";
 
-header {
-  #burger-button {
-    border: none;
-    margin-left: 0;
-  }
+#burger-button {
+  border: none;
+  margin-left: 0;
+}
 
-  nav {
-    padding: 1rem;
-    border: solid 5px colors.$primary-color;
-    background-color: colors.$background-color;
-    position: absolute;
-    width: 50vw;
+.navigation {
+  padding: 1rem;
+  border: solid 5px colors.$primary-color;
+  background-color: colors.$background-color;
+  position: absolute;
+  width: 50vw;
 
-    ul {
-      list-style-type: none;
+  ul {
+    list-style-type: none;
 
-      li {
+    li {
+      color: colors.$primary-color;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+
+      a {
+        text-decoration: none;
         color: colors.$primary-color;
-        margin-bottom: 1rem;
         text-transform: uppercase;
-
-        a {
-          text-decoration: none;
-          color: colors.$primary-color;
-          text-transform: uppercase;
-        }
-      }
-
-      #data-nav {
-        margin-bottom: auto;
-      }
-
-      #popup-button-wrapper {
-        display: flex;
-        flex-direction: column;
-
-        button {
-          border: none;
-          background-color: transparent;
-          text-align: left;
-          color: colors.$primary-color;
-          margin-left: 1rem;
-        }
       }
     }
+
+    .data-nav {
+      margin-bottom: auto;
+    }
+
+    #popup-button-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        border: none;
+        background-color: transparent;
+        text-align: left;
+        color: colors.$primary-color;
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
+#dash-nav-web {
+  display: none;
+}
+
+@media only screen and (min-width: 1500px) {
+  #burger-button {
+    display: none;
+  }
+
+  #dash-nav-mobil {
+    display: none;
+  }
+
+  #dash-nav-web {
+    display: block;
+  }
+
+  .navigation {
+    position: relative;
+    width: auto;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 5;
   }
 }

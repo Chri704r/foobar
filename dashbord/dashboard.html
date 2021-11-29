@@ -9,19 +9,19 @@
   <body>
     <header>
       <button id="burger-button">Menu</button>
-      <nav id="dash-nav-mobil" class="hide">
+      <nav id="dash-nav-mobil" class="hide navigation">
         <ul>
           <li><a href="dashboard.html">Dashboard</a></li>
           <li><a href="index.html">Custumer dashboard</a></li>
-          <li id="data-nav">
+          <li class="data-nav">
             <details>
               <summary>Data</summary>
               <div id="popup-button-wrapper">
-                <button id="poup-queue">Custumer queue</button>
-                <button id="popup-beer">Beer</button>
-                <button id="popup-income">Income</button>
-                <button id="popup-calendar">Calendar</button>
-                <button id="popup-bartender">Bartenders</button>
+                <button class="poup-queue">Custumer queue</button>
+                <button class="popup-beer">Beer</button>
+                <button class="popup-income">Income</button>
+                <button class="popup-calendar">Calendar</button>
+                <button class="popup-bartender">Bartenders</button>
               </div>
             </details>
           </li>
@@ -30,7 +30,24 @@
     </header>
     <main>
       <div id="dash-content-wrapper">
-        <nav id="dash-nav-web"></nav>
+        <nav id="dash-nav-web" class="navigation">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="index.html">Custumer dashboard</a></li>
+            <li class="data-nav">
+              <details>
+                <summary>Data</summary>
+                <div id="popup-button-wrapper">
+                  <button class="poup-queue">Custumer queue</button>
+                  <button class="popup-beer">Beer</button>
+                  <button class="popup-income">Income</button>
+                  <button class="popup-calendar">Calendar</button>
+                  <button class="popup-bartender">Bartenders</button>
+                </div>
+              </details>
+            </li>
+          </ul>
+        </nav>
         <section id="dash-queue">
           <h2>Queue</h2>
           <div id="bar-wrapper">

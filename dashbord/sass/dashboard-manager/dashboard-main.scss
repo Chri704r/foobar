@@ -17,3 +17,22 @@ body {
 .hide {
   display: none;
 }
+
+@media only screen and (min-width: 760px) {
+  #dash-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    section {
+      margin-bottom: auto;
+    }
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  #dash-content-wrapper {
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+}
