@@ -106,8 +106,6 @@ function setDate() {
 
 	if (hours >= 22) {
 		document.querySelector(".clock-event").textContent = "closed";
-	} else if (hours >= 10) {
-		document.querySelector(".clock-event").textContent = "closed";
 	}
 }
 
