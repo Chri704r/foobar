@@ -75,7 +75,7 @@ footer {
 	}
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 760px) {
 	#main-container {
 		height: 94vh;
 	}
@@ -86,7 +86,7 @@ footer {
 
 	.top-wrapper {
 		display: grid;
-		grid-template-columns: 1fr 4fr;
+		grid-template-columns: 1fr 3fr;
 		max-height: 30vh;
 	}
 
@@ -114,5 +114,11 @@ footer {
 
 	.order-wrapper {
 		margin: 0px;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.top-wrapper {
+		grid-template-columns: 1fr 4fr;
 	}
 }
