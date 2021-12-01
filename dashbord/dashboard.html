@@ -1,98 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <header>
-      <button id="burger-button">Menu</button>
-      <nav id="dash-nav-mobil" class="hide navigation">
-        <ul>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="index.html">Custumer dashboard</a></li>
-          <li class="data-nav">
-            <details>
-              <summary>Data</summary>
-              <div id="popup-button-wrapper">
-                <button class="poup-queue">Custumer queue</button>
-                <button class="popup-beer">Beer</button>
-                <button class="popup-income">Income</button>
-                <button class="popup-calendar">Calendar</button>
-                <button class="popup-bartender">Bartenders</button>
-              </div>
-            </details>
-          </li>
-          <li class="bottom">Hello manager</li>
-          <li><button class="login bottom">Sign out</button></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <div id="dash-content-wrapper">
-        <nav id="dash-nav-web" class="navigation">
-          <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="index.html">Custumer dashboard</a></li>
-            <li class="data-nav">
-              <details>
-                <summary>Data</summary>
-                <div id="popup-button-wrapper">
-                  <button class="poup-queue">Custumer queue</button>
-                  <button class="popup-beer">Beer</button>
-                  <button class="popup-income">Income</button>
-                  <button class="popup-calendar">Calendar</button>
-                  <button class="popup-bartender">Bartenders</button>
-                </div>
-              </details>
-            </li>
-            <li class="bottom">Hello manager</li>
-            <li><button class="login bottom">Sign out</button></li>
-          </ul>
-        </nav>
-        <section id="dash-queue">
-          <h2>Queue</h2>
-          <div id="bar-wrapper">
-            <div class="bar" id="bar-1"></div>
-            <div class="bar" id="bar-2"></div>
-            <div class="bar" id="bar-3"></div>
-            <div class="bar" id="bar-4"></div>
-            <div class="bar" id="bar-5"></div>
-            <div class="bar" id="bar-6"></div>
-            <div class="bar" id="bar-7"></div>
-            <div class="bar" id="bar-8"></div>
-            <div class="bar" id="bar-9"></div>
-            <div class="bar" id="bar-10"></div>
-          </div>
-        </section>
-        <section id="dash-taps"></section>
-        <section id="dash-calendar"></section>
-        <section id="dash-income">
-          <h2>Income</h2>
-          <div id="chart-container">
-            <canvas id="income-chart"></canvas>
-          </div>
-          <p id="income-number"></p>
-        </section>
-        <section id="dash-bartenders"></section>
-      </div>
-      <section id="popup"></section>
-    </main>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<header>
+			<button id="burger-button">Menu</button>
+			<nav id="dash-nav-mobil" class="hide navigation">
+				<ul>
+					<li><a href="dashboard.html">Dashboard</a></li>
+					<li><a href="index.html">Custumer dashboard</a></li>
+					<li class="data-nav">
+						<details>
+							<summary>Data</summary>
+							<div id="popup-button-wrapper">
+								<button class="poup-queue">Custumer queue</button>
+								<button class="popup-beer">Beer</button>
+								<button class="popup-income">Income</button>
+								<button class="popup-calendar">Calendar</button>
+								<button class="popup-bartender">Bartenders</button>
+							</div>
+						</details>
+					</li>
+					<li class="bottom">Hello manager</li>
+					<li><button class="login bottom">Sign out</button></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<div id="dash-content-wrapper">
+				<nav id="dash-nav-web" class="navigation">
+					<ul>
+						<li><a href="dashboard.html">Dashboard</a></li>
+						<li><a href="index.html">Custumer dashboard</a></li>
+						<li class="data-nav">
+							<details>
+								<summary>Data</summary>
+								<div id="popup-button-wrapper">
+									<button class="poup-queue">Custumer queue</button>
+									<button class="popup-beer">Beer</button>
+									<button class="popup-income">Income</button>
+									<button class="popup-calendar">Calendar</button>
+									<button class="popup-bartender">Bartenders</button>
+								</div>
+							</details>
+						</li>
+						<li class="bottom">Hello manager</li>
+						<li><button class="login bottom">Sign out</button></li>
+					</ul>
+				</nav>
+				<section id="dash-queue">
+					<h2>Queue</h2>
+					<div id="bar-wrapper">
+						<div class="bar" id="bar-1"></div>
+						<div class="bar" id="bar-2"></div>
+						<div class="bar" id="bar-3"></div>
+						<div class="bar" id="bar-4"></div>
+						<div class="bar" id="bar-5"></div>
+						<div class="bar" id="bar-6"></div>
+						<div class="bar" id="bar-7"></div>
+						<div class="bar" id="bar-8"></div>
+						<div class="bar" id="bar-9"></div>
+						<div class="bar" id="bar-10"></div>
+					</div>
+				</section>
+				<section id="dash-taps">
+					<div id="beer-img-container">
+						<img src="" alt="beer" />
+					</div>
+					<div id="beer-container"></div>
+				</section>
+				<section id="dash-calendar"></section>
+				<section id="dash-income">
+					<h2>Income</h2>
+					<div id="chart-container">
+						<canvas id="income-chart"></canvas>
+					</div>
+					<p id="income-number"></p>
+				</section>
+				<section id="dash-bartenders"></section>
+			</div>
+			<section id="popup"></section>
+		</main>
 
-    <template id="temp-bartender">
-      <article class="bart-article">
-        <h2 class="bartender-name"></h2>
-        <p class="status"></p>
-        <p class="status-detail"></p>
-        <p class="using-tap"></p>
-      </article>
-    </template>
+		<template id="temp-bartender">
+			<article class="bart-article">
+				<h2 class="bartender-name"></h2>
+				<p class="status"></p>
+				<p class="status-detail"></p>
+				<p class="using-tap"></p>
+			</article>
+		</template>
 
-    <!-- <script type="module" src="/main.js"></script> -->
-    <script type="module" src="/barchart.js"></script>
+		<!-- <script type="module" src="/main.js"></script> -->
+		<script type="module" src="/barchart.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </body>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	</body>
 </html>
