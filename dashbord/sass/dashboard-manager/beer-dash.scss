@@ -1,16 +1,27 @@
+#dash-taps #beer-container {
+	margin: 0 0 15px;
+}
+
 @media only screen and (min-width: 760px) {
-  #dash-taps {
-    grid-column-start: 1;
-    grid-column-end: -1;
-  }
+	#dash-taps {
+		grid-column-start: 1;
+		grid-column-end: -1;
+	}
+	#dash-taps #beer-container {
+		width: 100%;
+	}
 }
 
 @media only screen and (min-width: 1000px) {
-  #dash-taps {
-    grid-column-start: 3;
-    grid-column-end: 7;
-    grid-row-start: 3;
-    grid-row-end: 5;
-    height: 85%;
-  }
+	#dash-taps {
+		grid-column-start: 3;
+		grid-column-end: 7;
+		grid-row-start: 3;
+		grid-row-end: 5;
+		height: 85%;
+	}
+
+	#dash-taps #beer-container p {
+		font-size: 0.8rem;
+	}
 }
