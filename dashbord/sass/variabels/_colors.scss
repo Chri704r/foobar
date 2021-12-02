@@ -13,6 +13,13 @@ $third-green-color: #7a9673;
 $gradient-1-1: rgb(239, 215, 179);
 $gradient-1-2: linear-gradient(
   180deg,
-  rgba(239, 215, 179, 1) 55%,
-  rgba(60, 69, 56, 1) 92%
+  rgba(239, 215, 179, 1) 62%,
+  rgba(60, 69, 56, 1) 100%
+);
+
+$gradient-2-1: rgb(239, 215, 179);
+$gradient-2-2: linear-gradient(
+  270deg,
+  rgba(239, 215, 179, 1) 62%,
+  rgba(60, 69, 56, 1) 100%
 );
