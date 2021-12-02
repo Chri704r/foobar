@@ -1,0 +1,26 @@
+@use "../variabels/colors";
+
+#popup {
+  article {
+    position: fixed;
+    width: 90vw;
+    height: 90vh;
+    left: 4vw;
+    top: 5vh;
+    background-color: colors.$background-color;
+    border: solid 5px colors.$primary-color;
+    padding-top: 1rem;
+
+    .close-popup {
+      float: right;
+      border: none;
+      background-color: transparent;
+    }
+
+    div {
+      width: 90%;
+      margin: auto;
+      margin-top: 1rem;
+    }
+  }
+}
