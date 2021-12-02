@@ -1,14 +1,105 @@
-#dash-taps #beer-container {
-	margin: 0 0 15px;
+@use "../variabels/colors";
+
+#dash-taps {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	row-gap: 20px;
+}
+
+#dash-taps p {
+	text-align: center;
+	border: 2px solid colors.$primary-color;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#dash-taps img {
+	width: 55px;
+	display: block;
+	margin: 0 auto;
+}
+
+#dash-taps div:nth-child(7) {
+	grid-row: 3/4;
+	grid-column: 1/4;
+}
+
+#dash-taps div:nth-child(1) p,
+#dash-taps div:nth-child(4) p {
+	border-right: none;
+}
+
+#dash-taps div:nth-child(2) p,
+#dash-taps div:nth-child(5) p {
+	border-left: none;
+	border-right: none;
+}
+
+#dash-taps div:nth-child(3) p,
+#dash-taps div:nth-child(6) p {
+	border-left: none;
 }
 
 @media only screen and (min-width: 760px) {
+	#dash-taps img {
+		width: 50px;
+		display: block;
+		margin: 0 auto;
+	}
+
 	#dash-taps {
 		grid-column-start: 1;
 		grid-column-end: -1;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		row-gap: 5px;
+		border: none;
+		width: 95%;
+		margin: 0 auto;
 	}
-	#dash-taps #beer-container {
-		width: 100%;
+	#dash-taps p {
+		text-align: center;
+		border: 2px solid colors.$primary-color;
+		height: 35px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#dash-taps div:nth-child(7) {
+		grid-column: 3/4;
+		grid-row: 2/3;
+		border-left: none;
+		width: 200%;
+	}
+
+	#dash-taps div:nth-child(6) {
+		width: 200%;
+	}
+
+	#dash-taps div:nth-child(5) {
+		width: 200%;
+	}
+
+	#dash-taps div:nth-child(3) p,
+	#dash-taps div:nth-child(6) p {
+		border-right: none;
+	}
+
+	#dash-taps div:nth-child(4) p {
+		border-left: none;
+		border-right: 2px solid colors.$primary-color;
+	}
+
+	#dash-taps div:nth-child(5) p {
+		border-left: 2px solid colors.$primary-color;
+	}
+
+	#dash-taps div:nth-child(7) p {
+		border-left: none;
 	}
 }
 
@@ -18,10 +109,33 @@
 		grid-column-end: 7;
 		grid-row-start: 3;
 		grid-row-end: 5;
-		height: 85%;
+		height: 66%;
+		display: grid;
+		grid-template-rows: 1fr;
+		grid-template-columns: repeat(7, 1fr);
+		justify-content: space-evenly;
+		padding-top: 50px !important;
+		width: auto;
 	}
 
-	#dash-taps #beer-container p {
-		font-size: 0.8rem;
+	#dash-taps p {
+		height: 60px;
+	}
+
+	#dash-taps div:nth-child(4) p,
+	#dash-taps div:nth-child(5) p {
+		border-right: none;
+		border-left: none;
+	}
+
+	#dash-taps div:nth-child(5),
+	#dash-taps div:nth-child(6),
+	#dash-taps div:nth-child(7) {
+		width: auto;
+	}
+
+	#dash-taps div:nth-child(7) {
+		grid-row: initial;
+		grid-column: initial;
 	}
 }

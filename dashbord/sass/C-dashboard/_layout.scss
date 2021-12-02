@@ -87,7 +87,8 @@ footer {
 	.top-wrapper {
 		display: grid;
 		grid-template-columns: 1fr 3fr;
-		max-height: 30vh;
+		max-height: 33.5vh;
+		margin-bottom: 15px;
 	}
 
 	.bottom-wrapper {
@@ -95,13 +96,13 @@ footer {
 		grid-template-columns: 1fr 1fr;
 		margin: 0 10px;
 		gap: 10px;
-		max-height: 50vh;
+		max-height: 40vh;
 	}
 
 	#queue,
 	#serving {
 		margin: 0px 0px 15px;
-		height: 47vh;
+		height: 45vh;
 	}
 
 	#serving-container,
