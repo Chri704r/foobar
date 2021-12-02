@@ -110,11 +110,14 @@ function setDate() {
 }
 
 function showBeer(data) {
-	document.querySelector("#beer-container").innerHTML = "";
-	data.taps.forEach((beer) => {
-		const beerContainer = document.createElement("p");
-		beerContainer.textContent = beer.beer;
+	document.querySelector("#taps").innerHTML = "";
 
-		document.querySelector("#beer-container").appendChild(beerContainer);
+	data.taps.forEach((beer) => {
+		const clone = document.querySelector("template.tap").content.cloneNode(true);
+
+		clone.querySelector("img").src = `assets/${beer.beer}.svg`;
+		clone.querySelector("p").textContent = beer.beer;
+
+		document.querySelector("#taps").appendChild(clone);
 	});
 }
