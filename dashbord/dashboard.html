@@ -67,7 +67,12 @@
 						<div class="bar" id="bar-10"></div>
 					</div>
 				</section>
-				<section id="dash-taps"></section>
+				<section id="dash-taps">
+          <div id="beer-img-container">
+            <img src="" alt="beer" />
+          </div>
+          <div id="beer-container"></div>
+        </section>
 				<section id="dash-calendar"></section>
 				<section id="dash-income">
 					<h2>Income</h2>
@@ -81,14 +86,14 @@
 			<section id="popup"></section>
 		</main>
 
-		<template id="temp-bartender">
-			<article class="bart-article">
-				<h2 class="bartender-name"></h2>
-				<p class="status"></p>
-				<p class="status-detail"></p>
-				<p class="using-tap"></p>
-			</article>
-		</template>
+    <template id="temp-bartender">
+      <article class="bart-article">
+        <h2 class="bartender-name"></h2>
+        <p class="status"></p>
+        <p class="status-detail"></p>
+        <p class="using-tap"></p>
+      </article>
+    </template>
 
 		<template class="tap">
 			<div>
@@ -97,9 +102,12 @@
 			</div>
 		</template>
 
-		<!-- <script type="module" src="/main.js"></script> -->
-		<script type="module" src="/barchart.js"></script>
+    <!-- <script type="module" src="/main.js"></script> -->
+    <script type="module" src="/barchart.js"></script>
+    <script type="module" src="/calendar.js"></script>
+    <script type="module" src="/components/queue.js"></script>
 
-		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	</body>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </body>
 </html>
