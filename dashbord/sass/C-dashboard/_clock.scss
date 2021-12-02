@@ -1,13 +1,18 @@
 @use "../variabels/colors";
+
+header {
+	height: 85px;
+}
+
 .clock-base {
-	width: 110px;
-	height: 110px;
+	width: 85px;
+	height: 85px;
 	background: linear-gradient(41deg, rgba(62, 69, 56, 1) 40%, rgba(70, 82, 64, 1) 65%, rgba(62, 69, 56, 1) 100%);
 	border-radius: 50%;
 	padding: 30px;
 	position: relative;
 	display: block;
-	margin: 30px auto 10px;
+	margin: 10px auto 5px;
 	border: 3px solid colors.$primary-color;
 }
 
@@ -20,13 +25,13 @@
 
 .hand {
 	width: 50%;
-	height: 4px;
+	height: 3px;
 	background: #ead2ae;
 	position: absolute;
 	top: 50%;
 	transform-origin: 100%;
 	transform: rotate(90deg);
-	border-radius: 4px;
+	border-radius: 10px;
 }
 
 .clock-seconds {
@@ -70,6 +75,20 @@
 
 .digital-clock {
 	text-align: center;
-	font-size: 2rem;
+	font-size: 1.7rem;
 	margin-bottom: 20px;
+}
+
+.lastcall {
+	background: linear-gradient(41deg, rgba(181, 84, 49, 1) 40%, rgba(195, 95, 59, 1) 65%, rgba(181, 84, 49, 1) 100%);
+}
+
+.happyhour {
+	background: linear-gradient(41deg, rgba(93, 115, 87, 1) 40%, rgba(112, 135, 105, 1) 65%, rgba(93, 115, 87, 1) 100%);
+}
+
+.clock-event {
+	font-size: 1.5rem;
+	text-align: center;
+	text-transform: uppercase;
 }

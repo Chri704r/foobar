@@ -5,6 +5,9 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
 	getData();
 	setInterval(setDate, 1000);
+	document.querySelector("#dashboard-button").addEventListener("click", () => {
+		window.location.href = "dashboard.html";
+	});
 }
 
 async function getData() {
@@ -38,14 +41,6 @@ function showQueue(data) {
 
 		clone.querySelector(".ordernumber").textContent = order.id;
 
-		//show each beer in order
-		order.order.forEach((orderlist) => {
-			const orderContainer = document.createElement("p");
-			orderContainer.textContent = orderlist;
-
-			clone.querySelector(".order").appendChild(orderContainer);
-		});
-
 		document.querySelector("#queue-container").appendChild(clone);
 	});
 }
@@ -57,14 +52,6 @@ function showServing(data) {
 		const clone = document.querySelector("template.customer-dashboard").content.cloneNode(true);
 
 		clone.querySelector(".ordernumber").textContent = serve.id;
-
-		//show each beer in order
-		serve.order.forEach((orderlist) => {
-			const orderContainer = document.createElement("p");
-			orderContainer.textContent = orderlist;
-
-			clone.querySelector(".order").appendChild(orderContainer);
-		});
 
 		document.querySelector("#serving-container").appendChild(clone);
 	});
@@ -96,7 +83,30 @@ function setDate() {
 	hourHand.style.transform = `rotate(${hourDegrees}deg)`;
 
 	//show digital clock
-	document.querySelector(".digital-clock").innerHTML = `${hours}:${minutes}:${seconds}`;
+	if (minutes < 10 && seconds < 10) {
+		document.querySelector(".digital-clock").innerHTML = `${hours}:0${minutes}:0${seconds}`;
+	} else if (minutes < 10) {
+		document.querySelector(".digital-clock").innerHTML = `${hours}:0${minutes}:${seconds}`;
+	} else if (seconds < 10) {
+		document.querySelector(".digital-clock").innerHTML = `${hours}:${minutes}:0${seconds}`;
+	} else {
+		document.querySelector(".digital-clock").innerHTML = `${hours}:${minutes}:${seconds}`;
+	}
+
+	//change style if happy hour or last call
+	if (hours === 20) {
+		document.querySelector(".clock-event").textContent = "Happy hour";
+		document.querySelector(".clock-base").classList.add("happyhour");
+	}
+
+	if (hours === 21 && minutes >= 30) {
+		document.querySelector(".clock-event").textContent = "Last call";
+		document.querySelector(".clock-base").classList.add("lastcall");
+	}
+
+	if (hours >= 22) {
+		document.querySelector(".clock-event").textContent = "closed";
+	}
 }
 
 function showBeer(data) {
