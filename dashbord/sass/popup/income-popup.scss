@@ -1,0 +1,14 @@
+@use "../variabels/colors";
+
+.popup-content-queue {
+  display: flex;
+  justify-content: flex-start;
+
+  #curent-income {
+    #numbers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}

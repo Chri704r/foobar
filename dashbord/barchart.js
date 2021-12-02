@@ -22,7 +22,7 @@ const workstatus = {
 
 const popups = {
   popQueue: false,
-  popBartendes: false,
+  popBartenders: false,
   popCalendar: false,
   popBeer: false,
   popIncome: false,
@@ -39,17 +39,42 @@ function registerButtons() {
     toggleHide(element);
   });
 
+  //Open the popup for the queue
   document.querySelectorAll(".popup-queue").forEach((button) => {
     button.addEventListener("click", () => {
       popups.popQueue = true;
-      //setTimeout(1000, displayBarchart);
+      popups.popBartenders = false;
+      popups.popCalendar = false;
+      popups.popBeer = false;
+      popups.popIncome = false;
     });
   });
 
   document.querySelector("#dash-queue").addEventListener("click", () => {
     popups.popQueue = true;
-    displayBarchart();
-    //setTimeout(1000, displayBarchart);
+    popups.popBartenders = false;
+    popups.popCalendar = false;
+    popups.popBeer = false;
+    popups.popIncome = false;
+  });
+
+  //Open the popup for the income
+  document.querySelectorAll(".popup-income").forEach((button) => {
+    button.addEventListener("click", () => {
+      popups.popQueue = false;
+      popups.popBartenders = false;
+      popups.popCalendar = false;
+      popups.popBeer = false;
+      popups.popIncome = true;
+    });
+  });
+
+  document.querySelector("#dash-income").addEventListener("click", () => {
+    popups.popQueue = false;
+    popups.popBartenders = false;
+    popups.popCalendar = false;
+    popups.popBeer = false;
+    popups.popIncome = true;
   });
 }
 
@@ -109,6 +134,7 @@ function displayBarchart() {
     }vh`;
   }
 
+  //To display the chart standing up
   if (popups.popQueue === true) {
     if (window.innerWidth < 1000) {
       for (let i = 0; i < queueArray.length; i++) {
@@ -121,6 +147,7 @@ function displayBarchart() {
             queueArray[i];
         }
       }
+      //To display the chart lying down
     } else {
       for (let i = 0; i < queueArray.length; i++) {
         document.querySelector(`#pop-bar-${i + 1}`).style.height = `${
@@ -195,6 +222,11 @@ function countBeer(data) {
 function displayIncome() {
   document.querySelector("#income-number").textContent =
     calculateIncome() + ",-";
+
+  if (popups.popIncome) {
+    document.querySelector("#popup-income-number").textContent =
+      calculateIncome() + ",-";
+  }
 }
 
 //Function calculating the income
@@ -251,6 +283,42 @@ function displayDonutChart() {
       borderColor: "transparent",
     },
   });
+
+  //Making the donut chart in the popup
+  if (popups.popIncome === true) {
+    const popChartContainer = document.querySelector("#popup-chart-container");
+    //Removing the old canvas, since clear and destroy is not working
+    popChartContainer.innerHTML = "";
+
+    //Creating a new canvas element to display the update
+    const popCanvas = document.createElement("canvas");
+    popChartContainer.appendChild(popCanvas);
+
+    const popDonutChart = popChartContainer.querySelector("canvas");
+
+    const xValues = ["income", "none"];
+    let yValues = [income, goal];
+    const barColors = ["#efd7b3", "transparent"];
+
+    new Chart(popDonutChart, {
+      type: "doughnut",
+      data: {
+        datasets: [
+          {
+            backgroundColor: barColors,
+            data: yValues,
+          },
+        ],
+      },
+      options: {
+        title: {
+          display: false,
+          text: "Income",
+        },
+        borderColor: "transparent",
+      },
+    });
+  }
 }
 
 //Function toggleling hide from object
