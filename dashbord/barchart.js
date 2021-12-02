@@ -3,7 +3,6 @@ import "./style.scss";
 window.addEventListener("DOMContentLoaded", init);
 
 const queueArray = [];
-const beerArray = [];
 
 const beer = {
   beerArray: [],
@@ -21,6 +20,14 @@ const workstatus = {
   receivePayment: "Receiving payment",
 };
 
+const popups = {
+  popQueue: false,
+  popBartendes: false,
+  popCalendar: false,
+  popBeer: false,
+  popIncome: false,
+};
+
 function init() {
   getData();
   registerButtons();
@@ -30,6 +37,19 @@ function registerButtons() {
   document.querySelector("#burger-button").addEventListener("click", () => {
     const element = document.querySelector("#dash-nav-mobil");
     toggleHide(element);
+  });
+
+  document.querySelectorAll(".popup-queue").forEach((button) => {
+    button.addEventListener("click", () => {
+      popups.popQueue = true;
+      //setTimeout(1000, displayBarchart);
+    });
+  });
+
+  document.querySelector("#dash-queue").addEventListener("click", () => {
+    popups.popQueue = true;
+    displayBarchart();
+    //setTimeout(1000, displayBarchart);
   });
 }
 
@@ -62,23 +82,57 @@ async function fetchfunction(url) {
 
 //Function creating the barchart
 function createBarchart(data) {
+  //calculating the length of the queue, setting it to 0.1 if it is 0, so the bar is still shown i the chart
   let queue = data.queue.length;
   if (queue === 0) {
     queue = 0.1;
   }
 
+  //If there are 10 items in the array remove the first/oldest
   if (queueArray.length === 10) {
     queueArray.shift();
   }
 
+  //Add the new item to the array
   queueArray.push(queue);
 
   console.log("queue", queue);
 
+  displayBarchart();
+}
+
+function displayBarchart() {
+  //For loop displaying the bars
   for (let i = 0; i < queueArray.length; i++) {
     document.querySelector(`#bar-${i + 1}`).style.height = `${
       queueArray[i] * 2
     }vh`;
+  }
+
+  if (popups.popQueue === true) {
+    if (window.innerWidth < 1000) {
+      for (let i = 0; i < queueArray.length; i++) {
+        document.querySelector(`#pop-bar-${i + 1}`).style.width = `${
+          queueArray[i] * 5
+        }vw`;
+
+        if (queueArray[i] >= 1) {
+          document.querySelector(`#pop-bar-${i + 1} span`).textContent =
+            queueArray[i];
+        }
+      }
+    } else {
+      for (let i = 0; i < queueArray.length; i++) {
+        document.querySelector(`#pop-bar-${i + 1}`).style.height = `${
+          queueArray[i] * 5
+        }vw`;
+
+        if (queueArray[i] >= 1) {
+          document.querySelector(`#pop-bar-${i + 1} span`).textContent =
+            queueArray[i];
+        }
+      }
+    }
   }
 }
 
