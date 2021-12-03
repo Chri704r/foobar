@@ -24,7 +24,7 @@
 
 @media only screen and (min-width: 760px) {
   .popup-content-queue {
-    div {
+    .bar {
       span {
         font-size: 1.5rem;
       }
@@ -37,7 +37,7 @@
     flex-direction: row;
     align-items: flex-end;
 
-    div {
+    .bar {
       background: colors.$gradient-1-1;
       background: colors.$gradient-1-2;
       width: 100%;
