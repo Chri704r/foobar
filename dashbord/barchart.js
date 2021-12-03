@@ -43,38 +43,30 @@ function registerButtons() {
   document.querySelectorAll(".popup-queue").forEach((button) => {
     button.addEventListener("click", () => {
       popups.popQueue = true;
-      popups.popBartenders = false;
-      popups.popCalendar = false;
-      popups.popBeer = false;
-      popups.popIncome = false;
+
+      setTimeout(registerClose, 1000);
     });
   });
 
   document.querySelector("#dash-queue").addEventListener("click", () => {
     popups.popQueue = true;
-    popups.popBartenders = false;
-    popups.popCalendar = false;
-    popups.popBeer = false;
-    popups.popIncome = false;
+
+    setTimeout(registerClose, 1000);
   });
 
   //Open the popup for the income
   document.querySelectorAll(".popup-income").forEach((button) => {
     button.addEventListener("click", () => {
-      popups.popQueue = false;
-      popups.popBartenders = false;
-      popups.popCalendar = false;
-      popups.popBeer = false;
       popups.popIncome = true;
+
+      setTimeout(registerClose, 1000);
     });
   });
 
   document.querySelector("#dash-income").addEventListener("click", () => {
-    popups.popQueue = false;
-    popups.popBartenders = false;
-    popups.popCalendar = false;
-    popups.popBeer = false;
     popups.popIncome = true;
+
+    setTimeout(registerClose, 1000);
   });
 }
 
@@ -223,7 +215,8 @@ function displayIncome() {
   document.querySelector("#income-number").textContent =
     calculateIncome() + ",-";
 
-  if (popups.popIncome) {
+  if (popups.popIncome === true) {
+    console.log("is it true?", popups.popIncome);
     document.querySelector("#popup-income-number").textContent =
       calculateIncome() + ",-";
   }
@@ -328,4 +321,14 @@ function toggleHide(element) {
   } else {
     element.classList.add("hide");
   }
+}
+
+function registerClose() {
+  document.querySelector(".close-popup").addEventListener("click", () => {
+    popups.popQueue = false;
+    popups.popBartenders = false;
+    popups.popCalendar = false;
+    popups.popBeer = false;
+    popups.popIncome = false;
+  });
 }

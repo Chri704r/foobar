@@ -20,40 +20,45 @@ function displayIncome() {
                 <label>Close</label>
             </div>
         </div>
-        <h1>Queue</h1>
+        <h1>Income</h1>
 
-        <div class="popup-content popup-content-queue">
+        <div class="popup-content popup-content-income">
             <div id="curent-income">
+                <div id="left">
                 <h3>Daily income</h3>
                 <div id="popup-chart-container">
                     <canvas id="popup-income-chart">
                 </div>
+                </div>
                 <div id="numbers">
                     <p id="popup-income-number"></p>
                     <p>Goal: 10.000</p>
-                <div>
+                </div>
             </div>
             <div id="past-income">
-                <div class="inc-bar"> id="day-1">
+                <h3>Income of last 7 days</h3>
+                <div id="bar-wrapper">
+                <div class="inc-bar" id="day-1">
                     <span>10.000</span>
                 </div>
-                <div class="inc-bar"> id="day-2">
+                <div class="inc-bar" id="day-2">
+                    <span>12.000</span>
+                </div>
+                <div class="inc-bar" id="day-3">
+                    <span>9.000</span>
+                </div>
+                <div class="inc-bar" id="day-4">
+                    <span>7.500</span>
+                </div>
+                <div class="inc-bar" id="day-5">
                     <span>10.000</span>
                 </div>
-                <div class="inc-bar"> id="day-3">
-                    <span>10.000</span>
+                <div class="inc-bar" id="day-6">
+                    <span>13.000</span>
                 </div>
-                <div class="inc-bar"> id="day-4">
-                    <span>10.000</span>
+                <div class="inc-bar" id="day-7">
+                    <span>11.500</span>
                 </div>
-                <div class="inc-bar"> id="day-5">
-                    <span>10.000</span>
-                </div>
-                <div class="inc-bar"> id="day-6">
-                    <span>10.000</span>
-                </div>
-                <div class="inc-bar"> id="day-7">
-                    <span>10.000</span>
                 </div>
             </div>
         </div>
