@@ -36,27 +36,10 @@ function init() {
 }
 
 function registerButtons() {
-	document.querySelector("#burger-button").addEventListener("click", () => {
-		const element = document.querySelector("#dash-nav-mobil");
-		toggleHide(element);
-	});
 
 	document.querySelector("#burger-button").addEventListener("click", () => {
 		const element = document.querySelector("#dash-nav-mobil");
 		toggleHide(element);
-	});
-
-	document.querySelectorAll(".popup-queue").forEach((button) => {
-		button.addEventListener("click", () => {
-			popups.popQueue = true;
-			//setTimeout(1000, displayBarchart);
-		});
-	});
-
-	document.querySelector("#dash-queue").addEventListener("click", () => {
-		popups.popQueue = true;
-		displayBarchart();
-		//setTimeout(1000, displayBarchart);
 	});
 
 	document.querySelector("#dash-taps").addEventListener("click", () => {
@@ -64,6 +47,37 @@ function registerButtons() {
 		displayBeer();
 		showBeer(barData);
 	});
+
+  //Open the popup for the queue
+  document.querySelectorAll(".popup-queue").forEach((button) => {
+    button.addEventListener("click", () => {
+      popups.popQueue = true;
+
+      setTimeout(registerClose, 1000);
+    });
+  });
+
+  document.querySelector("#dash-queue").addEventListener("click", () => {
+    popups.popQueue = true;
+
+    setTimeout(registerClose, 1000);
+  });
+
+  //Open the popup for the income
+  document.querySelectorAll(".popup-income").forEach((button) => {
+    button.addEventListener("click", () => {
+      popups.popIncome = true;
+
+      setTimeout(registerClose, 1000);
+    });
+  });
+
+  document.querySelector("#dash-income").addEventListener("click", () => {
+    popups.popIncome = true;
+
+    setTimeout(registerClose, 1000);
+  });
+
 }
 
 async function getData() {
@@ -118,30 +132,42 @@ function createBarchart(data) {
 }
 
 function displayBarchart() {
-	//For loop displaying the bars
-	for (let i = 0; i < queueArray.length; i++) {
-		document.querySelector(`#bar-${i + 1}`).style.height = `${queueArray[i] * 2}vh`;
-	}
 
-	if (popups.popQueue === true) {
-		if (window.innerWidth < 1000) {
-			for (let i = 0; i < queueArray.length; i++) {
-				document.querySelector(`#pop-bar-${i + 1}`).style.width = `${queueArray[i] * 5}vw`;
+  //For loop displaying the bars
+  for (let i = 0; i < queueArray.length; i++) {
+    document.querySelector(`#bar-${i + 1}`).style.height = `${
+      queueArray[i] * 2
+    }vh`;
+  }
 
-				if (queueArray[i] >= 1) {
-					document.querySelector(`#pop-bar-${i + 1} span`).textContent = queueArray[i];
-				}
-			}
-		} else {
-			for (let i = 0; i < queueArray.length; i++) {
-				document.querySelector(`#pop-bar-${i + 1}`).style.height = `${queueArray[i] * 5}vw`;
+  //To display the chart standing up
+  if (popups.popQueue === true) {
+    if (window.innerWidth < 1000) {
+      for (let i = 0; i < queueArray.length; i++) {
+        document.querySelector(`#pop-bar-${i + 1}`).style.width = `${
+          queueArray[i] * 5
+        }vw`;
 
-				if (queueArray[i] >= 1) {
-					document.querySelector(`#pop-bar-${i + 1} span`).textContent = queueArray[i];
-				}
-			}
-		}
-	}
+        if (queueArray[i] >= 1) {
+          document.querySelector(`#pop-bar-${i + 1} span`).textContent =
+            queueArray[i];
+        }
+      }
+      //To display the chart lying down
+    } else {
+      for (let i = 0; i < queueArray.length; i++) {
+        document.querySelector(`#pop-bar-${i + 1}`).style.height = `${
+          queueArray[i] * 5
+        }vw`;
+
+        if (queueArray[i] >= 1) {
+          document.querySelector(`#pop-bar-${i + 1} span`).textContent =
+            queueArray[i];
+        }
+      }
+    }
+  }
+
 }
 
 //Function displaying the bartenders and what they are doing, for the main dashboard
@@ -195,7 +221,16 @@ function countBeer(data) {
 
 //Function to display the income
 function displayIncome() {
-	document.querySelector("#income-number").textContent = calculateIncome() + ",-";
+
+  document.querySelector("#income-number").textContent =
+    calculateIncome() + ",-";
+
+  if (popups.popIncome === true) {
+    console.log("is it true?", popups.popIncome);
+    document.querySelector("#popup-income-number").textContent =
+      calculateIncome() + ",-";
+  }
+
 }
 
 //Function calculating the income
@@ -206,52 +241,90 @@ function calculateIncome() {
 
 //Function to display the donut chart
 function displayDonutChart() {
-	const chartContainer = document.querySelector("#chart-container");
-	//Removing the old canvas, since clear and destroy is not working
-	chartContainer.innerHTML = "";
 
-	//Creating a new canvas element to display the update
-	const canvas = document.createElement("canvas");
-	chartContainer.appendChild(canvas);
+  const chartContainer = document.querySelector("#chart-container");
+  //Removing the old canvas, since clear and destroy is not working
+  chartContainer.innerHTML = "";
 
-	const donutChart = chartContainer.querySelector("canvas");
+  //Creating a new canvas element to display the update
+  const canvas = document.createElement("canvas");
+  chartContainer.appendChild(canvas);
 
-	//Using the calculate income to get the income for display
-	let income = calculateIncome();
+  const donutChart = chartContainer.querySelector("canvas");
 
-	//Calculating how much is left before the dayly goal is met.
-	//If the income is higher than the goal income is set to max and goal to 0 every time
-	let goal = 10000;
-	if (income > 10000) {
-		income = 10000;
-		goal = 0;
-	} else {
-		goal = 10000 - income;
-	}
+  //Using the calculate income to get the income for display
+  let income = calculateIncome();
 
-	//Making the donut chart
-	const xValues = ["income", "none"];
-	let yValues = [income, goal];
-	const barColors = ["#efd7b3", "transparent"];
+  //Calculating how much is left before the dayly goal is met.
+  //If the income is higher than the goal income is set to max and goal to 0 every time
+  let goal = 10000;
+  if (income > 10000) {
+    income = 10000;
+    goal = 0;
+  } else {
+    goal = 10000 - income;
+  }
 
-	new Chart(donutChart, {
-		type: "doughnut",
-		data: {
-			datasets: [
-				{
-					backgroundColor: barColors,
-					data: yValues,
-				},
-			],
-		},
-		options: {
-			title: {
-				display: false,
-				text: "Income",
-			},
-			borderColor: "transparent",
-		},
-	});
+  //Making the donut chart
+  const xValues = ["income", "none"];
+  let yValues = [income, goal];
+  const barColors = ["#efd7b3", "transparent"];
+
+  new Chart(donutChart, {
+    type: "doughnut",
+    data: {
+      datasets: [
+        {
+          backgroundColor: barColors,
+          data: yValues,
+        },
+      ],
+    },
+    options: {
+      title: {
+        display: false,
+        text: "Income",
+      },
+      borderColor: "transparent",
+    },
+  });
+
+  //Making the donut chart in the popup
+  if (popups.popIncome === true) {
+    const popChartContainer = document.querySelector("#popup-chart-container");
+    //Removing the old canvas, since clear and destroy is not working
+    popChartContainer.innerHTML = "";
+
+    //Creating a new canvas element to display the update
+    const popCanvas = document.createElement("canvas");
+    popChartContainer.appendChild(popCanvas);
+
+    const popDonutChart = popChartContainer.querySelector("canvas");
+
+    const xValues = ["income", "none"];
+    let yValues = [income, goal];
+    const barColors = ["#efd7b3", "transparent"];
+
+    new Chart(popDonutChart, {
+      type: "doughnut",
+      data: {
+        datasets: [
+          {
+            backgroundColor: barColors,
+            data: yValues,
+          },
+        ],
+      },
+      options: {
+        title: {
+          display: false,
+          text: "Income",
+        },
+        borderColor: "transparent",
+      },
+    });
+  }
+
 }
 
 //Function toggleling hide from object
@@ -261,6 +334,16 @@ function toggleHide(element) {
 	} else {
 		element.classList.add("hide");
 	}
+}
+
+function registerClose() {
+  document.querySelector(".close-popup").addEventListener("click", () => {
+    popups.popQueue = false;
+    popups.popBartenders = false;
+    popups.popCalendar = false;
+    popups.popBeer = false;
+    popups.popIncome = false;
+  });
 }
 
 function showBeer(data) {
