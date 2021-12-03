@@ -1,45 +1,45 @@
 @use "../variabels/colors";
 
 body {
-  background-color: colors.$background-color;
-  padding: 1rem;
+	background-color: colors.$background-color;
+	padding: 1rem;
 }
 
 #dash-content-wrapper {
-  section {
-    border: solid 5px colors.$primary-color;
-    margin-bottom: 1rem;
-    background-color: transparent;
-    padding: 1rem;
-  }
+	section {
+		border: solid 4px colors.$primary-color;
+		margin-bottom: 1rem;
+		background-color: transparent;
+		padding: 1rem;
+	}
 }
 
 .hide {
-  display: none;
+	display: none;
 }
 
 @media only screen and (min-width: 760px) {
-  #dash-content-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+	#dash-content-wrapper {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
 
-    section {
-      margin-bottom: auto;
-    }
-  }
+		section {
+			margin-bottom: auto;
+		}
+	}
 }
 
 @media only screen and (min-width: 1000px) {
-  main {
-    height: 100vh;
-    max-height: 100vh;
+	main {
+		height: 100vh;
+		max-height: 100vh;
 
-    #dash-content-wrapper {
-      grid-template-columns: repeat(9, 1fr);
-      grid-template-rows: repeat(6, 1fr);
-      height: 100vh;
-      max-height: 100vh;
-    }
-  }
+		#dash-content-wrapper {
+			grid-template-columns: repeat(9, 1fr);
+			grid-template-rows: repeat(6, 1fr);
+			height: 100vh;
+			max-height: 100vh;
+		}
+	}
 }
