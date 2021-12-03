@@ -11,7 +11,6 @@ function registerButtons() {
 }
 
 function displayQueue() {
-  console.log("Should display queue");
   document.querySelector("#popup").innerHTML = `
     <article>
         <div class="outer close-popup">
@@ -21,34 +20,34 @@ function displayQueue() {
         </div>
         <h1>Queue</h1>
         <div class="popup-content popup-content-queue">
-            <div id="pop-bar-1">
+            <div id="pop-bar-1" class="bar">
                 <span></span>
             </div>
-            <div id="pop-bar-2">
+            <div id="pop-bar-2" class="bar">
                 <span></span>
             </div>
-            <div id="pop-bar-3">
+            <div id="pop-bar-3" class="bar">
                 <span></span>
             </div>
-            <div id="pop-bar-4">
+            <div id="pop-bar-4" class="bar">
                 <span></span>
             </div>
-            <div id="pop-bar-5">
+            <div id="pop-bar-5" class="bar">
                 <span></span>
             </div>
-            <div id="pop-bar-6">
+            <div id="pop-bar-6" class="bar">
                 <span></span>
             </div>
-            <div id="pop-bar-7">
+            <div id="pop-bar-7" class="bar">
                 <span></span>
             </div>
-            <div id="pop-bar-8">
+            <div id="pop-bar-8" class="bar">
                 <span></span>
             </div>
-            <div id="pop-bar-9">
+            <div id="pop-bar-9" class="bar">
                 <span></span>
             </div>
-            <div id="pop-bar-10">
+            <div id="pop-bar-10" class="bar">
                 <span></span>
             </div>
         </div>
@@ -57,8 +56,4 @@ function displayQueue() {
   document.querySelector(".close-popup").addEventListener("click", () => {
     document.querySelector("#popup").innerHTML = "";
   });
-
-  dispalyData();
 }
-
-function dispalyData() {}
