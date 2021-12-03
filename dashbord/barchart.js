@@ -39,14 +39,12 @@ function registerButtons() {
     toggleHide(element);
   });
 
-
   //Open the popup for the queue
 
   document.querySelector("#burger-button").addEventListener("click", () => {
     const element = document.querySelector("#dash-nav-mobil");
     toggleHide(element);
   });
-
 
   document.querySelectorAll(".popup-queue").forEach((button) => {
     button.addEventListener("click", () => {
@@ -330,7 +328,6 @@ function toggleHide(element) {
   }
 }
 
-
 function registerClose() {
   document.querySelector(".close-popup").addEventListener("click", () => {
     popups.popQueue = false;
@@ -338,7 +335,8 @@ function registerClose() {
     popups.popCalendar = false;
     popups.popBeer = false;
     popups.popIncome = false;
- }
+  });
+}
 
 function showBeer(data) {
   document.querySelector("#dash-taps").innerHTML = "";
@@ -352,6 +350,5 @@ function showBeer(data) {
     clone.querySelector("p").textContent = beer.beer;
 
     document.querySelector("#dash-taps").appendChild(clone);
-
   });
 }
