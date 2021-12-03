@@ -39,7 +39,15 @@ function registerButtons() {
     toggleHide(element);
   });
 
+
   //Open the popup for the queue
+
+  document.querySelector("#burger-button").addEventListener("click", () => {
+    const element = document.querySelector("#dash-nav-mobil");
+    toggleHide(element);
+  });
+
+
   document.querySelectorAll(".popup-queue").forEach((button) => {
     button.addEventListener("click", () => {
       popups.popQueue = true;
@@ -85,6 +93,7 @@ async function getData() {
     createBarchart(data);
     displayBartenders(data);
     countBeer(data);
+    showBeer(data);
 
     setTimeout(dataLoop, 5000);
   }
@@ -112,8 +121,6 @@ function createBarchart(data) {
 
   //Add the new item to the array
   queueArray.push(queue);
-
-  console.log("queue", queue);
 
   displayBarchart();
 }
@@ -323,6 +330,7 @@ function toggleHide(element) {
   }
 }
 
+
 function registerClose() {
   document.querySelector(".close-popup").addEventListener("click", () => {
     popups.popQueue = false;
@@ -330,5 +338,20 @@ function registerClose() {
     popups.popCalendar = false;
     popups.popBeer = false;
     popups.popIncome = false;
+ }
+
+function showBeer(data) {
+  document.querySelector("#dash-taps").innerHTML = "";
+
+  data.taps.forEach((beer) => {
+    const clone = document
+      .querySelector("template.tap")
+      .content.cloneNode(true);
+
+    clone.querySelector("img").src = `assets/${beer.beer}.svg`;
+    clone.querySelector("p").textContent = beer.beer;
+
+    document.querySelector("#dash-taps").appendChild(clone);
+
   });
 }
