@@ -22,6 +22,30 @@ const workstatus = {
 	receivePayment: "Receiving payment",
 };
 
+const beerSold = {
+  Peter: {
+    sold: 0,
+    custServed: 0,
+    income: 0,
+  },
+  Klaus: {
+    sold: 0,
+    custServed: 0,
+    income: 0,
+  },
+  Jonas: {
+    sold: 0,
+    custServed: 0,
+    income: 0,
+  },
+  Dannie: {
+    sold: 0,
+    custServed: 0,
+    income: 0,
+  },
+  custumersServed: [],
+};
+
 const popups = {
 	popQueue: false,
 	popBartendes: false,
@@ -78,6 +102,20 @@ function registerButtons() {
     setTimeout(registerClose, 1000);
   });
 
+  //Open the popup for the bartenders
+  document.querySelectorAll(".popup-bartender").forEach((button) => {
+    button.addEventListener("click", () => {
+      popups.popBartenders = true;
+
+      setTimeout(registerClose, 1000);
+    });
+  });
+
+  document.querySelector("#dash-bartenders").addEventListener("click", () => {
+    popups.popBartenders = true;
+
+    setTimeout(registerClose, 1000);
+  });
 }
 
 async function getData() {
@@ -89,11 +127,11 @@ async function getData() {
 
 	async function dataLoop() {
 		const data = await fetchfunction(dataUrl);
+    console.log("data", data);
+    calculateBartenderStats(data);
 
 		barData = data;
-
-		// console.log("barData", barData);
-		// console.log("data", data);
+    
 		createBarchart(data);
 		displayBartenders(data);
 		countBeer(data);
@@ -177,8 +215,19 @@ function displayBartenders(data) {
 
 	document.querySelector("#dash-bartenders").innerHTML = "";
 
+
+  if (document.querySelector("#pop-bartenders")) {
+    document.querySelector("#pop-bartenders").innerHTML = "";
+  }
+
+  bartenders.forEach((bartender) => {
+    const clone = document
+      .querySelector("#temp-bartender")
+      .content.cloneNode(true);
+
 	bartenders.forEach((bartender) => {
 		const clone = document.querySelector("#temp-bartender").content.cloneNode(true);
+
 
 		if (bartender.usingTap === null) {
 			bartender.usingTap = "None";
@@ -190,11 +239,42 @@ function displayBartenders(data) {
 		clone.querySelector(".status-detail").textContent = workstatus[bartender.statusDetail];
 		clone.querySelector(".using-tap").textContent = "Using tab: " + bartender.usingTap;
 
-		clone.querySelector(".bart-article").setAttribute("id", `bart-${bartender.name}`);
 
-		//Append clone to section
-		document.querySelector("#dash-bartenders").appendChild(clone);
-	});
+    clone
+      .querySelector(".bart-article")
+      .setAttribute("class", `bart-${bartender.name}`);
+
+    //Append clone to section
+
+    if (document.querySelector("#pop-bartenders")) {
+      document.querySelector("#pop-bartenders").appendChild(clone);
+
+      displayStatisstics(bartender);
+    } else {
+      document.querySelector("#dash-bartenders").appendChild(clone);
+    }
+  });
+
+}
+
+function displayStatisstics(bartender) {
+  const thisBartender = bartender.name;
+
+  const clone = document
+    .querySelector("#temp-bart-stats")
+    .content.cloneNode(true);
+
+  //Insert in the clone
+  clone.querySelector(".cust-number").textContent =
+    beerSold[thisBartender].custServed;
+  clone.querySelector(".beer-number").textContent =
+    beerSold[thisBartender].sold;
+  clone.querySelector(".inc-number").textContent =
+    beerSold[thisBartender].income;
+
+  document
+    .querySelector(`#pop-bartenders .bart-${thisBartender}`)
+    .appendChild(clone);
 }
 
 //Function counting how many beers have been sold
@@ -411,4 +491,34 @@ function displayBeer() {
 		document.querySelector("#popup").innerHTML = "";
 		showBeer(barData);
 	});
+}
+
+//Function calculating the statistics of each bartender
+function calculateBartenderStats(data) {
+  const bartenders = data.bartenders;
+  const custumer = data.serving;
+
+  //Calculating for each bartender
+  bartenders.forEach((bartender) => {
+    const custNumber = bartender.servingCustomer;
+
+    custumer.forEach((custumer) => {
+      //Looking for the order they are serving
+      if (custumer.id === custNumber) {
+        //Checking if the order has already been counted
+        if (!beerSold.custumersServed.includes(custumer.id)) {
+          //Pushing the id to array to make sure it wont be counted twice
+          beerSold.custumersServed.push(custumer.id);
+
+          //updating the global object
+          const thisBartender = bartender.name;
+          beerSold[thisBartender].sold += custumer.order.length;
+          beerSold[thisBartender].custServed += 1;
+          beerSold[thisBartender].income = beerSold[thisBartender].sold * 50;
+
+          console.log("beerSold", beerSold);
+        }
+      }
+    });
+  });
 }
