@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -86,14 +87,14 @@
       <section id="popup"></section>
     </main>
 
-    <template id="temp-bartender">
-      <article class="bart-article">
-        <h2 class="bartender-name"></h2>
-        <p class="status"></p>
-        <p class="status-detail"></p>
-        <p class="using-tap"></p>
-      </article>
-    </template>
+		<template id="temp-bartender">
+			<article class="bart-article">
+				<h2 class="bartender-name"></h2>
+				<p class="status"></p>
+				<p class="status-detail"></p>
+				<p class="using-tap"></p>
+			</article>
+		</template>
 
     <template id="temp-bart-stats">
       <div class="info-wrapper">
@@ -107,12 +108,32 @@
       </div>
     </template>
 
+    //This can maybe be removed bu I was not sure
     <template class="tap">
       <div>
         <img src="" alt="" />
         <p></p>
       </div>
     </template>
+    
+    <template class="popup-tap">
+			<div>
+				<img src="" alt="" />
+				<div id="info-wrapper">
+					<p></p>
+					<p></p>
+				</div>
+			</div>
+		</template>
+
+		<template class="storage">
+			<div>
+				<p class="name"></p>
+				<img src="" alt="" />
+				<p class="number"></p>
+			</div>
+		</template>
+
 
     <!-- <script type="module" src="/main.js"></script> -->
     <script type="module" src="/barchart.js"></script>
@@ -120,7 +141,8 @@
     <script type="module" src="/components/queue.js"></script>
     <script type="module" src="/components/income.js"></script>
     <script type="module" src="/components/bartenders.js"></script>
+    <!-- <script type="module" src="/components/beer.js"></script> -->
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </body>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	</body>
 </html>
