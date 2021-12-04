@@ -12,16 +12,18 @@
   </head>
   <body>
     <header>
+      <button class="go_back hide">Back to menu</button>
       <h1>FooBar</h1>
       <div class="shoppingcart">
-        <p>cart</p>
+    <button class="cart">Cart</button>
       </div>
     </header>
     <main>
-      <form>
+      <!-- <form> -->
         <section id="menu">
           <div class="filters_border">
           <div class="filters">
+            <button class="filter" data-action="filter" data-filter="all">All</button>
             <button class="filter" data-action="filter" data-filter="Belgian Specialty Ale">Belgian Specialty Ale</button>
             <button class="filter" data-action="filter" data-filter="IPA">IPA</button>
             <button class="filter" data-action="filter" data-filter="California Common">California Common</button>
@@ -30,32 +32,61 @@
             <button class="filter" data-action="filter" data-filter="Oktoberfest">Oktoberfest</button>
           </div>
           </div>
-          <div class="products_container">
-          <template class="products">
-            <article class="product_container">
-              <h4 class="product"></h4>
-          <div class="svg"></div>
-          <div class="product_btn_cont">
-              <button>Read more</button>
-              <button class="add_to_cart">+</button>
-            </div>
-            </article>
-          </template>
+
+          <section id="beers"></section>
+          <div class="popup_border hide">
+          <div id="popup"></div>
         </div>
+          <template id="beer">
+              <article class="product_container">
+               
+                  <div id="text_beer">
+              <img data-field="imageName" class="imageName" src="" alt="">        
+                  </div>
+                  <div class="product_btn_cont">
+                    <button class="read_more">Read more</button>
+                    <button class="add_to_cart">+</button>
+                  </div>
+              
+              </article>
+          </template>
+          <template id="information" >
+            <button id="close">&times;</button>
+            <div class="main_info static">
+            <img data-field="imageName" class="imageName" src="" alt="">
+  
+           <h2 class="text_info" data-field="beerName"></h2>
+  
+           <p class="text_info" data-field="alc"></p>
+           <p class="text_info" data-field="price"></p>
+           <button class="add_to_basket">Add to cart</button>
+           <h3>Description</h3>
+            <p class="text_info" data-field="aroma"></p>
+            <p class="text_info" data-field="appearance"></p>
+            <p class="text_info" data-field="flavor"></p>
+            <p class="text_info" data-field="mouthfeel"></p>
+            <p class="text_info" data-field="overallImpression"></p>
+
+          
+        </div>
+      
+        </template>
+       
         <div class="basket_border">
         <div class="basket">
+          <button id="close">&times;</button>
 <h2>Basket</h2>
+<div class="basket_items"></div>
 <button class="checkout">Checkout</button>
         </div>
         </div>
+        <div id="blured"></div>
         </section>
-        <section id="payment">
+        <form>
+        <section id="payment" class="hide">
           <div class="product_overview">
             <h2>Your order</h2>
-            <div class="order_txt_cont">
-            <p>X</p>
-            <p>El Hefe</p>
-            </div>
+           <div class="order_txt_parent"></div>
           </div>
           <div class="pay_container">
           <div class="input_wrapper">
@@ -84,7 +115,7 @@
              
                   <div class="input_wrapper cardname">
                     <label for="name">CARDHOLDERS NAME</label>
-                    <input type="text" id="name" name="fname" pattern="[^0-9]*" placeholder="" required />
+                    <!-- <input type="text" id="name" name="fname" pattern="[^0-9]*" placeholder="" required /> -->
                     <!-- <div class="invalid_wrapper">
                       <img src="img/Invalid.svg" alt="invalid sign" />
                       <p>This field is required</p>
@@ -93,12 +124,12 @@
               
                   <div class="input_wrapper month_year">
                     <label for="month/year">MONTH/YEAR</label>
-                        <input id="month_year" type="number" placeholder=" " required />
+                        <!-- <input id="month_year" type="number" placeholder=" " required /> -->
                       </div>
 
                       <div class="input_wrapper cvc">
                         <label for="cvc">CVC</label>
-                            <input id="cvc" type="number" placeholder=" " required />
+                            <!-- <input id="cvc" type="number" placeholder=" " required /> -->
                           </div>
                 </div>
           </div> 
@@ -107,7 +138,7 @@
         </div>
       </div>
             </section>
-        <section id="receipt">
+        <section id="receipt" class="hide"> 
           <h2>THANK YOU FOR YOUR ORDER</h2>
           <h3>YOUR ORDER NUMBER IS:</h3>
           <span>345</span>

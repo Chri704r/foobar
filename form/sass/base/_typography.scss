@@ -1,5 +1,14 @@
 @use "../base/colors";
 
+h2,
+h3,
+h4,
+p,
+button,
+label,
+span {
+  margin: 0;
+}
 h2 {
   font-family: "EB Garamond", serif;
   font-weight: 700;
