@@ -178,6 +178,17 @@ function displayBarchart() {
 
   //To display the chart standing up
   if (popups.popQueue === true) {
+    //Remove loader symbol
+    const loader = document.querySelector(".loader");
+    if (loader) {
+      loader.remove();
+
+      const bars = document.querySelectorAll(".bar.hide");
+      bars.forEach((bar) => {
+        bar.classList.remove("hide");
+      });
+    }
+
     if (window.innerWidth < 1000) {
       for (let i = 0; i < queueArray.length; i++) {
         document.querySelector(`#pop-bar-${i + 1}`).style.width = `${

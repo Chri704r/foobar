@@ -20,34 +20,40 @@ function displayQueue() {
         </div>
         <h1>Queue</h1>
         <div class="popup-content popup-content-queue">
-            <div id="pop-bar-1" class="bar">
+            <div class="loader">
+                <svg height="100" width="100">
+                    <circle cx="50" cy="50" r="40" />
+                </svg>
+            </div>
+
+            <div id="pop-bar-1" class="bar hide">
                 <span></span>
             </div>
-            <div id="pop-bar-2" class="bar">
+            <div id="pop-bar-2" class="bar hide">
                 <span></span>
             </div>
-            <div id="pop-bar-3" class="bar">
+            <div id="pop-bar-3" class="bar hide">
                 <span></span>
             </div>
-            <div id="pop-bar-4" class="bar">
+            <div id="pop-bar-4" class="bar hide">
                 <span></span>
             </div>
-            <div id="pop-bar-5" class="bar">
+            <div id="pop-bar-5" class="bar hide">
                 <span></span>
             </div>
-            <div id="pop-bar-6" class="bar">
+            <div id="pop-bar-6" class="bar hide">
                 <span></span>
             </div>
-            <div id="pop-bar-7" class="bar">
+            <div id="pop-bar-7" class="bar hide">
                 <span></span>
             </div>
-            <div id="pop-bar-8" class="bar">
+            <div id="pop-bar-8" class="bar hide">
                 <span></span>
             </div>
-            <div id="pop-bar-9" class="bar">
+            <div id="pop-bar-9" class="bar hide">
                 <span></span>
             </div>
-            <div id="pop-bar-10" class="bar">
+            <div id="pop-bar-10" class="bar hide">
                 <span></span>
             </div>
         </div>

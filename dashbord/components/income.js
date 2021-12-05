@@ -27,7 +27,11 @@ function displayIncome() {
                 <div id="left">
                 <h3>Daily income</h3>
                 <div id="popup-chart-container">
-                    <canvas id="popup-income-chart">
+                <div class="loader">
+                <svg height="100" width="100">
+                  <circle cx="50" cy="50" r="40" />
+                </svg>
+              </div>
                 </div>
                 </div>
                 <div id="numbers">

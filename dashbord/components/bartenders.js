@@ -22,7 +22,13 @@ function displayBartender() {
         </div>
         <h1>Bartenders</h1>
         <div class="popup-content popup-content-bartender">
-            <div id="pop-bartenders"></div>
+            <div id="pop-bartenders">
+                <div class="loader">
+                    <svg height="100" width="100">
+                        <circle cx="50" cy="50" r="40" />
+                    </svg>
+                </div>
+            </div>
         </div>
     </article>`;
 
