@@ -46,14 +46,6 @@ const beerSold = {
   custumersServed: [],
 };
 
-const popups = {
-  popQueue: false,
-  popBartendes: false,
-  popCalendar: false,
-  popBeer: false,
-  popIncome: false,
-};
-
 function init() {
   getData();
   registerButtons();
@@ -74,46 +66,74 @@ function registerButtons() {
   //Open the popup for the queue
   document.querySelectorAll(".popup-queue").forEach((button) => {
     button.addEventListener("click", () => {
-      popups.popQueue = true;
-
-      setTimeout(registerClose, 1000);
+      document.querySelector("#popup-queue").classList.remove("hide");
+      document
+        .querySelector("#dash-content-wrapper")
+        .classList.add("popup-blur");
     });
   });
 
   document.querySelector("#dash-queue").addEventListener("click", () => {
-    popups.popQueue = true;
-
-    setTimeout(registerClose, 1000);
+    document.querySelector("#popup-queue").classList.remove("hide");
+    document.querySelector("#dash-content-wrapper").classList.add("popup-blur");
   });
 
   //Open the popup for the income
   document.querySelectorAll(".popup-income").forEach((button) => {
     button.addEventListener("click", () => {
-      popups.popIncome = true;
-
-      setTimeout(registerClose, 1000);
+      document.querySelector("#popup-income").classList.remove("hide");
+      document
+        .querySelector("#dash-content-wrapper")
+        .classList.add("popup-blur");
     });
   });
 
   document.querySelector("#dash-income").addEventListener("click", () => {
-    popups.popIncome = true;
-
-    setTimeout(registerClose, 1000);
+    document.querySelector("#popup-income").classList.remove("hide");
+    document.querySelector("#dash-content-wrapper").classList.add("popup-blur");
   });
 
   //Open the popup for the bartenders
   document.querySelectorAll(".popup-bartender").forEach((button) => {
     button.addEventListener("click", () => {
-      popups.popBartenders = true;
-
-      setTimeout(registerClose, 1000);
+      document.querySelector("#popup-bartenders").classList.remove("hide");
+      document
+        .querySelector("#dash-content-wrapper")
+        .classList.add("popup-blur");
     });
   });
 
   document.querySelector("#dash-bartenders").addEventListener("click", () => {
-    popups.popBartenders = true;
+    document.querySelector("#popup-bartenders").classList.remove("hide");
+    document.querySelector("#dash-content-wrapper").classList.add("popup-blur");
+  });
 
-    setTimeout(registerClose, 1000);
+  //Open the popup for the Beer
+  document.querySelectorAll(".popup-beer").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelector("#popup-beer").classList.remove("hide");
+      document
+        .querySelector("#dash-content-wrapper")
+        .classList.add("popup-blur");
+    });
+  });
+
+  document.querySelector("#dash-taps").addEventListener("click", () => {
+    document.querySelector("#popup-beer").classList.remove("hide");
+    document.querySelector("#dash-content-wrapper").classList.add("popup-blur");
+  });
+
+  //Button for closing/hiding the popup
+  document.querySelectorAll(".close-popup").forEach((button) => {
+    button.addEventListener("click", () => {
+      document
+        .querySelector("#dash-content-wrapper")
+        .classList.remove("popup-blur");
+
+      document.querySelectorAll(".pop-article").forEach((article) => {
+        article.classList.add("hide");
+      });
+    });
   });
 }
 
@@ -177,86 +197,73 @@ function displayBarchart() {
   }
 
   //To display the chart standing up
-  if (popups.popQueue === true) {
-    //Remove loader symbol
-    const loader = document.querySelector(".loader");
-    if (loader) {
-      loader.remove();
+  const bars = document.querySelectorAll(".bar.hide");
+  bars.forEach((bar) => {
+    bar.classList.remove("hide");
+  });
 
-      const bars = document.querySelectorAll(".bar.hide");
-      bars.forEach((bar) => {
-        bar.classList.remove("hide");
-      });
-    }
+  if (window.innerWidth < 1000) {
+    for (let i = 0; i < queueArray.length; i++) {
+      document.querySelector(`#pop-bar-${i + 1}`).style.width = `${
+        queueArray[i] * 5
+      }vw`;
 
-    if (window.innerWidth < 1000) {
-      for (let i = 0; i < queueArray.length; i++) {
-        document.querySelector(`#pop-bar-${i + 1}`).style.width = `${
-          queueArray[i] * 5
-        }vw`;
-
-        if (queueArray[i] >= 1) {
-          document.querySelector(`#pop-bar-${i + 1} span`).textContent =
-            queueArray[i];
-        }
+      if (queueArray[i] >= 1) {
+        document.querySelector(`#pop-bar-${i + 1} span`).textContent =
+          queueArray[i];
       }
-      //To display the chart lying down
-    } else {
-      for (let i = 0; i < queueArray.length; i++) {
-        document.querySelector(`#pop-bar-${i + 1}`).style.height = `${
-          queueArray[i] * 5
-        }vw`;
+    }
+    //To display the chart lying down
+  } else {
+    for (let i = 0; i < queueArray.length; i++) {
+      document.querySelector(`#pop-bar-${i + 1}`).style.height = `${
+        queueArray[i] * 5
+      }vw`;
 
-        if (queueArray[i] >= 1) {
-          document.querySelector(`#pop-bar-${i + 1} span`).textContent =
-            queueArray[i];
-        }
+      if (queueArray[i] >= 1) {
+        document.querySelector(`#pop-bar-${i + 1} span`).textContent =
+          queueArray[i];
       }
     }
   }
 }
 
-//Function displaying the bartenders and what they are doing, for the main dashboard
+//Function displaying the bartenders and what they are doing
 function displayBartenders(data) {
   //Create clone of the template
   const bartenders = data.bartenders;
 
-  document.querySelector("#dash-bartenders").innerHTML = "";
+  document.querySelectorAll(".bart-display").forEach((display) => {
+    display.innerHTML = "";
 
-  if (document.querySelector("#pop-bartenders")) {
-    document.querySelector("#pop-bartenders").innerHTML = "";
-  }
+    bartenders.forEach((bartender) => {
+      const clone = document
+        .querySelector("#temp-bartender")
+        .content.cloneNode(true);
 
-  bartenders.forEach((bartender) => {
-    const clone = document
-      .querySelector("#temp-bartender")
-      .content.cloneNode(true);
+      if (bartender.usingTap === null) {
+        bartender.usingTap = "None";
+      }
 
-    if (bartender.usingTap === null) {
-      bartender.usingTap = "None";
-    }
+      //Insert bartender in clone
+      clone.querySelector(".bartender-name").textContent = bartender.name;
+      clone.querySelector(".status").textContent = bartender.status;
+      clone.querySelector(".status-detail").textContent =
+        workstatus[bartender.statusDetail];
+      clone.querySelector(".using-tap").textContent =
+        "Using tab: " + bartender.usingTap;
 
-    //Insert bartender in clone
-    clone.querySelector(".bartender-name").textContent = bartender.name;
-    clone.querySelector(".status").textContent = bartender.status;
-    clone.querySelector(".status-detail").textContent =
-      workstatus[bartender.statusDetail];
-    clone.querySelector(".using-tap").textContent =
-      "Using tab: " + bartender.usingTap;
+      clone
+        .querySelector(".bart-article")
+        .setAttribute("class", `bart-${bartender.name}`);
 
-    clone
-      .querySelector(".bart-article")
-      .setAttribute("class", `bart-${bartender.name}`);
+      //Append clone to section
+      display.appendChild(clone);
 
-    //Append clone to section
-
-    if (document.querySelector("#pop-bartenders")) {
-      document.querySelector("#pop-bartenders").appendChild(clone);
-
-      displayStatisstics(bartender);
-    } else {
-      document.querySelector("#dash-bartenders").appendChild(clone);
-    }
+      if (display === document.querySelector("#pop-bartenders")) {
+        displayStatisstics(bartender);
+      }
+    });
   });
 }
 
@@ -304,14 +311,9 @@ function countBeer(data) {
 
 //Function to display the income
 function displayIncome() {
-  document.querySelector("#income-number").textContent =
-    calculateIncome() + ",-";
-
-  if (popups.popIncome === true) {
-    console.log("is it true?", popups.popIncome);
-    document.querySelector("#popup-income-number").textContent =
-      calculateIncome() + ",-";
-  }
+  document.querySelectorAll(".income-number").forEach((span) => {
+    span.textContent = calculateIncome() + ",-";
+  });
 }
 
 //Function calculating the income
@@ -322,16 +324,6 @@ function calculateIncome() {
 
 //Function to display the donut chart
 function displayDonutChart() {
-  const chartContainer = document.querySelector("#chart-container");
-  //Removing the old canvas, since clear and destroy is not working
-  chartContainer.innerHTML = "";
-
-  //Creating a new canvas element to display the update
-  const canvas = document.createElement("canvas");
-  chartContainer.appendChild(canvas);
-
-  const donutChart = chartContainer.querySelector("canvas");
-
   //Using the calculate income to get the income for display
   let income = calculateIncome();
 
@@ -345,47 +337,24 @@ function displayDonutChart() {
     goal = 10000 - income;
   }
 
-  //Making the donut chart
-  const xValues = ["income", "none"];
-  let yValues = [income, goal];
-  const barColors = ["#efd7b3", "transparent"];
-
-  new Chart(donutChart, {
-    type: "doughnut",
-    data: {
-      datasets: [
-        {
-          backgroundColor: barColors,
-          data: yValues,
-        },
-      ],
-    },
-    options: {
-      title: {
-        display: false,
-        text: "Income",
-      },
-      borderColor: "transparent",
-    },
-  });
-
-  //Making the donut chart in the popup
-  if (popups.popIncome === true) {
-    const popChartContainer = document.querySelector("#popup-chart-container");
-    //Removing the old canvas, since clear and destroy is not working
-    popChartContainer.innerHTML = "";
+  const chartContainer = document.querySelectorAll(".chart-container");
+  //Removing the old canvas, since clear and destroy is not working
+  chartContainer.forEach((container) => {
+    container.innerHTML = "";
 
     //Creating a new canvas element to display the update
-    const popCanvas = document.createElement("canvas");
-    popChartContainer.appendChild(popCanvas);
+    const canvas = document.createElement("canvas");
 
-    const popDonutChart = popChartContainer.querySelector("canvas");
+    container.appendChild(canvas);
 
+    const donutChart = container.querySelector("canvas");
+
+    //Making the donut chart
     const xValues = ["income", "none"];
     let yValues = [income, goal];
     const barColors = ["#efd7b3", "transparent"];
 
-    new Chart(popDonutChart, {
+    new Chart(donutChart, {
       type: "doughnut",
       data: {
         datasets: [
@@ -403,7 +372,7 @@ function displayDonutChart() {
         borderColor: "transparent",
       },
     });
-  }
+  });
 }
 
 //Function toggleling hide from object
@@ -413,16 +382,6 @@ function toggleHide(element) {
   } else {
     element.classList.add("hide");
   }
-}
-
-function registerClose() {
-  document.querySelector(".close-popup").addEventListener("click", () => {
-    popups.popQueue = false;
-    popups.popBartenders = false;
-    popups.popCalendar = false;
-    popups.popBeer = false;
-    popups.popIncome = false;
-  });
 }
 
 function showBeer(data) {
@@ -439,67 +398,38 @@ function showBeer(data) {
     document.querySelector("#dash-taps").appendChild(clone);
   });
 
-  if (popups.popBeer === true) {
-    document.querySelector("header").classList.add("popup-blur");
-    document.querySelector("#dash-content-wrapper").classList.add("popup-blur");
+  document.querySelector("#popup-dash-taps").innerHTML = "";
+  document.querySelector("#popup-storage").innerHTML = "";
 
-    document.querySelector("#popup-dash-taps").innerHTML = "";
-    document.querySelector("#popup-storage").innerHTML = "";
+  data.taps.forEach((beer) => {
+    const clone = document
+      .querySelector("template.popup-tap")
+      .content.cloneNode(true);
 
-    data.taps.forEach((beer) => {
-      const clone = document
-        .querySelector("template.popup-tap")
-        .content.cloneNode(true);
+    clone.querySelector("img").src = `assets/${beer.beer}.svg`;
+    clone.querySelector("p").textContent = beer.beer;
+    clone.querySelector(
+      "p:nth-child(2)"
+    ).textContent = `${beer.level}/${beer.capacity}`;
 
-      clone.querySelector("img").src = `assets/${beer.beer}.svg`;
-      clone.querySelector("p").textContent = beer.beer;
-      clone.querySelector(
-        "p:nth-child(2)"
-      ).textContent = `${beer.level}/${beer.capacity}`;
-
-      document.querySelector("#popup-dash-taps").appendChild(clone);
-    });
-
-    data.storage.forEach((beerType) => {
-      const clone = document
-        .querySelector("template.storage")
-        .content.cloneNode(true);
-
-      clone.querySelector(".name").textContent = beerType.name;
-      clone.querySelector(".number").textContent = beerType.amount;
-
-      document.querySelector("#popup-storage").appendChild(clone);
-    });
-    // popups.popBeer = false;
-  } else {
-    document.querySelector("header").classList.remove("popup-blur");
-    document
-      .querySelector("#dash-content-wrapper")
-      .classList.remove("popup-blur");
-  }
-}
-
-function displayBeer() {
-  console.log("Beer is displayed");
-  document.querySelector("#popup").innerHTML = `
-    <article>
-        <div class="outer close-popup">
-            <div class="inner">
-                <label>Close</label>
-            </div>
-        </div>
-        <h1>Beers</h1>
-        <div class="popup-content popup-content-beer">
-        <section id="popup-dash-taps"></section>
-        <section id="popup-storage"></section>
-        </div>
-        `;
-
-  document.querySelector(".close-popup").addEventListener("click", () => {
-    popups.popBeer = false;
-    document.querySelector("#popup").innerHTML = "";
-    showBeer(barData);
+    document.querySelector("#popup-dash-taps").appendChild(clone);
   });
+
+  data.storage.forEach((beerType) => {
+    const clone = document
+      .querySelector("template.storage")
+      .content.cloneNode(true);
+
+    clone.querySelector(".name").textContent = beerType.name;
+    clone.querySelector(".number").textContent = beerType.amount;
+
+    document.querySelector("#popup-storage").appendChild(clone);
+  });
+  // popups.popBeer = false;
+
+  // document
+  //   .querySelector("#dash-content-wrapper")
+  //   .classList.remove("popup-blur");
 }
 
 //Function calculating the statistics of each bartender

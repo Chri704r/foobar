@@ -17,7 +17,7 @@
             <details>
               <summary>Data</summary>
               <div id="popup-button-wrapper">
-                <button class="poup-queue">Custumer queue</button>
+                <button class="popup-queue">Custumer queue</button>
                 <button class="popup-beer">Beer</button>
                 <button class="popup-income">Income</button>
                 <button class="popup-calendar">Calendar</button>
@@ -40,7 +40,7 @@
               <details>
                 <summary>Data</summary>
                 <div id="popup-button-wrapper">
-                  <button class="poup-queue">Custumer queue</button>
+                  <button class="popup-queue">Custumer queue</button>
                   <button class="popup-beer">Beer</button>
                   <button class="popup-income">Income</button>
                   <button class="popup-calendar">Calendar</button>
@@ -76,14 +76,127 @@
         <section id="dash-calendar"></section>
         <section id="dash-income">
           <h2>Income</h2>
-          <div id="chart-container">
+          <div class="chart-container">
             <canvas id="income-chart"></canvas>
           </div>
-          <p id="income-number"></p>
+          <p class="income-number"></p>
         </section>
-        <section id="dash-bartenders"></section>
+        <section id="dash-bartenders" class="bart-display"></section>
       </div>
-      <section id="popup"></section>
+      <section id="popup">
+        <article id="popup-queue" class="pop-article hide">
+          <div class="outer close-popup">
+            <div class="inner">
+              <label>Close</label>
+            </div>
+          </div>
+          <h1>Queue</h1>
+          <div class="popup-content popup-content-queue">
+            <div id="pop-bar-1" class="bar">
+              <span></span>
+            </div>
+            <div id="pop-bar-2" class="bar">
+              <span></span>
+            </div>
+            <div id="pop-bar-3" class="bar">
+              <span></span>
+            </div>
+            <div id="pop-bar-4" class="bar">
+              <span></span>
+            </div>
+            <div id="pop-bar-5" class="bar">
+              <span></span>
+            </div>
+            <div id="pop-bar-6" class="bar">
+              <span></span>
+            </div>
+            <div id="pop-bar-7" class="bar">
+              <span></span>
+            </div>
+            <div id="pop-bar-8" class="bar">
+              <span></span>
+            </div>
+            <div id="pop-bar-9" class="bar">
+              <span></span>
+            </div>
+            <div id="pop-bar-10" class="bar">
+              <span></span>
+            </div>
+          </div>
+        </article>
+
+        <article id="popup-income" class="pop-article hide">
+          <div class="outer close-popup">
+            <div class="inner">
+              <label>Close</label>
+            </div>
+          </div>
+          <h1>Income</h1>
+          <div class="popup-content popup-content-income">
+            <div id="curent-income">
+              <div id="left">
+                <h3>Daily income</h3>
+                <div class="chart-container"></div>
+              </div>
+              <div id="numbers">
+                <p class="income-number"></p>
+                <p>Goal: 10.000</p>
+              </div>
+            </div>
+            <div id="past-income">
+              <h3>Income of last 7 days</h3>
+              <div id="bar-wrapper">
+                <div class="inc-bar" id="day-1">
+                  <span>10.000</span>
+                </div>
+                <div class="inc-bar" id="day-2">
+                  <span>12.000</span>
+                </div>
+                <div class="inc-bar" id="day-3">
+                  <span>9.000</span>
+                </div>
+                <div class="inc-bar" id="day-4">
+                  <span>7.500</span>
+                </div>
+                <div class="inc-bar" id="day-5">
+                  <span>10.000</span>
+                </div>
+                <div class="inc-bar" id="day-6">
+                  <span>13.000</span>
+                </div>
+                <div class="inc-bar" id="day-7">
+                  <span>11.500</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article id="popup-bartenders" class="pop-article hide">
+          <div class="outer close-popup">
+            <div class="inner">
+              <label>Close</label>
+            </div>
+          </div>
+          <h1>Bartenders</h1>
+          <div class="popup-content popup-content-bartender">
+            <div id="pop-bartenders" class="bart-display"></div>
+          </div>
+        </article>
+
+        <article id="popup-beer" class="pop-article hide">
+          <div class="outer close-popup">
+            <div class="inner">
+              <label>Close</label>
+            </div>
+          </div>
+          <h1>Beers</h1>
+          <div class="popup-content popup-content-beer">
+            <section id="popup-dash-taps"></section>
+            <section id="popup-storage"></section>
+          </div>
+        </article>
+      </section>
     </main>
 
     <template id="temp-bartender">
@@ -136,9 +249,9 @@
     <!-- <script type="module" src="/main.js"></script> -->
     <script type="module" src="/barchart.js"></script>
     <script type="module" src="/calendar.js"></script>
-    <script type="module" src="/components/queue.js"></script>
-    <script type="module" src="/components/income.js"></script>
-    <script type="module" src="/components/bartenders.js"></script>
+    <!-- <script type="module" src="/components/queue.js"></script> -->
+    <!-- <script type="module" src="/components/income.js"></script> -->
+    <!-- <script type="module" src="/components/bartenders.js"></script> -->
     <!-- <script type="module" src="/components/beer.js"></script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
