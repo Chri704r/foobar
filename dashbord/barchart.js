@@ -52,15 +52,10 @@ function init() {
 }
 
 function registerButtons() {
+  //Button for opening the burger menu
   document.querySelector("#burger-button").addEventListener("click", () => {
     const element = document.querySelector("#dash-nav-mobil");
     toggleHide(element);
-  });
-
-  document.querySelector("#dash-taps").addEventListener("click", () => {
-    popups.popBeer = true;
-    displayBeer();
-    showBeer(barData);
   });
 
   //Open the popup for the queue
@@ -228,7 +223,6 @@ function displayBarchart() {
   }
 }
 
-//Function displaying the bartenders and what they are doing
 function displayBartenders(data) {
   //Create clone of the template
   const bartenders = data.bartenders;
@@ -260,6 +254,7 @@ function displayBartenders(data) {
       //Append clone to section
       display.appendChild(clone);
 
+      //If the container is the popup container also display statistics
       if (display === document.querySelector("#pop-bartenders")) {
         displayStatisstics(bartender);
       }
@@ -270,6 +265,7 @@ function displayBartenders(data) {
 function displayStatisstics(bartender) {
   const thisBartender = bartender.name;
 
+  //Clone template
   const clone = document
     .querySelector("#temp-bart-stats")
     .content.cloneNode(true);
@@ -282,6 +278,7 @@ function displayStatisstics(bartender) {
   clone.querySelector(".inc-number").textContent =
     beerSold[thisBartender].income;
 
+  //Append to the bartender in the popup
   document
     .querySelector(`#pop-bartenders .bart-${thisBartender}`)
     .appendChild(clone);
