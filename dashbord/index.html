@@ -56,6 +56,31 @@
 				</main>
 			</div>
 		</div>
+		<section id="login-section">
+			<div class="outer close-popup">
+				<div class="inner">
+					<label id="close-text">back</label>
+				</div>
+			</div>
+			<h2>LOGIN TO ACCOUNT</h2>
+			<form>
+				<p class="invalid-input"></p>
+				<div>
+					<label for="">username</label>
+					<input type="text" placeholder=" " minlength="3" maxlength="15" />
+					<p class="invalid-message">Username has to be at least 3 characters and a maximum of 15</p>
+				</div>
+				<div>
+					<label for="">Password</label>
+					<div id="password-wrapper">
+						<input id="password" type="password" placeholder=" " pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" />
+						<img id="password-toggle" src="../assets/eye.svg" alt="eye" />
+						<p class="invalid-message">Requires at least 8 characters, at least one letter and one number</p>
+					</div>
+				</div>
+				<button id="login-button">LOGIN</button>
+			</form>
+		</section>
 		<footer>
 			<button id="dashboard-button">go to dashboard</button>
 			<p>©Copyrights reserved, foobar 2021</p>

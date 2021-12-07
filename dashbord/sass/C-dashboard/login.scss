@@ -1,0 +1,170 @@
+@use "../variabels/colors";
+
+#login-section {
+	width: 80vw;
+	height: 85vh;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background-color: colors.$background-color;
+	border: 3px solid colors.$primary-color;
+	z-index: 10;
+	padding: 20px;
+	h2 {
+		text-align: center;
+		margin: 20px 0 50px;
+	}
+	div {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 30px;
+	}
+	form {
+		display: block;
+		margin: 0 auto;
+		width: 85%;
+		label {
+			text-transform: uppercase;
+			font-size: 0.9rem;
+			color: colors.$primary-color;
+			margin-bottom: 5px;
+		}
+		input {
+			background-color: transparent;
+			border: 2px solid colors.$primary-color;
+			height: 30px;
+			padding: 0 5px;
+			color: colors.$primary-color;
+			font-size: 0.9rem;
+			letter-spacing: 1px;
+		}
+		input:focus {
+			outline: none;
+			border: 2px solid colors.$brown-color;
+		}
+		input:not(:focus, :placeholder-shown):invalid {
+			border: 2px solid red;
+			background-color: rgba(255, 0, 0, 0.137);
+			//animation: shake-animation 4.72s ease 1;
+			//transform-origin: 50% 50%;
+			//margin-bottom: 0.2rem;
+		}
+		input:not(:focus, :placeholder-shown):invalid ~ .invalid-message {
+			display: contents;
+		}
+		button {
+			margin-top: 50px;
+		}
+	}
+}
+
+.invalid-input {
+	color: red;
+	margin-bottom: 5px;
+}
+
+.invalid-message {
+	color: red;
+	margin-top: 5px;
+	display: none;
+}
+
+#password-toggle {
+	width: 20px;
+	position: absolute;
+	top: 10px;
+	left: 90%;
+	cursor: pointer;
+	z-index: 10;
+}
+
+#password-wrapper {
+	position: relative;
+	margin: 0px 0px !important;
+}
+
+//close button
+.outer {
+	position: relative;
+	margin: auto;
+	width: 2rem;
+	height: 2rem;
+	cursor: pointer;
+}
+
+.inner {
+	width: inherit;
+	text-align: center;
+}
+
+#close-text {
+	font-size: 0.7em;
+	line-height: 3em;
+	text-transform: uppercase;
+	color: colors.$primary-color;
+	transition: all 0.3s ease-in;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.inner:before,
+.inner:after {
+	position: absolute;
+	content: "";
+	height: 1px;
+	width: inherit;
+	background: colors.$primary-color;
+	left: 0;
+	transition: all 0.3s ease-in;
+}
+
+.inner:before {
+	top: 50%;
+	transform: rotate(45deg);
+}
+
+.inner:after {
+	bottom: 50%;
+	transform: rotate(-45deg);
+}
+
+.outer:hover #close-text {
+	opacity: 1;
+}
+
+.outer:hover .inner:before,
+.outer:hover .inner:after {
+	transform: rotate(0);
+}
+
+.outer:hover .inner:before {
+	top: 0;
+}
+
+.outer:hover .inner:after {
+	bottom: 0;
+}
+
+.close-popup {
+	float: right;
+	border: none;
+	background-color: transparent;
+}
+
+//ipad version and bigger
+@media only screen and (min-width: 760px) {
+	#login-section {
+		width: 75vw;
+		height: 80vh;
+		form {
+			width: 40%;
+		}
+	}
+}
+
+.hide {
+	display: none;
+}
