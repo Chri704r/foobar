@@ -46,7 +46,7 @@
 			border: 2px solid colors.$brown-color;
 		}
 		input:not(:focus, :placeholder-shown):invalid {
-			border: 2px solid red;
+			border: 2px solid colors.$red-color;
 			background-color: rgba(255, 0, 0, 0.137);
 			//animation: shake-animation 4.72s ease 1;
 			//transform-origin: 50% 50%;
@@ -62,12 +62,12 @@
 }
 
 .invalid-input {
-	color: red;
+	color: colors.$red-color;
 	margin-bottom: 5px;
 }
 
 .invalid-message {
-	color: red;
+	color: colors.$red-color;
 	margin-top: 5px;
 	display: none;
 }

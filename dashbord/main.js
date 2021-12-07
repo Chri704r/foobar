@@ -48,11 +48,9 @@ function closeLogin() {
 
 async function getData() {
 	const data = await fetchfunction("https://groupfoobar.herokuapp.com/");
-	//const beerData = await fetchfunction("https://groupfoobar.herokuapp.com/beertypes");
 	userData = await fetchfunction("users.json");
 
 	console.log("data", data);
-	//console.log("beer", beerData);
 	console.log("users", userData);
 
 	showQueue(data);
