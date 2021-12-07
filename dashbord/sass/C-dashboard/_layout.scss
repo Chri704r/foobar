@@ -6,12 +6,12 @@
 }
 
 body {
-	background-color: colors.$background-color;
+	background-image: url(../assets/noise-bg.png);
 }
 
 button {
 	text-transform: uppercase;
-	background-color: colors.$background-color;
+	background-color: transparent;
 	border: none;
 	border-top: 2px solid colors.$primary-color;
 	border-bottom: 2px solid colors.$primary-color;
