@@ -23,7 +23,7 @@ function clickLogin() {
 
 	//toggle password visibility
 	document.querySelector("#password-toggle").addEventListener("click", () => {
-		document.querySelector("#password-toggle").src = "../assets/eye-off.svg";
+		document.querySelector("#password-toggle").src = "../assets/eye-02.svg";
 		const password = document.querySelector("#password");
 		//if password is hidden
 		if (password.getAttribute("type") === "password") {
@@ -32,7 +32,7 @@ function clickLogin() {
 		} else {
 			//hide password if not hidden
 			password.setAttribute("type", "password");
-			document.querySelector("#password-toggle").src = "../assets/eye.svg";
+			document.querySelector("#password-toggle").src = "../assets/eye-01.svg";
 		}
 	});
 
