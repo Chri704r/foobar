@@ -196,6 +196,46 @@
             <section id="popup-storage"></section>
           </div>
         </article>
+
+        <article id="popup-calendar" class="pop-article hide">
+          <div class="outer close-popup">
+            <div class="inner">
+              <label>Close</label>
+            </div>
+          </div>
+          <h1>Calendar</h1>
+          <div class="popup-content popup-content-calendar">
+            <div class="col-left">
+              <div class="top">
+                <button id="back" class="cal-button">〈</button>
+                <div class="wrapper">
+                  <span id="month"></span>
+                  <span id="year"></span>
+                </div>
+                <button id="forward" class="cal-button">〉</button>
+              </div>
+              <div class="bottom">
+                <table id="calendar-table">
+                  <thead>
+                    <tr>
+                      <th>Mo</th>
+                      <th>Tu</th>
+                      <th>We</th>
+                      <th>Th</th>
+                      <th>Fr</th>
+                      <th>Sa</th>
+                      <th>Su</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-right">
+              <h2 id="active-title"></h2>
+            </div>
+          </div>
+        </article>
       </section>
     </main>
 
@@ -248,7 +288,7 @@
 
     <!-- <script type="module" src="/main.js"></script> -->
     <script type="module" src="/barchart.js"></script>
-    <script type="module" src="/calendar.js"></script>
+    <!-- <script type="module" src="/calendar.js"></script> -->
     <!-- <script type="module" src="/components/queue.js"></script> -->
     <!-- <script type="module" src="/components/income.js"></script> -->
     <!-- <script type="module" src="/components/bartenders.js"></script> -->
