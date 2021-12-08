@@ -69,3 +69,66 @@
     }
   }
 }
+
+@media only screen and (min-width: 760px) {
+  .popup-content-calendar {
+    align-items: center;
+    .col-left {
+      width: 70%;
+
+      .top {
+        .wrapper {
+          span {
+            color: colors.$primary-color;
+          }
+
+          #month {
+            font-size: 2.5rem;
+          }
+        }
+      }
+      .bottom {
+        th,
+        td {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .popup-content-calendar {
+    flex-direction: row;
+    align-items: flex-start;
+
+    .col-left {
+      width: 50%;
+
+      .bottom {
+        table {
+          width: 100%;
+          height: auto;
+          border: 1px solid colors.$primary-color;
+          border-collapse: collapse;
+        }
+        th,
+        td {
+          border: 1px solid colors.$primary-color;
+          border-collapse: collapse;
+          color: colors.$primary-color;
+          font-size: 1rem;
+          text-align: center;
+          width: 2em;
+          height: 3rem;
+        }
+      }
+    }
+
+    .col-right {
+      h2 {
+        text-align: center;
+      }
+    }
+  }
+}
