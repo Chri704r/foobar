@@ -23,6 +23,7 @@ button {
   border: solid 2px colors.$primary-color;
   // height: 6vh;
   padding: 0.5rem;
+  width: 23vw;
 }
 .payment_options button img {
   width: 15vw;
@@ -39,14 +40,15 @@ button {
   margin-bottom: 2rem;
 }
 .add_to_cart {
-  display: none;
+  display: inline;
+  margin-left: 1rem;
 }
 #close {
   display: flex;
   cursor: pointer;
   font-weight: bold;
   float: right;
-  margin: 1rem;
+  margin: 0.5rem;
   position: absolute;
   font-size: 2rem;
   border: none;
@@ -61,16 +63,21 @@ button {
   position: absolute;
   top: 43vh;
 }
+.x {
+  font-size: 2rem;
+  padding: 0px;
+  line-height: 0.1rem;
+  font-family: sans-serif;
+}
 @media only screen and (min-width: 700px) {
   .filters button {
     transform: rotate(0deg);
   }
-  .add_to_cart {
-    display: inline;
-    margin-left: 1rem;
+  .payment_options button {
+    width: 7vw;
   }
   .checkout {
-    margin-top: 5rem;
+    top: 72vh;
   }
   .payment_options button img {
     width: 5vw;
