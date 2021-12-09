@@ -143,7 +143,7 @@ header {
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0.6rem;
   grid-row-gap: 0.6rem;
-  margin: auto 0;
+  margin: auto;
   width: 96vw;
   max-height: 41vh;
   padding: 1rem;
@@ -164,11 +164,22 @@ header {
   width: 85vw;
 }
 .month_year {
-  grid-area: 3 / 1 / 4 / 2;
-  width: 20vw;
+  grid-row-start: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+
+  .month-year-input-wrapper {
+    display: flex;
+    gap: 0.5rem;
+
+    input {
+      width: 100%;
+    }
+  }
 }
 .cvc {
-  grid-area: 3 / 2 / 4 / 3;
+  grid-area: 3 / 3;
 }
 #cvc {
   width: 15vw;
@@ -514,7 +525,7 @@ header {
     align-items: center;
   }
   .card_wrapper {
-    width: 28vw;
+    width: 62%;
     max-height: 54vh;
   }
   .card_wrapper label {
@@ -525,11 +536,25 @@ header {
     width: 17vw;
   }
 
-  .month_year {
-    width: 7vw !important;
-  }
-
   #cvc {
     width: 4vw;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .month_year {
+    grid-row-start: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 100%;
+
+    .month-year-input-wrapper {
+      display: flex;
+      gap: 0.5rem;
+
+      input {
+        width: 30%;
+      }
+    }
   }
 }
