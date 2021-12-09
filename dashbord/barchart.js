@@ -2,6 +2,26 @@ import "./style.scss";
 
 window.addEventListener("DOMContentLoaded", init);
 
+const calendarData = {
+  monthArray: [
+    "January",
+    "Febuary",
+    "Martch",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ],
+  currentMonth: "",
+  currentYear: "",
+  currentDay: "",
+};
+
 const queueArray = [];
 
 let barData;
@@ -49,6 +69,7 @@ const beerSold = {
 function init() {
   getData();
   registerButtons();
+  claculateCalendar();
 }
 
 function registerButtons() {
@@ -118,6 +139,21 @@ function registerButtons() {
     document.querySelector("#dash-content-wrapper").classList.add("popup-blur");
   });
 
+  //Open the popup for the Calendar
+  document.querySelectorAll(".popup-calendar").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelector("#popup-calendar").classList.remove("hide");
+      document
+        .querySelector("#dash-content-wrapper")
+        .classList.add("popup-blur");
+    });
+  });
+
+  document.querySelector("#dash-calendar").addEventListener("click", () => {
+    document.querySelector("#popup-calendar").classList.remove("hide");
+    document.querySelector("#dash-content-wrapper").classList.add("popup-blur");
+  });
+
   //Button for closing/hiding the popup
   document.querySelectorAll(".close-popup").forEach((button) => {
     button.addEventListener("click", () => {
@@ -130,6 +166,12 @@ function registerButtons() {
       });
     });
   });
+
+  //Buttons for the calendar
+  document.querySelector("#forward").addEventListener("click", goForward);
+  document.querySelector("#back").addEventListener("click", goBack);
+
+  //Make calendar cells clickable
 }
 
 async function getData() {
@@ -422,11 +464,6 @@ function showBeer(data) {
 
     document.querySelector("#popup-storage").appendChild(clone);
   });
-  // popups.popBeer = false;
-
-  // document
-  //   .querySelector("#dash-content-wrapper")
-  //   .classList.remove("popup-blur");
 }
 
 //Function calculating the statistics of each bartender
@@ -451,10 +488,178 @@ function calculateBartenderStats(data) {
           beerSold[thisBartender].sold += custumer.order.length;
           beerSold[thisBartender].custServed += 1;
           beerSold[thisBartender].income = beerSold[thisBartender].sold * 50;
-
-          console.log("beerSold", beerSold);
         }
       }
     });
   });
+}
+
+function claculateCalendar() {
+  const today = new Date();
+  const month = String(today.getMonth() + 1).padStart(2, "0"); //January is 0
+  const year = today.getFullYear();
+  const day = String(today.getDate()).padStart(1, "0");
+
+  calendarData.currentMonth = month;
+  calendarData.currentYear = year;
+  calendarData.currentDay = day;
+
+  displayCalendar(month, year);
+  dispayDashCalendar(day, month);
+  displayActiveDay();
+  registerCells();
+}
+
+function displayCalendar(month, year) {
+  //Display the curent month on the calendar
+  document.querySelector("#month").textContent =
+    calendarData.monthArray[month - 1];
+
+  //Display the year on the calendar
+  document.querySelector("#year").textContent = year;
+
+  console.log("month", month);
+  console.log("year", year);
+  console.log("days", daysInMonth(month, year));
+
+  //This the date of the first day of the month
+  let firstDay = new Date(year, month - 1).getDay();
+  console.log("firstDay", firstDay);
+
+  //Clear the table
+  document.querySelector("#calendar-table tbody").innerHTML = "";
+
+  //Creating the table with the month
+  let date = 1;
+
+  const actualMonth = new Date().getMonth() + 1;
+  const today = new Date();
+  const currentDate = String(today.getDate()).padStart(1, "0");
+
+  //for loop for creating the rows of the calendar, there can be up to 6
+  for (let i = 0; i < 6; i++) {
+    //Create a table row
+    let row = document.createElement("tr");
+
+    //For loop for creating the cells with data in the table row
+    for (let j = 1; j <= 7; j++) {
+      //placing the first day in the right postion
+      //i === 0: we are on the first row, j < firstday: firstday is later in the week
+      if (i === 0 && j < firstDay) {
+        //Create an emty cell and appent to row
+        let cell = document.createElement("td");
+        let cellText = document.createTextNode("");
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+
+        //Make sure to stop if end of month is reached
+      } else if (date > daysInMonth(month, year)) {
+        if (j <= 7) {
+          //Create an emty cell and appent to row
+          let cell = document.createElement("td");
+          let cellText = document.createTextNode("");
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+        } else {
+          break;
+        }
+
+        //Create cell with date number
+      } else {
+        let cell = document.createElement("td");
+        let cellText = document.createTextNode(date);
+        cell.appendChild(cellText);
+        cell.setAttribute("id", date);
+
+        if (actualMonth == month && date == currentDate) {
+          cell.setAttribute("class", "today active-day");
+        } else if (date == calendarData.currentDay) {
+          cell.setAttribute("class", "active-day");
+        }
+
+        row.appendChild(cell);
+        date++;
+      }
+    }
+    //Append to the table
+    document.querySelector("#calendar-table tbody").appendChild(row);
+  }
+}
+
+function daysInMonth(month, year) {
+  //Returning the number of days in a month
+  return new Date(year, month, 0).getDate();
+}
+
+function goForward() {
+  console.log(calendarData.currentMonth);
+  if (calendarData.currentMonth == 12) {
+    calendarData.currentMonth = 1;
+    calendarData.currentYear++;
+  } else {
+    calendarData.currentMonth++;
+  }
+
+  displayCalendar(calendarData.currentMonth, calendarData.currentYear);
+  displayActiveDay();
+  registerCells();
+}
+
+function goBack() {
+  if (calendarData.currentMonth == 1) {
+    calendarData.currentMonth = 12;
+    calendarData.currentYear--;
+  } else {
+    calendarData.currentMonth--;
+  }
+
+  displayCalendar(calendarData.currentMonth, calendarData.currentYear);
+  displayActiveDay();
+  registerCells();
+}
+
+function displayActiveDay() {
+  const month = calendarData.monthArray[calendarData.currentMonth - 1];
+
+  document.querySelector(
+    "#active-title"
+  ).textContent = `${month} ${calendarData.currentDay}`;
+}
+
+function registerCells() {
+  document.querySelectorAll("td").forEach((cell) => {
+    //Making sure not to add eventlisteners to empty cells
+    if (!cell.textContent == "") {
+      //Add eventlistener to the cells
+      cell.addEventListener("click", () => {
+        //Set currentDay to this cell
+        calendarData.currentDay = cell.id;
+
+        //Remove class active-day from last active
+        document.querySelector(".active-day").classList.remove("active-day");
+
+        //Add active-day class to this cell
+        cell.classList.add("active-day");
+        displayActiveDay();
+      });
+    }
+  });
+}
+
+function dispayDashCalendar(day, month) {
+  console.log(day, month);
+
+  const monthName = calendarData.monthArray[month - 1];
+
+  document.querySelector("#calendar-today").textContent = `${monthName} ${day}`;
+
+  if (day == 1 || day == 21 || day == 31) {
+    document.querySelector("#calendar-today").textContent += "st";
+  } else if (day == 2 || day == 22) {
+    document.querySelector("#calendar-today").textContent += "nd";
+  } else if (day == 3 || day == 23) {
+    document.querySelector("#calendar-today").textContent += "rd";
+  } else {
+    document.querySelector("#calendar-today").textContent += "th";
+  }
 }
