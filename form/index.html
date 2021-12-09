@@ -15,7 +15,15 @@
       <button class="go_back hide">Back to menu</button>
       <h1>FooBar</h1>
       <div class="shoppingcart">
-    <button class="cart">Cart</button>
+        <p class="number_in_basket"></p>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 580">
+      <g id="fill">
+        <rect x="21.58" y="15.84" width="398.18" height="548.31" />
+      </g>
+      <g id="glas">
+        <path d="M433.58,50.23V2.69H4.82l0,0c-2.48.06,1.28,574.66,1.28,574.66h427.5V469.12l138.05-89.7,4.42-329.19Zm-40,487.1H45.82c-1.1-176.6-2.19-406-1.8-494.64H393.58ZM531.92,357.52l-98.34,63.9V90.23H535.51Z" fill="#eed6b3"/>
+      </g>
+    </svg>
       </div>
     </header>
     <main>
@@ -53,20 +61,27 @@
           <template id="information" >
             <button id="close">&times;</button>
             <div class="main_info static">
-            <img data-field="imageName" class="imageName" src="" alt="">
-  
-           <h2 class="text_info" data-field="beerName"></h2>
-  
-           <p class="text_info" data-field="alc"></p>
-           <p class="text_info" data-field="price"></p>
-           <button class="add_to_basket">Add to cart</button>
+              <div class="information_popup">
+              <img data-field="imageName" class="imageName" src="" alt="">
+              <h2 class="text_info" data-field="beerName"></h2>
+              
+              <p class="text_info" data-field="alc"></p>
+              <p class="text_info" data-field="price"></p>
+              <button class="add_to_basket">Add to cart</button>
+            </div>
+            <div class="description">
            <h3>Description</h3>
+           <h4>Aroma</h4>
             <p class="text_info" data-field="aroma"></p>
+            <h4>Appearance</h4>
             <p class="text_info" data-field="appearance"></p>
+            <h4>Flavor</h4>
             <p class="text_info" data-field="flavor"></p>
+            <h4>Mouthfeel</h4>
             <p class="text_info" data-field="mouthfeel"></p>
+            <h4>Overall Impression</h4>
             <p class="text_info" data-field="overallImpression"></p>
-
+          </div>
           
         </div>
       
@@ -87,6 +102,10 @@
           <div class="product_overview">
             <h2>Your order</h2>
            <div class="order_txt_parent"></div>
+           <div class="total_wrapper">
+             <h2>Total</h2>
+             <h2 class="total_amount"></h2>
+           </div>
           </div>
           <div class="pay_container">
           <div class="input_wrapper">
@@ -96,7 +115,13 @@
             <div class="payment_wrapper">
             <p class="label_text">Payment</p>
             <div class="payment_options">
-              <button class="card">Card</button>
+              <button class="card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 537.62 397.23">
+                  <g id="Layer_9" data-name="Layer 9">
+                    <path d="M456.29,26.63h-375A67.46,67.46,0,0,0,14,94V303.23a67.46,67.46,0,0,0,67.38,67.38h375a67.45,67.45,0,0,0,67.38-67.38V94A67.46,67.46,0,0,0,456.29,26.63Zm22.38,276.6a22.41,22.41,0,0,1-22.38,22.38h-375A22.41,22.41,0,0,1,59,303.23V167.55H478.67Zm0-180.68H59V94A22.41,22.41,0,0,1,81.33,71.63h375A22.41,22.41,0,0,1,478.67,94Z" fill="#efd7b3"/>
+                  </g>
+                </svg>
+              </button>
               <button class="applepay"> 
                  <img src="img/Apple_Pay_Mark_RGB_041619.svg" alt=""></button>
               <button class="mobilepay">
@@ -104,7 +129,7 @@
               </button>
             </div>
           </div>
-      <div class="card_payment">
+      <div class="card_payment hide">
             <div class="card_wrapper">
               <div class="firstrow">
               <div class="input_wrapper">
@@ -115,7 +140,7 @@
              
                   <div class="input_wrapper cardname">
                     <label for="name">CARDHOLDERS NAME</label>
-                    <!-- <input type="text" id="name" name="fname" pattern="[^0-9]*" placeholder="" required /> -->
+                    <input type="text" id="name" name="name" pattern="[^0-9]*" placeholder="" required />
                     <!-- <div class="invalid_wrapper">
                       <img src="img/Invalid.svg" alt="invalid sign" />
                       <p>This field is required</p>
@@ -124,12 +149,12 @@
               
                   <div class="input_wrapper month_year">
                     <label for="month/year">MONTH/YEAR</label>
-                        <!-- <input id="month_year" type="number" placeholder=" " required /> -->
+                        <input id="month_year" type="number" placeholder=" " required />
                       </div>
 
                       <div class="input_wrapper cvc">
                         <label for="cvc">CVC</label>
-                            <!-- <input id="cvc" type="number" placeholder=" " required /> -->
+                            <input id="cvc" type="number" placeholder=" " required />
                           </div>
                 </div>
           </div> 
