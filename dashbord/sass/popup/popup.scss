@@ -1,135 +1,136 @@
 @use "../variabels/colors";
 
 #popup {
-  article {
-    position: fixed;
-    width: 81vw;
-    height: 85vh;
-    left: 4vw;
-    top: 5vh;
-    background-color: colors.$background-color;
-    border: solid 5px colors.$primary-color;
-    padding: 1rem;
+	article {
+		position: fixed;
+		width: 81vw;
+		height: 85vh;
+		left: 4vw;
+		top: 5vh;
+		background-color: colors.$background-color;
+		border: solid 5px colors.$primary-color;
+		padding: 1rem;
+		z-index: 25;
 
-    .outer {
-      position: relative;
-      margin: auto;
-      width: 2rem;
-      height: 2rem;
-      cursor: pointer;
-    }
+		.outer {
+			position: relative;
+			margin: auto;
+			width: 2rem;
+			height: 2rem;
+			cursor: pointer;
+		}
 
-    .inner {
-      width: inherit;
-      text-align: center;
-    }
+		.inner {
+			width: inherit;
+			text-align: center;
+		}
 
-    label {
-      font-size: 0.7em;
-      line-height: 3em;
-      text-transform: uppercase;
-      color: colors.$primary-color;
-      transition: all 0.3s ease-in;
-      opacity: 0;
-      cursor: pointer;
-    }
+		label {
+			font-size: 0.7em;
+			line-height: 3em;
+			text-transform: uppercase;
+			color: colors.$primary-color;
+			transition: all 0.3s ease-in;
+			opacity: 0;
+			cursor: pointer;
+		}
 
-    .inner:before,
-    .inner:after {
-      position: absolute;
-      content: "";
-      height: 1px;
-      width: inherit;
-      background: colors.$primary-color;
-      left: 0;
-      transition: all 0.3s ease-in;
-    }
+		.inner:before,
+		.inner:after {
+			position: absolute;
+			content: "";
+			height: 1px;
+			width: inherit;
+			background: colors.$primary-color;
+			left: 0;
+			transition: all 0.3s ease-in;
+		}
 
-    .inner:before {
-      top: 50%;
-      transform: rotate(45deg);
-    }
+		.inner:before {
+			top: 50%;
+			transform: rotate(45deg);
+		}
 
-    .inner:after {
-      bottom: 50%;
-      transform: rotate(-45deg);
-    }
+		.inner:after {
+			bottom: 50%;
+			transform: rotate(-45deg);
+		}
 
-    .outer:hover label {
-      opacity: 1;
-    }
+		.outer:hover label {
+			opacity: 1;
+		}
 
-    .outer:hover .inner:before,
-    .outer:hover .inner:after {
-      transform: rotate(0);
-    }
+		.outer:hover .inner:before,
+		.outer:hover .inner:after {
+			transform: rotate(0);
+		}
 
-    .outer:hover .inner:before {
-      top: 0;
-    }
+		.outer:hover .inner:before {
+			top: 0;
+		}
 
-    .outer:hover .inner:after {
-      bottom: 0;
-    }
+		.outer:hover .inner:after {
+			bottom: 0;
+		}
 
-    .close-popup {
-      float: right;
-      border: none;
-      background-color: transparent;
-    }
+		.close-popup {
+			float: right;
+			border: none;
+			background-color: transparent;
+		}
 
-    .popup-content {
-      margin: auto;
-      margin-top: 1rem;
-      border: solid 3px colors.$primary-color;
-      padding: 1rem;
-      height: 71vh;
-    }
-  }
+		.popup-content {
+			margin: auto;
+			margin-top: 1rem;
+			border: solid 3px colors.$primary-color;
+			padding: 1rem;
+			height: 71vh;
+		}
+	}
 }
 
 @media only screen and (min-width: 760px) {
-  #popup {
-    article {
-      width: 86vw;
-      height: 86vh;
+	#popup {
+		article {
+			width: 86vw;
+			height: 86vh;
 
-      .popup-content {
-        height: 77vh;
-      }
-    }
-  }
+			.popup-content {
+				height: 73vh;
+			}
+		}
+	}
 }
 
 @media only screen and (min-width: 1000px) {
-  #popup {
-    article {
-      .popup-content {
-        height: 71vh;
-      }
-    }
-  }
+	#popup {
+		article {
+			.popup-content {
+				height: 71vh;
+			}
+		}
+	}
 }
 
 .loader {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-column-start: 1;
-  grid-column-end: -1;
-  svg {
-    fill: transparent;
-    stroke: colors.$primary-color;
-    stroke-width: 5px;
-    stroke-dasharray: 125;
-    animation: loading 5s linear infinite;
-  }
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-column-start: 1;
+	grid-column-end: -1;
+	svg {
+		fill: transparent;
+		stroke: colors.$primary-color;
+		stroke-width: 5px;
+		stroke-dasharray: 125;
+		animation: loading 5s linear infinite;
+	}
 }
 
 @keyframes loading {
-  to {
-    stroke-dashoffset: 500;
-  }
+	to {
+		stroke-dashoffset: 500;
+	}
 }
