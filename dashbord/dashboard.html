@@ -4,11 +4,15 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>FooBar Dashboard</title>
 	</head>
 	<body>
 		<header>
-			<button id="burger-button">Menu</button>
+			<div class="burger-menu">
+				<div class="burgerline1"></div>
+				<p>MENU</p>
+				<div class="burgerline2"></div>
+			</div>
 			<nav id="dash-nav-mobil" class="hide navigation">
 				<ul>
 					<li><a href="dashboard.html">Dashboard</a></li>
@@ -25,8 +29,7 @@
 							</div>
 						</details>
 					</li>
-					<li class="bottom">Hello manager</li>
-					<li><button class="login bottom">Sign out</button></li>
+					<button class="logout-button">Sign out</button>
 				</ul>
 			</nav>
 		</header>
@@ -35,7 +38,7 @@
 				<nav id="dash-nav-web" class="navigation">
 					<ul>
 						<li><a href="dashboard.html">Dashboard</a></li>
-						<li><a href="index.html">Custumer dashboard</a></li>
+						<li><a href="index.html">Customer dashboard</a></li>
 						<li class="data-nav">
 							<details>
 								<summary>Data</summary>
@@ -48,8 +51,7 @@
 								</div>
 							</details>
 						</li>
-						<li class="bottom">Hello manager</li>
-						<li><button class="login bottom">Sign out</button></li>
+						<button class="logout-button">Sign out</button>
 					</ul>
 				</nav>
 				<section id="dash-queue">
@@ -287,7 +289,7 @@
 		<template class="storage">
 			<div>
 				<p class="name"></p>
-				<img src="" alt="" />
+				<img src="../assets/storage_icon.svg" alt="" />
 				<p class="number"></p>
 			</div>
 		</template>

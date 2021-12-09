@@ -1,85 +1,170 @@
 @use "../variabels/colors";
 
-#burger-button {
-  border: none;
-  margin-left: 0;
-}
-
-.navigation {
-  padding: 1rem;
-  border: solid 5px colors.$primary-color;
-  background-color: colors.$background-color;
-  position: absolute;
-  width: 60vw;
-
-  ul {
-    list-style-type: none;
-
-    li {
-      color: colors.$primary-color;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-
-      a {
-        text-decoration: none;
-        color: colors.$primary-color;
-        text-transform: uppercase;
-      }
-    }
-
-    .data-nav {
-      margin-bottom: auto;
-    }
-
-    #popup-button-wrapper {
-      display: flex;
-      flex-direction: column;
-
-      button {
-        border: none;
-        background-color: transparent;
-        text-align: left;
-        color: colors.$primary-color;
-        margin-left: 1rem;
-      }
-    }
-
-    .bottom {
-      margin-top: 1rem;
-    }
-    .login {
-      border: 0;
-      background-color: transparent;
-      text-align: left;
-      margin-top: auto;
-      margin-left: 0;
-    }
-  }
-}
-
 #dash-nav-web {
-  display: none;
+	display: none;
+}
+
+.burger-menu {
+	cursor: pointer;
+	z-index: 15;
+	position: absolute;
+	right: 10px;
+	margin: 10px;
+	.burgerline1,
+	.burgerline2 {
+		width: 100%;
+		height: 2px;
+		border-radius: 10px;
+		background-color: colors.$primary-color;
+	}
+	p {
+		font-size: 0.9rem;
+		padding: 6px 0;
+		text-align: center;
+	}
+}
+
+.change .burgerline1 {
+	transform: rotate(-45deg) translate(-10px, 12px);
+	transition: all 0.4s;
+}
+.change p {
+	opacity: 0;
+	transition: all 0.4s;
+}
+.change .burgerline2 {
+	transform: rotate(45deg) translate(-10px, -12px);
+	transition: all 0.4s;
+}
+
+#dash-nav-mobil {
+	background-color: colors.$background-color;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100vw;
+	height: 100vh;
+	ul {
+		list-style-type: none;
+		margin: 80px 30px 0px;
+		position: relative;
+		height: 90vh;
+		li {
+			font-size: 0.95rem;
+			color: colors.$primary-color;
+			margin-bottom: 1.5rem;
+			text-transform: uppercase;
+
+			a {
+				text-decoration: none;
+				color: colors.$primary-color;
+				text-transform: uppercase;
+			}
+		}
+		.logout-button {
+			position: absolute;
+			width: 100px;
+			bottom: 100px;
+			left: 0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		a:hover,
+		li:hover {
+			color: colors.$brown-color;
+		}
+
+		a[href="dashboard.html"] {
+			color: colors.$brown-color;
+		}
+
+		#popup-button-wrapper {
+			display: flex;
+			flex-direction: column;
+			button {
+				border: none;
+				font-family: "EB Garamond", serif;
+				margin: 0 auto 0 15px;
+			}
+		}
+	}
+	ul:hover {
+		cursor: pointer;
+	}
+}
+
+details button:hover {
+	border: none;
 }
 
 @media only screen and (min-width: 1000px) {
-  #burger-button {
-    display: none;
-  }
+	#dash-nav-mobil,
+	.burger-menu {
+		display: none;
+	}
+	#dash-nav-web {
+		display: block;
+		border: solid 4px colors.$primary-color;
+		position: relative;
+		width: auto;
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row-start: 1;
+		grid-row-end: 5;
+		ul {
+			list-style-type: none;
+			margin: 20px 10px 0px;
+			position: relative;
+			height: 90%;
+			li {
+				font-size: 0.95rem;
+				color: colors.$primary-color;
+				margin-bottom: 1.5rem;
+				text-transform: uppercase;
+				a {
+					text-decoration: none;
+					color: colors.$primary-color;
+					text-transform: uppercase;
+				}
+			}
+			.logout-button {
+				position: absolute;
+				bottom: 20px;
+				width: 100px;
+				left: 0;
+				right: 0;
+				margin-left: auto;
+				margin-right: auto;
+			}
 
-  #dash-nav-mobil {
-    display: none;
-  }
+			a:hover,
+			li:hover {
+				color: colors.$brown-color;
+			}
 
-  #dash-nav-web {
-    display: block;
-  }
+			a[href="dashboard.html"] {
+				color: colors.$brown-color;
+			}
 
-  .navigation {
-    position: relative;
-    width: auto;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 5;
-  }
+			#popup-button-wrapper {
+				display: flex;
+				flex-direction: column;
+				button {
+					border: none;
+					font-family: "EB Garamond", serif;
+					margin: 0 auto 0 15px;
+				}
+			}
+		}
+		ul:hover {
+			cursor: pointer;
+		}
+	}
+}
+
+.hide {
+	display: none;
 }
