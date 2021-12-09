@@ -1,24 +1,33 @@
-#dash-income {
-  #chart-container {
-    display: flex;
-    justify-content: center;
-    canvas {
-      width: 80% !important;
-      height: 80% !important;
-    }
-  }
-  .income-number {
-    text-align: center;
-    position: relative;
-  }
+.income-wrapper {
+	position: relative;
+}
+
+.chart-container {
+	width: 80%;
+	height: 80%;
+	margin: 0 auto;
+}
+.income-number {
+	text-align: center;
+	width: 70px;
+	height: 25px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 @media only screen and (min-width: 1000px) {
-  #dash-income {
-    grid-column-start: 7;
-    grid-column-end: 10;
-    grid-row-start: 4;
-    grid-row-end: 7;
-    height: 90%;
-  }
+	#dash-income {
+		grid-column-start: 7;
+		grid-column-end: 10;
+		grid-row-start: 4;
+		grid-row-end: 7;
+		//height: 90%;
+	}
 }
