@@ -498,12 +498,14 @@ function claculateCalendar() {
   const today = new Date();
   const month = String(today.getMonth() + 1).padStart(2, "0"); //January is 0
   const year = today.getFullYear();
+  const day = String(today.getDate()).padStart(1, "0");
 
   calendarData.currentMonth = month;
   calendarData.currentYear = year;
-  calendarData.currentDay = String(today.getDate()).padStart(1, "0");
+  calendarData.currentDay = day;
 
   displayCalendar(month, year);
+  dispayDashCalendar(day, month);
   displayActiveDay();
   registerCells();
 }
@@ -552,7 +554,7 @@ function displayCalendar(month, year) {
 
         //Make sure to stop if end of month is reached
       } else if (date > daysInMonth(month, year)) {
-        if (j < 7) {
+        if (j <= 7) {
           //Create an emty cell and appent to row
           let cell = document.createElement("td");
           let cellText = document.createTextNode("");
@@ -642,4 +644,22 @@ function registerCells() {
       });
     }
   });
+}
+
+function dispayDashCalendar(day, month) {
+  console.log(day, month);
+
+  const monthName = calendarData.monthArray[month - 1];
+
+  document.querySelector("#calendar-today").textContent = `${monthName} ${day}`;
+
+  if (day == 1 || day == 21 || day == 31) {
+    document.querySelector("#calendar-today").textContent += "st";
+  } else if (day == 2 || day == 22) {
+    document.querySelector("#calendar-today").textContent += "nd";
+  } else if (day == 3 || day == 23) {
+    document.querySelector("#calendar-today").textContent += "rd";
+  } else {
+    document.querySelector("#calendar-today").textContent += "th";
+  }
 }
