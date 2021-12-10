@@ -67,6 +67,7 @@ const beerSold = {
 };
 
 function init() {
+
   getData();
   registerButtons();
   claculateCalendar();
@@ -184,6 +185,15 @@ function registerButtons() {
   //Buttons for the calendar
   document.querySelector("#forward").addEventListener("click", goForward);
   document.querySelector("#back").addEventListener("click", goBack);
+}
+
+function getUserLogin() {
+	if (localStorage.login) {
+		//capitalize first letter in username
+		const username = localStorage.login.charAt(0).toUpperCase() + localStorage.login.slice(1);
+		//insert username in HTML
+		document.querySelector("#user-login").textContent += ` ${username}`;
+	}
 }
 
 async function getData() {
