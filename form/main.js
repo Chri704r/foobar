@@ -1259,6 +1259,7 @@ function createTheOrder(data) {
   const firstNameUser = userName.substring(0, userName.indexOf(" "));
   const surName = document.createElement("p");
   surName.classList.add("surname");
+  surName.style.display = "none";
   surName.textContent = `${firstNameUser}`;
   document.querySelector("#receipt").appendChild(surName);
   mailOrderContainer.id = "mail_order_container";
