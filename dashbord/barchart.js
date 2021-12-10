@@ -57,6 +57,7 @@ function init() {
 	getData();
 	registerButtons();
 	claculateCalendar();
+	getUserLogin();
 }
 
 function registerButtons() {
@@ -68,11 +69,13 @@ function registerButtons() {
 
 	//button for signing out on web version
 	document.querySelector("#dash-nav-web .logout-button").addEventListener("click", () => {
+		localStorage.removeItem("login");
 		window.location.href = "index.html";
 	});
 
 	//button for signing out on mobile version
 	document.querySelector("#dash-nav-mobil .logout-button").addEventListener("click", () => {
+		localStorage.removeItem("login");
 		window.location.href = "index.html";
 	});
 
@@ -157,6 +160,15 @@ function registerButtons() {
 	document.querySelector("#back").addEventListener("click", goBack);
 
 	//Make calendar cells clickable
+}
+
+function getUserLogin() {
+	if (localStorage.login) {
+		//capitalize first letter in username
+		const username = localStorage.login.charAt(0).toUpperCase() + localStorage.login.slice(1);
+		//insert username in HTML
+		document.querySelector("#user-login").textContent += ` ${username}`;
+	}
 }
 
 async function getData() {

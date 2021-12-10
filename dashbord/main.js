@@ -12,7 +12,13 @@ function init() {
 	//hide login popup section
 	document.querySelector("#login-section").classList.add("hide");
 	//listen for click on "GO TO DASHBOARD" button
-	document.querySelector("#dashboard-button").addEventListener("click", clickLogin);
+	document.querySelector("#dashboard-button").addEventListener("click", () => {
+		if (localStorage.login) {
+			window.location.href = "dashboard.html";
+		} else {
+			clickLogin();
+		}
+	});
 }
 
 //open login popup
@@ -187,12 +193,14 @@ function loginFunction() {
 		e.preventDefault();
 
 		let userCorrect = false;
+		let userName;
 
 		//check if user and password exist and match
 		userData.forEach((user) => {
 			if (user.username === usernameInput && user.password === passwordInput) {
 				//if password and user match set variabel to be true
 				userCorrect = true;
+				userName = user.username;
 			}
 		});
 
@@ -208,6 +216,7 @@ function loginFunction() {
 				});
 			});
 		} else {
+			window.localStorage.setItem("login", userName);
 			//go to manager and worker dashboard
 			window.location.href = "dashboard.html";
 		}
