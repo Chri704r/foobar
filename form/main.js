@@ -1163,9 +1163,8 @@ function registerPayment() {
 
       const OrderData = createObject();
       post(OrderData);
-      //sendMail();
-      fakeMail(OrderData);
-      goToReceipt();
+
+      // goToReceipt();
     }
   });
 }
@@ -1225,29 +1224,13 @@ function goToReceipt(data) {
   document.querySelector("#your-order").textContent = id;
   document.querySelector("#payment").classList.add("hide");
   document.querySelector("#receipt").classList.remove("hide");
+
   //document.querySelector("header").classList.remove("responsive_header");
-}
-
-function sendMail(mail) {
-  console.log("order", basketData);
-
-  const mailTemplate = {
-    id_number: document.getElementById("your-order").value,
-    first_name: document.getElementById("name").value,
-    email_to: document.getElementById("mail").value,
-    //order: document.getElementsByClassName("beer_order_name").value,
-    //figure out how to send the order information
-    //dato?
-  };
-
-  emailjs.send("service_m4us0sl", "template_l9e40k3", mailTemplate).then(function (res) {
-    console.log("success", res.status);
-  });
 }
 
 function post(data) {
   const postData = JSON.stringify(data);
-
+  console.log("order", data);
   fetch("https://groupfoobar.herokuapp.com/order", {
     method: "post",
     headers: {
@@ -1258,35 +1241,57 @@ function post(data) {
   })
     .then((res) => res.json())
 
-    .then((data) => goToReceipt(data));
+    .then((idData) => {
+      goToReceipt(idData);
+
+      createTheOrder(data);
+      //sendMail(data);
+    });
 
   //get();
 }
+function createTheOrder(data) {
+  console.log("create the order");
+  // let classNameBeer = order.name.replaceAll(" ", "_").toLowerCase();
+  const mailOrderContainer = document.createElement("div");
+  //mailOrderContainer.style.display = "none";
+  const userName = document.getElementById("name").value;
+  const firstNameUser = userName.substring(0, userName.indexOf(" "));
+  const surName = document.createElement("p");
+  surName.classList.add("surname");
+  surName.textContent = `${firstNameUser}`;
+  document.querySelector("#receipt").appendChild(surName);
+  mailOrderContainer.id = "mail_order_container";
+  document.querySelector("#receipt").appendChild(mailOrderContainer);
 
-function fakeMail(data) {
-  console.log("mail sent");
+  data.forEach((order) => {
+    const mailOrderAmount = document.createElement("p");
+    mailOrderAmount.classList.add("mail_order_amount");
+    //mailOrderAmount.style.marginLeft = "10px";
+    mailOrderAmount.textContent = `        ${order.amount}x `;
+    mailOrderContainer.append(mailOrderAmount);
+
+    const mailOrderName = document.createElement("p");
+    mailOrderName.classList.add("mail_order_name");
+    mailOrderName.textContent = `  ${order.name}    `;
+    mailOrderContainer.append(mailOrderName);
+  });
+  sendMail(data);
+}
+
+function sendMail(data) {
   console.log("data", data);
-  data.forEach((element) => console.log(element));
+  let dataLenght = data.length;
+  console.log("data length", dataLenght);
 
-  // const orderMail = document.createElement("textarea");
-  // orderMail.style.display = "none";
-  // orderMail.classList.add("input_mail_hidden");
-  // document.querySelector(".pay_container").appendChild(orderMail);
+  const mailTemplate = {
+    id_number: document.querySelector("#your-order").textContent,
+    first_name: document.querySelector(".surname").textContent,
+    email_to: document.getElementById("mail").value,
+    message: document.querySelector("#mail_order_container").textContent,
+  };
 
-  // let mailOrder = data.forEach((beer) => {
-  //   beer.document.querySelector(".input_mail_hidden").textContent = `${data.name},-`;
-  // });
-  //console.log("order number inner html", document.querySelector("#your-order").innerHTML);
-  // console.log("order number value", document.querySelector("#your-order").value);
-  // let firstNameOfClassName = classNameOfBeer.substring(0, classNameOfBeer.indexOf("_"));
-  console.log("email to", document.getElementById("mail").value);
-
-  let userName = document.getElementById("name").value;
-  let firstNameUser = userName.substring(0, userName.indexOf(" "));
-  console.log("first name", firstNameUser);
-
-  // console.log("order", orderMail);
-  // console.log("order", mailOrder);
-  // console.log("order name", data.name);
-  //console.log("order amount", data.amount);
+  emailjs.send("service_m4us0sl", "template_l9e40k3", mailTemplate).then(function (res) {
+    console.log("success", res.status);
+  });
 }
