@@ -1254,7 +1254,7 @@ function createTheOrder(data) {
   console.log("create the order");
   // let classNameBeer = order.name.replaceAll(" ", "_").toLowerCase();
   const mailOrderContainer = document.createElement("div");
-  //mailOrderContainer.style.display = "none";
+  mailOrderContainer.style.display = "none";
   const userName = document.getElementById("name").value;
   const firstNameUser = userName.substring(0, userName.indexOf(" "));
   const surName = document.createElement("p");
