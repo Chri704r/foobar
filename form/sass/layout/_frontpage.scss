@@ -147,6 +147,11 @@ header {
   width: 96vw;
   max-height: 41vh;
   padding: 1rem;
+
+  span {
+    color: colors.$primary-color;
+    font-size: 1.5rem;
+  }
 }
 .card_wrapper label {
   font-size: 0.53rem;
@@ -553,7 +558,7 @@ header {
       gap: 0.5rem;
 
       input {
-        width: 30%;
+        width: 20%;
       }
     }
   }
