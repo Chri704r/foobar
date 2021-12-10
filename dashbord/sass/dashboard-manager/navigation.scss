@@ -114,11 +114,19 @@ details button:hover {
 		grid-column-end: 3;
 		grid-row-start: 1;
 		grid-row-end: 5;
+		padding-top: 20px;
+		#user-login {
+			margin: 0 10px;
+			font-size: 1.2rem;
+			border: solid 1px colors.$primary-color;
+			background: linear-gradient(41deg, rgba(62, 69, 56, 1) 50%, rgba(70, 82, 64, 0.671) 77%, rgba(62, 69, 56, 1) 100%);
+			padding: 10px 5px;
+		}
 		ul {
 			list-style-type: none;
-			margin: 20px 10px 0px;
+			margin: 25px 10px 0px;
 			position: relative;
-			height: 90%;
+			height: 85%;
 			li {
 				font-size: 0.95rem;
 				color: colors.$primary-color;
@@ -130,10 +138,11 @@ details button:hover {
 					text-transform: uppercase;
 				}
 			}
+
 			.logout-button {
 				position: absolute;
-				bottom: 20px;
-				width: 100px;
+				width: 80px;
+				bottom: 30px;
 				left: 0;
 				right: 0;
 				margin-left: auto;
