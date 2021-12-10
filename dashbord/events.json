@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Happy Hour",
+        "description": "All beers are half the price",
+        "frequency": "evrey day",
+        "date": {
+            "year": "2021",
+            "month": "12",
+            "day": "1"
+        },
+        "time": {
+            "start": "20:00",
+            "end": "21:00"
+        }
+    },
+    {
+        "name": "New years eve party",
+        "description": "Special new years eve party",
+        "frequency": "once",
+        "date": {
+            "year": "2021",
+            "month": "12",
+            "day": "31"
+        },
+        "time": {
+            "start": "18:00",
+            "end": "22:00"
+        }
+    },
+    {
+        "name": "Friday special",
+        "description": "Special beers available today",
+        "frequency": "once",
+        "date": {
+            "year": "2021",
+            "month": "12",
+            "day": "10"
+        },
+        "time": {
+            "start": "12:00",
+            "end": "22:00"
+        }
+    }
+]

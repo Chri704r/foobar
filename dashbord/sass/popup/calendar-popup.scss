@@ -39,12 +39,14 @@
 
     .bottom {
       table {
+        table-layout: fixed;
         width: 100%;
         border: 1px solid colors.$primary-color;
         border-collapse: collapse;
       }
       th,
       td {
+        width: 14.2%;
         border: 1px solid colors.$primary-color;
         border-collapse: collapse;
         color: colors.$primary-color;
@@ -52,13 +54,36 @@
         text-align: center;
       }
 
-      .today {
+      .active-day {
         background-color: colors.$primary-color;
+        opacity: 0.3;
         color: colors.$background-color;
       }
 
-      .active-day {
-        border: 2px solid colors.$primary-color;
+      .today {
+        background-color: colors.$primary-color;
+        color: colors.$background-color;
+        opacity: 1 !important;
+      }
+
+      .has-event::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        height: 5px;
+        width: 5px;
+        border-radius: 50%;
+        background-color: colors.$primary-color;
+        margin-left: 7.5vw;
+        margin-top: 0.4vh;
+      }
+
+      .today.has-event::before {
+        background-color: colors.$background-color;
+      }
+
+      .active-day.has-event::before {
+        background-color: colors.$background-color;
       }
     }
   }
@@ -66,6 +91,27 @@
   .col-right {
     h2 {
       text-align: center;
+    }
+
+    h3 {
+      text-decoration: underline;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    span {
+      color: colors.$primary-color;
+    }
+
+    .devider {
+      height: 1px;
+      width: 100%;
+      background-color: colors.$primary-color;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
     }
   }
 }
@@ -92,6 +138,34 @@
         td {
           font-size: 1.5rem;
         }
+
+        .has-event::before {
+          height: 7px;
+          width: 7px;
+          margin-left: 6vw;
+          margin-top: 0.4vh;
+        }
+      }
+    }
+
+    .col-right {
+      width: 70%;
+
+      h2 {
+        text-align: left !important;
+      }
+
+      h3 {
+        text-decoration: underline;
+      }
+
+      p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      span {
+        color: colors.$primary-color;
       }
     }
   }
@@ -122,12 +196,19 @@
           width: 2em;
           height: 3rem;
         }
+
+        .has-event::before {
+          height: 10px;
+          width: 10px;
+          margin-left: 3vw;
+          margin-top: -1vh;
+        }
       }
     }
 
     .col-right {
       h2 {
-        text-align: center;
+        font-size: 1.5rem;
       }
     }
   }

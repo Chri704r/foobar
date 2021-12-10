@@ -1,9 +1,49 @@
+@use "../variabels/colors";
+
+#dash-calendar {
+  margin-bottom: 15px;
+  background: linear-gradient(
+    41deg,
+    rgba(62, 69, 56, 1) 50%,
+    rgba(70, 82, 64, 0.671) 77%,
+    rgba(62, 69, 56, 1) 100%
+  );
+  #dash-event {
+    h3 {
+      text-decoration: underline;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    span {
+      color: colors.$primary-color;
+    }
+  }
+
+  .devider {
+    height: 1px;
+    width: 100%;
+    background-color: colors.$primary-color;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (min-width: 760px) {
+  #dash-calendar {
+    margin-bottom: 0;
+  }
+}
+
 @media only screen and (min-width: 1000px) {
-	#dash-calendar {
-		grid-column-start: 7;
-		grid-column-end: 10;
-		grid-row-start: 1;
-		grid-row-end: 4;
-		height: 90%;
-	}
+  #dash-calendar {
+    grid-column-start: 7;
+    grid-column-end: 10;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    height: 90%;
+  }
 }
