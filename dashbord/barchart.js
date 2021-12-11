@@ -67,7 +67,6 @@ const beerSold = {
 };
 
 function init() {
-
   getData();
   registerButtons();
   claculateCalendar();
@@ -188,12 +187,13 @@ function registerButtons() {
 }
 
 function getUserLogin() {
-	if (localStorage.login) {
-		//capitalize first letter in username
-		const username = localStorage.login.charAt(0).toUpperCase() + localStorage.login.slice(1);
-		//insert username in HTML
-		document.querySelector("#user-login").textContent += ` ${username}`;
-	}
+  if (localStorage.login) {
+    //capitalize first letter in username
+    const username =
+      localStorage.login.charAt(0).toUpperCase() + localStorage.login.slice(1);
+    //insert username in HTML
+    document.querySelector("#user-login").textContent += ` ${username}`;
+  }
 }
 
 async function getData() {
@@ -624,11 +624,14 @@ async function displayEventMarkers() {
 function displayEvents(events, selector) {
   console.log("events", events);
 
+  let hasEvent = false;
+
   events.forEach((event) => {
     if (calendarData.currentMonth == event.date.month) {
       console.log("Is in december");
       if (calendarData.currentDay == event.date.day) {
         console.log("its the right day");
+
         const clone = document
           .querySelector("#temp-event")
           .content.cloneNode(true);
@@ -642,9 +645,18 @@ function displayEvents(events, selector) {
 
         //Append clone to section
         selector.appendChild(clone);
+
+        hasEvent = true;
       }
     }
   });
+
+  if (!hasEvent) {
+    let span = document.createElement("span");
+    span.textContent = "No events planned";
+
+    selector.appendChild(span);
+  }
 }
 
 function daysInMonth(month, year) {

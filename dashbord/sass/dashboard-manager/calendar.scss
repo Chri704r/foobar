@@ -1,6 +1,7 @@
 @use "../variabels/colors";
 
 #dash-calendar {
+  overflow-y: scroll;
   margin-bottom: 15px;
   background: linear-gradient(
     41deg,
@@ -8,6 +9,26 @@
     rgba(70, 82, 64, 0.671) 77%,
     rgba(62, 69, 56, 1) 100%
   );
+
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .bar-scheduele {
+    .sch-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+    span {
+      color: colors.$primary-color;
+      margin-bottom: 0.5rem;
+    }
+
+    .B {
+      font-weight: bold;
+    }
+  }
+
   #dash-event {
     h3 {
       text-decoration: underline;
