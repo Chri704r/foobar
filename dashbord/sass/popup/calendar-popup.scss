@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow-y: scroll;
 
   .col-left {
     border: solid 2px colors.$primary-color;
@@ -69,21 +70,13 @@
       .has-event::before {
         content: " ";
         display: block;
-        position: absolute;
+        position: relative;
         height: 5px;
         width: 5px;
         border-radius: 50%;
-        background-color: colors.$primary-color;
+        background-color: #d27360;
         margin-left: 7.5vw;
         margin-top: 0.4vh;
-      }
-
-      .today.has-event::before {
-        background-color: colors.$background-color;
-      }
-
-      .active-day.has-event::before {
-        background-color: colors.$background-color;
       }
     }
   }
@@ -93,25 +86,47 @@
       text-align: center;
     }
 
-    h3 {
-      text-decoration: underline;
-    }
-
-    p {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    span {
-      color: colors.$primary-color;
-    }
-
     .devider {
       height: 1px;
       width: 100%;
       background-color: colors.$primary-color;
       margin-top: 0.5rem;
       margin-bottom: 1rem;
+    }
+
+    .bar-scheduele {
+      .sch-wrapper {
+        display: flex;
+        justify-content: space-between;
+      }
+      span {
+        color: colors.$primary-color;
+        margin-bottom: 0.5rem;
+      }
+
+      .B {
+        font-weight: bold;
+      }
+    }
+
+    .left-h2 {
+      text-align: left;
+      margin-bottom: 1rem;
+    }
+
+    #event-wrapper {
+      h3 {
+        text-decoration: underline;
+      }
+
+      p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      span {
+        color: colors.$primary-color;
+      }
     }
   }
 }
@@ -144,6 +159,7 @@
           width: 7px;
           margin-left: 6vw;
           margin-top: 0.4vh;
+          position: absolute;
         }
       }
     }
@@ -200,7 +216,7 @@
         .has-event::before {
           height: 10px;
           width: 10px;
-          margin-left: 3vw;
+          margin-left: 3.4vw;
           margin-top: -1vh;
         }
       }
