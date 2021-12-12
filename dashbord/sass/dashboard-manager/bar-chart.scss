@@ -1,40 +1,41 @@
 @use "../variabels/colors";
 
 #dash-queue {
-	margin-bottom: 15px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	min-height: 130px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 130px;
 
-	#bar-wrapper {
-		display: flex;
-		gap: 10px;
-		align-items: flex-end;
+  #bar-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
 
-		.bar {
-			width: 100%;
-			background: colors.$gradient-1-1;
-			background: colors.$gradient-1-2;
-			height: 0.1vh;
-		}
-	}
+    .bar {
+      width: 100%;
+      background: colors.$gradient-1-1;
+      background: colors.$gradient-1-2;
+      height: 0.1vh;
+    }
+  }
 }
 
 @media only screen and (min-width: 760px) {
-	#dash-queue {
-		grid-column-start: 1;
-		grid-column-end: -1;
-		margin-bottom: 0px;
-	}
+  #dash-queue {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    margin-bottom: 0px;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
-	#dash-queue {
-		grid-column-start: 3;
-		grid-column-end: 7;
-		grid-row-start: 1;
-		grid-row-end: 3;
-		height: 85%;
-	}
+  #dash-queue {
+    grid-column-start: 3;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    height: 85%;
+  }
 }
