@@ -553,40 +553,51 @@ async function displayCalendar(month, year) {
 }
 
 async function displayEventMarkers() {
-	const eData = await fetchfunction("events.json");
+  const eData = await fetchfunction("events.json");
 
-	eData.forEach((event) => {
-		if (calendarData.currentMonth == event.date.month) {
-			document.querySelector(`td[id="${event.date.day}"]`).classList.add("has-event");
-		}
-	});
+  eData.forEach((event) => {
+    if (calendarData.currentYear == event.date.year) {
+      if (calendarData.currentMonth == event.date.month) {
+        document
+          .querySelector(`td[id="${event.date.day}"]`)
+          .classList.add("has-event");
+      }
+    }
+  });
 }
 
 function displayEvents(events, selector) {
 	console.log("events", events);
 
 	let hasEvent = false;
+  
+  events.forEach((event) => {
+    if (calendarData.currentYear == event.date.year) {
+      if (calendarData.currentMonth == event.date.month) {
+        console.log("Is in december");
+        if (calendarData.currentDay == event.date.day) {
+          console.log("its the right day");
 
-	events.forEach((event) => {
-		if (calendarData.currentMonth == event.date.month) {
-			console.log("Is in december");
-			if (calendarData.currentDay == event.date.day) {
-				console.log("its the right day");
+          const clone = document
+            .querySelector("#temp-event")
+            .content.cloneNode(true);
 
-				const clone = document.querySelector("#temp-event").content.cloneNode(true);
+          //Insert events in clone
+          clone.querySelector(".title").textContent = event.name;
+          clone.querySelector(".description").textContent = event.description;
+          clone.querySelector(
+            ".time"
+          ).textContent = `${event.time.start} - ${event.time.end}`;
 
-				//Insert events in clone
-				clone.querySelector(".title").textContent = event.name;
-				clone.querySelector(".description").textContent = event.description;
-				clone.querySelector(".time").textContent = `${event.time.start} - ${event.time.end}`;
+          //Append clone to section
+          selector.appendChild(clone);
 
-				//Append clone to section
-				selector.appendChild(clone);
+          hasEvent = true;
+        }
+      }
+    }
+  });
 
-				hasEvent = true;
-			}
-		}
-	});
 
 	if (!hasEvent) {
 		let span = document.createElement("span");

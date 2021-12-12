@@ -1,6 +1,7 @@
 @use "../variabels/colors";
 
 #dash-calendar {
+  cursor: pointer;
   overflow-y: scroll;
   margin-bottom: 15px;
   background: linear-gradient(

@@ -1,40 +1,47 @@
 @use "../variabels/colors";
 
 body {
-	background-color: colors.$background-color;
-	padding: 1rem;
+  background-color: colors.$background-color;
+  padding: 1rem;
 }
 
 #dash-content-wrapper {
-	section {
-		border: solid 4px colors.$primary-color;
-		background-color: transparent;
-		padding: 1rem;
-	}
+  section {
+    cursor: pointer;
+    border: solid 4px colors.$primary-color;
+    background-color: transparent;
+    padding: 1rem;
+    background: linear-gradient(
+      41deg,
+      rgba(62, 69, 56, 1) 50%,
+      rgba(70, 82, 64, 0.671) 77%,
+      rgba(62, 69, 56, 1) 100%
+    );
+  }
 }
 
 .hide {
-	display: none;
+  display: none;
 }
 
 @media only screen and (min-width: 760px) {
-	#dash-content-wrapper {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 1rem;
-	}
+  #dash-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
-	main {
-		height: 100vh;
-		max-height: 100vh;
+  main {
+    height: 100vh;
+    max-height: 100vh;
 
-		#dash-content-wrapper {
-			grid-template-columns: repeat(9, 1fr);
-			grid-template-rows: repeat(6, 1fr);
-			height: 100vh;
-			max-height: 100vh;
-		}
-	}
+    #dash-content-wrapper {
+      grid-template-columns: repeat(9, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      height: 100vh;
+      max-height: 100vh;
+    }
+  }
 }
