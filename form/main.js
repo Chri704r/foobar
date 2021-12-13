@@ -28,14 +28,6 @@ function init() {
   fill.style.fill = "transparent";
 }
 
-function registerButtons() {
-  console.log("registered buttons");
-  document.querySelectorAll("[data-action='filter']").forEach((button) => {
-    button.addEventListener("click", selectFilter);
-  });
-  document.querySelector(".shoppingcart").addEventListener("click", showBasket);
-}
-
 //loading json
 async function getData() {
   // const response = await fetch("https://groupfoobar.herokuapp.com/");
@@ -56,6 +48,14 @@ async function getData() {
   }
 
   dataLoop();
+}
+
+function registerButtons() {
+  console.log("registered buttons");
+  document.querySelectorAll("[data-action='filter']").forEach((button) => {
+    button.addEventListener("click", selectFilter);
+  });
+  document.querySelector(".shoppingcart").addEventListener("click", showBasket);
 }
 //prepare objects
 function prepareObjects(beers, taps) {
@@ -111,12 +111,23 @@ function getCategory(category) {
 function selectFilter(event) {
   const filter = event.target.dataset.filter;
   console.log(`User selcted ${filter}`);
-
+  //document.querySelectorAll("[data-action='filter']")
+  const selectedFilters = document.querySelectorAll(".active_button");
+  console.log("selectedFilters", selectedFilters);
+  //selectedFilters.classList.remove("active_button");
+  selectedFilters.forEach((filter) => {
+    filter.classList.remove("active_button");
+  });
   setFilter(filter);
 }
 function setFilter(filter) {
   settings.filterBy = filter;
-  document.querySelector("[data-filter=all]").classList.remove("active_button");
+  // if filter is selected add class active_button
+  // if another is selected remove class active_button from the old one
+  //document.querySelector("[data-filter=all]").classList.remove("active_button");
+  console.log("settings", settings);
+  console.log("settings filterBY", settings.filterBy);
+  document.querySelector(`[data-filter=${filter}]`).classList.add("active_button");
 
   buildList();
 }
