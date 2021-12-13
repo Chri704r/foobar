@@ -358,13 +358,14 @@ function displayBartenders(data) {
         bartender.usingTap = "None";
       }
 
-      //Insert bartender in clone
-      clone.querySelector(".bartender-name").textContent = bartender.name;
-      clone.querySelector(".status").textContent = bartender.status;
-      clone.querySelector(".status-detail").textContent =
-        workstatus[bartender.statusDetail];
-      clone.querySelector(".using-tap").textContent =
-        "Using tab: " + bartender.usingTap;
+
+			//Insert bartender in clone
+			clone.querySelector(".bartender_photo").src = `assets/${bartender.name}_edit.png`;
+			clone.querySelector(".bartender-name").textContent = bartender.name;
+			clone.querySelector(".status").textContent = bartender.status;
+			clone.querySelector(".status-detail").textContent = workstatus[bartender.statusDetail];
+			clone.querySelector(".using-tap").textContent = "Using tab: " + bartender.usingTap;
+
 
       clone
         .querySelector(".bart-article")
@@ -678,17 +679,15 @@ async function displayCalendar(month, year) {
 }
 
 async function displayEventMarkers() {
-  const eData = await fetchfunction("events.json");
+	const eData = await fetchfunction("events.json");
 
-  eData.forEach((event) => {
-    if (calendarData.currentYear == event.date.year) {
-      if (calendarData.currentMonth == event.date.month) {
-        document
-          .querySelector(`td[id="${event.date.day}"]`)
-          .classList.add("has-event");
-      }
-    }
-  });
+	eData.forEach((event) => {
+		if (calendarData.currentYear == event.date.year) {
+			if (calendarData.currentMonth == event.date.month) {
+				document.querySelector(`td[id="${event.date.day}"]`).classList.add("has-event");
+			}
+		}
+	});
 }
 
 function displayEvents(events, selector) {
@@ -726,6 +725,7 @@ function displayEvents(events, selector) {
   if (!hasEvent) {
     let span = document.createElement("span");
     span.textContent = "No events planned";
+
 
     selector.appendChild(span);
   }
