@@ -35,6 +35,7 @@ header {
   gap: 15vw;
   height: 10vh;
   flex-direction: row;
+  margin-top: 1rem;
 }
 .logo {
   width: 32vw;
@@ -42,9 +43,10 @@ header {
 }
 .responsive_header {
   margin-left: 1rem;
-  gap: 35vw;
-  width: 57vw;
+  gap: 11vw;
+  width: 64vw;
   margin-top: 1rem;
+  justify-content: flex-start;
 }
 .shoppingcart {
   width: 10vw;
