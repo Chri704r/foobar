@@ -260,6 +260,11 @@ header {
 	padding-bottom: 0.5rem;
 	align-items: center;
 }
+
+.basket_order_cont_order {
+	width: 33vw !important;
+}
+
 .basket_items,
 .order_txt_parent {
 	display: flex;
@@ -547,7 +552,8 @@ header {
 		}
 	}
 	.card_wrapper {
-		width: 62%;
+		width: 40vw;
+		max-width: 400px;
 		max-height: 54vh;
 	}
 	.card_wrapper label {
