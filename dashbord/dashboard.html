@@ -1,356 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FooBar Dashboard</title>
-  </head>
-  <body>
-    <header>
-      <div class="burger-menu">
-        <div class="burgerline1"></div>
-        <p>MENU</p>
-        <div class="burgerline2"></div>
-      </div>
-      <nav id="dash-nav-mobil" class="hide navigation">
-        <ul>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="index.html">Custumer dashboard</a></li>
-          <li class="data-nav">
-            <details>
-              <summary>Data</summary>
-              <div id="popup-button-wrapper">
-                <button class="popup-queue">Custumer queue</button>
-                <button class="popup-beer">Beer</button>
-                <button class="popup-income">Income</button>
-                <button class="popup-calendar">Calendar</button>
-                <button class="popup-bartender">Bartenders</button>
-              </div>
-            </details>
-          </li>
-          <button class="logout-button">Sign out</button>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <div id="dash-content-wrapper">
-        <nav id="dash-nav-web" class="navigation">
-          <p id="user-login">Hello,</p>
-          <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="index.html">Customer dashboard</a></li>
-            <li class="data-nav">
-              <details>
-                <summary>Data</summary>
-                <div id="popup-button-wrapper">
-                  <button class="popup-queue">Custumer queue</button>
-                  <button class="popup-beer">Beer</button>
-                  <button class="popup-income">Income</button>
-                  <button class="popup-calendar">Calendar</button>
-                  <button class="popup-bartender">Bartenders</button>
-                </div>
-              </details>
-            </li>
-            <button class="logout-button">Sign out</button>
-          </ul>
-        </nav>
-        <section id="dash-queue">
-          <h2>Queue</h2>
-          <div id="bar-wrapper">
-            <div class="bar" id="bar-1"></div>
-            <div class="bar" id="bar-2"></div>
-            <div class="bar" id="bar-3"></div>
-            <div class="bar" id="bar-4"></div>
-            <div class="bar" id="bar-5"></div>
-            <div class="bar" id="bar-6"></div>
-            <div class="bar" id="bar-7"></div>
-            <div class="bar" id="bar-8"></div>
-            <div class="bar" id="bar-9"></div>
-            <div class="bar" id="bar-10"></div>
-          </div>
-        </section>
-        <section id="dash-taps">
-          <div id="beer-img-container">
-            <img src="" alt="beer" />
-          </div>
-          <div id="beer-container"></div>
-        </section>
-        <section id="dash-calendar">
-          <h2 id="calendar-today"></h2>
-          <div class="devider"></div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/x-icon" href="/assets/favicon_favicon.svg" />
+		<title>FooBar Dashboard</title>
+	</head>
+	<body>
+		<header>
+			<div class="burger-menu">
+				<div class="burgerline1"></div>
+				<p>MENU</p>
+				<div class="burgerline2"></div>
+			</div>
+			<nav id="dash-nav-mobil" class="hide navigation">
+				<ul>
+					<li><a href="dashboard.html">Dashboard</a></li>
+					<li><a href="index.html">Custumer dashboard</a></li>
+					<li class="data-nav">
+						<details>
+							<summary>Data</summary>
+							<div id="popup-button-wrapper">
+								<button class="popup-queue">Custumer queue</button>
+								<button class="popup-beer">Beer</button>
+								<button class="popup-income">Income</button>
+								<button class="popup-calendar">Calendar</button>
+								<button class="popup-bartender">Bartenders</button>
+							</div>
+						</details>
+					</li>
+					<button class="logout-button">Sign out</button>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<div id="dash-content-wrapper">
+				<nav id="dash-nav-web" class="navigation">
+					<p id="user-login">Hello,</p>
+					<ul>
+						<li><a href="dashboard.html">Dashboard</a></li>
+						<li><a href="index.html">Customer dashboard</a></li>
+						<li class="data-nav">
+							<details>
+								<summary>Data</summary>
+								<div id="popup-button-wrapper">
+									<button class="popup-queue">Custumer queue</button>
+									<button class="popup-beer">Beer</button>
+									<button class="popup-income">Income</button>
+									<button class="popup-calendar">Calendar</button>
+									<button class="popup-bartender">Bartenders</button>
+								</div>
+							</details>
+						</li>
+						<button class="logout-button">Sign out</button>
+					</ul>
+				</nav>
+				<section id="dash-queue">
+					<h2>Queue</h2>
+					<div id="bar-wrapper">
+						<div class="bar" id="bar-1"></div>
+						<div class="bar" id="bar-2"></div>
+						<div class="bar" id="bar-3"></div>
+						<div class="bar" id="bar-4"></div>
+						<div class="bar" id="bar-5"></div>
+						<div class="bar" id="bar-6"></div>
+						<div class="bar" id="bar-7"></div>
+						<div class="bar" id="bar-8"></div>
+						<div class="bar" id="bar-9"></div>
+						<div class="bar" id="bar-10"></div>
+					</div>
+				</section>
+				<section id="dash-taps">
+					<div id="beer-img-container">
+						<img src="" alt="beer" />
+					</div>
+					<div id="beer-container"></div>
+				</section>
+				<section id="dash-calendar">
+					<h2 id="calendar-today"></h2>
+					<div class="devider"></div>
 
-          <h2 class="left-h2">Scheduele</h2>
-          <div class="bar-scheduele">
-            <div class="sch-wrapper">
-              <span class="B">Opening hours:</span>
-              <span>12:00 - 22:00</span>
-            </div>
-            <div class="sch-wrapper">
-              <span class="B">Happy hour:</span>
-              <span>20:00 - 21:00</span>
-            </div>
-            <div class="sch-wrapper">
-              <span class="B">Last call:</span>
-              <span>21:30 - 22:00</span>
-            </div>
-          </div>
-          <div class="devider"></div>
+					<h2 class="left-h2">Scheduele</h2>
+					<div class="bar-scheduele">
+						<div class="sch-wrapper">
+							<span class="B">Opening hours:</span>
+							<span>12:00 - 22:00</span>
+						</div>
+						<div class="sch-wrapper">
+							<span class="B">Happy hour:</span>
+							<span>20:00 - 21:00</span>
+						</div>
+						<div class="sch-wrapper">
+							<span class="B">Last call:</span>
+							<span>21:30 - 22:00</span>
+						</div>
+					</div>
+					<div class="devider"></div>
 
-          <h2 class="left-h2">Events</h2>
-          <div id="dash-event"></div>
-        </section>
-        <section id="dash-income">
-          <h2>Income</h2>
-          <div class="income-wrapper">
-            <div class="chart-container">
-              <canvas id="income-chart"></canvas>
-            </div>
-            <p class="income-number"></p>
-          </div>
-        </section>
-        <section id="dash-bartenders" class="bart-display"></section>
-      </div>
-      <section id="popup">
-        <article id="popup-queue" class="pop-article hide">
-          <div class="outer close-popup">
-            <div class="inner">
-              <label>Close</label>
-            </div>
-          </div>
-          <h1>Queue</h1>
-          <div class="popup-content popup-content-queue">
-            <div id="pop-bar-1" class="bar">
-              <span></span>
-            </div>
-            <div id="pop-bar-2" class="bar">
-              <span></span>
-            </div>
-            <div id="pop-bar-3" class="bar">
-              <span></span>
-            </div>
-            <div id="pop-bar-4" class="bar">
-              <span></span>
-            </div>
-            <div id="pop-bar-5" class="bar">
-              <span></span>
-            </div>
-            <div id="pop-bar-6" class="bar">
-              <span></span>
-            </div>
-            <div id="pop-bar-7" class="bar">
-              <span></span>
-            </div>
-            <div id="pop-bar-8" class="bar">
-              <span></span>
-            </div>
-            <div id="pop-bar-9" class="bar">
-              <span></span>
-            </div>
-            <div id="pop-bar-10" class="bar">
-              <span></span>
-            </div>
-          </div>
-        </article>
+					<h2 class="left-h2">Events</h2>
+					<div id="dash-event"></div>
+				</section>
+				<section id="dash-income">
+					<h2>Income</h2>
+					<div class="income-wrapper">
+						<div class="chart-container">
+							<canvas id="income-chart"></canvas>
+						</div>
+						<p class="income-number"></p>
+					</div>
+				</section>
+				<section id="dash-bartenders" class="bart-display"></section>
+			</div>
+			<section id="popup">
+				<article id="popup-queue" class="pop-article hide">
+					<div class="outer close-popup">
+						<div class="inner">
+							<label>Close</label>
+						</div>
+					</div>
+					<h1>Queue</h1>
+					<div class="popup-content popup-content-queue">
+						<div id="pop-bar-1" class="bar">
+							<span></span>
+						</div>
+						<div id="pop-bar-2" class="bar">
+							<span></span>
+						</div>
+						<div id="pop-bar-3" class="bar">
+							<span></span>
+						</div>
+						<div id="pop-bar-4" class="bar">
+							<span></span>
+						</div>
+						<div id="pop-bar-5" class="bar">
+							<span></span>
+						</div>
+						<div id="pop-bar-6" class="bar">
+							<span></span>
+						</div>
+						<div id="pop-bar-7" class="bar">
+							<span></span>
+						</div>
+						<div id="pop-bar-8" class="bar">
+							<span></span>
+						</div>
+						<div id="pop-bar-9" class="bar">
+							<span></span>
+						</div>
+						<div id="pop-bar-10" class="bar">
+							<span></span>
+						</div>
+					</div>
+				</article>
 
-        <article id="popup-income" class="pop-article hide">
-          <div class="outer close-popup">
-            <div class="inner">
-              <label>Close</label>
-            </div>
-          </div>
-          <h1>Income</h1>
-          <div class="popup-content popup-content-income">
-            <div id="curent-income">
-              <div id="left">
-                <h3>Daily income</h3>
-                <div class="chart-container"></div>
-              </div>
-              <div id="numbers">
-                <p class="income-number"></p>
-                <p>Goal: 10.000</p>
-              </div>
-            </div>
-            <div id="past-income">
-              <h3>Income of last 7 days</h3>
-              <div id="bar-wrapper">
-                <div class="inc-bar" id="day-1">
-                  <span>10.000</span>
-                </div>
-                <div class="inc-bar" id="day-2">
-                  <span>12.000</span>
-                </div>
-                <div class="inc-bar" id="day-3">
-                  <span>9.000</span>
-                </div>
-                <div class="inc-bar" id="day-4">
-                  <span>7.500</span>
-                </div>
-                <div class="inc-bar" id="day-5">
-                  <span>10.000</span>
-                </div>
-                <div class="inc-bar" id="day-6">
-                  <span>13.000</span>
-                </div>
-                <div class="inc-bar" id="day-7">
-                  <span>11.500</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
+				<article id="popup-income" class="pop-article hide">
+					<div class="outer close-popup">
+						<div class="inner">
+							<label>Close</label>
+						</div>
+					</div>
+					<h1>Income</h1>
+					<div class="popup-content popup-content-income">
+						<div id="curent-income">
+							<div id="left">
+								<h3>Daily income</h3>
+								<div class="chart-container"></div>
+							</div>
+							<div id="numbers">
+								<p class="income-number"></p>
+								<p>Goal: 10.000</p>
+							</div>
+						</div>
+						<div id="past-income">
+							<h3>Income of last 7 days</h3>
+							<div id="bar-wrapper">
+								<div class="inc-bar" id="day-1">
+									<span>10.000</span>
+								</div>
+								<div class="inc-bar" id="day-2">
+									<span>12.000</span>
+								</div>
+								<div class="inc-bar" id="day-3">
+									<span>9.000</span>
+								</div>
+								<div class="inc-bar" id="day-4">
+									<span>7.500</span>
+								</div>
+								<div class="inc-bar" id="day-5">
+									<span>10.000</span>
+								</div>
+								<div class="inc-bar" id="day-6">
+									<span>13.000</span>
+								</div>
+								<div class="inc-bar" id="day-7">
+									<span>11.500</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</article>
 
-        <article id="popup-bartenders" class="pop-article hide">
-          <div class="outer close-popup">
-            <div class="inner">
-              <label>Close</label>
-            </div>
-          </div>
-          <h1>Bartenders</h1>
-          <div class="popup-content popup-content-bartender">
-            <div id="pop-bartenders" class="bart-display"></div>
-          </div>
-        </article>
+				<article id="popup-bartenders" class="pop-article hide">
+					<div class="outer close-popup">
+						<div class="inner">
+							<label>Close</label>
+						</div>
+					</div>
+					<h1>Bartenders</h1>
+					<div class="popup-content popup-content-bartender">
+						<div id="pop-bartenders" class="bart-display"></div>
+					</div>
+				</article>
 
-        <article id="popup-beer" class="pop-article hide">
-          <div class="outer close-popup">
-            <div class="inner">
-              <label>Close</label>
-            </div>
-          </div>
-          <h1>Beers</h1>
-          <div class="popup-content popup-content-beer">
-            <section id="popup-dash-taps"></section>
-            <section id="popup-storage"></section>
-          </div>
-        </article>
+				<article id="popup-beer" class="pop-article hide">
+					<div class="outer close-popup">
+						<div class="inner">
+							<label>Close</label>
+						</div>
+					</div>
+					<h1>Beers</h1>
+					<div class="popup-content popup-content-beer">
+						<section id="popup-dash-taps"></section>
+						<section id="popup-storage"></section>
+					</div>
+				</article>
 
-        <article id="popup-calendar" class="pop-article hide">
-          <div class="outer close-popup">
-            <div class="inner">
-              <label>Close</label>
-            </div>
-          </div>
-          <h1>Calendar</h1>
-          <div class="popup-content popup-content-calendar">
-            <div class="col-left">
-              <div class="top">
-                <button id="back" class="cal-button">〈</button>
-                <div class="wrapper">
-                  <span id="month"></span>
-                  <span id="year"></span>
-                </div>
-                <button id="forward" class="cal-button">〉</button>
-              </div>
-              <div class="bottom">
-                <table id="calendar-table">
-                  <thead>
-                    <tr>
-                      <th>Mo</th>
-                      <th>Tu</th>
-                      <th>We</th>
-                      <th>Th</th>
-                      <th>Fr</th>
-                      <th>Sa</th>
-                      <th>Su</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-            </div>
-            <div class="col-right">
-              <h2 id="active-title"></h2>
-              <div class="devider"></div>
-              <h2 class="left-h2">Scheduele</h2>
-              <div class="bar-scheduele">
-                <div class="sch-wrapper">
-                  <span class="B">Opening hours:</span>
-                  <span>12:00 - 22:00</span>
-                </div>
-                <div class="sch-wrapper">
-                  <span class="B">Happy hour:</span>
-                  <span>20:00 - 21:00</span>
-                </div>
-                <div class="sch-wrapper">
-                  <span class="B">Last call:</span>
-                  <span>21:30 - 22:00</span>
-                </div>
-                <div class="devider"></div>
-              </div>
-              <h2 class="left-h2">Events</h2>
-              <div id="event-wrapper">
-                <span>No events planned</span>
-              </div>
-            </div>
-          </div>
-        </article>
-      </section>
-    </main>
+				<article id="popup-calendar" class="pop-article hide">
+					<div class="outer close-popup">
+						<div class="inner">
+							<label>Close</label>
+						</div>
+					</div>
+					<h1>Calendar</h1>
+					<div class="popup-content popup-content-calendar">
+						<div class="col-left">
+							<div class="top">
+								<button id="back" class="cal-button">〈</button>
+								<div class="wrapper">
+									<span id="month"></span>
+									<span id="year"></span>
+								</div>
+								<button id="forward" class="cal-button">〉</button>
+							</div>
+							<div class="bottom">
+								<table id="calendar-table">
+									<thead>
+										<tr>
+											<th>Mo</th>
+											<th>Tu</th>
+											<th>We</th>
+											<th>Th</th>
+											<th>Fr</th>
+											<th>Sa</th>
+											<th>Su</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+						<div class="col-right">
+							<h2 id="active-title"></h2>
+							<div class="devider"></div>
+							<h2 class="left-h2">Scheduele</h2>
+							<div class="bar-scheduele">
+								<div class="sch-wrapper">
+									<span class="B">Opening hours:</span>
+									<span>12:00 - 22:00</span>
+								</div>
+								<div class="sch-wrapper">
+									<span class="B">Happy hour:</span>
+									<span>20:00 - 21:00</span>
+								</div>
+								<div class="sch-wrapper">
+									<span class="B">Last call:</span>
+									<span>21:30 - 22:00</span>
+								</div>
+								<div class="devider"></div>
+							</div>
+							<h2 class="left-h2">Events</h2>
+							<div id="event-wrapper">
+								<span>No events planned</span>
+							</div>
+						</div>
+					</div>
+				</article>
+			</section>
+		</main>
 
-    <template id="temp-event">
-      <h3 class="title"></h3>
-      <p class="description"></p>
-      <span class="time"></span>
-      <div class="devider"></div>
-    </template>
+		<template id="temp-event">
+			<h3 class="title"></h3>
+			<p class="description"></p>
+			<span class="time"></span>
+			<div class="devider"></div>
+		</template>
 
-    <template id="temp-bartender">
-      <article class="bart-article">
-        <h2 class="bartender-name"></h2>
-        <div class="bartender-info-wrapper">
-          <p class="status"></p>
-          <p class="status-detail"></p>
-          <p class="using-tap"></p>
-        </div>
-      </article>
-    </template>
+		<template id="temp-bartender">
+			<article class="bart-article">
+				<h2 class="bartender-name"></h2>
+				<div class="bartender-info-wrapper">
+					<p class="status"></p>
+					<p class="status-detail"></p>
+					<p class="using-tap"></p>
+				</div>
+			</article>
+		</template>
 
-    <template id="temp-bart-stats">
-      <div class="info-wrapper">
-        <h3>Statistics</h3>
-        <span>Custumers Served:</span>
-        <span class="cust-number"></span> <br />
-        <span>Beers sold:</span>
-        <span class="beer-number"></span> <br />
-        <span>Income:</span>
-        <span class="inc-number"></span>
-      </div>
-    </template>
+		<template id="temp-bart-stats">
+			<div class="info-wrapper">
+				<h3>Statistics</h3>
+				<span>Custumers Served:</span>
+				<span class="cust-number"></span> <br />
+				<span>Beers sold:</span>
+				<span class="beer-number"></span> <br />
+				<span>Income:</span>
+				<span class="inc-number"></span>
+			</div>
+		</template>
 
-    <template class="tap">
-      <div>
-        <img src="" alt="" />
-        <p></p>
-      </div>
-    </template>
+		<template class="tap">
+			<div>
+				<img src="" alt="" />
+				<p></p>
+			</div>
+		</template>
 
-    <template class="popup-tap">
-      <div>
-        <img src="" alt="" />
-        <div id="info-wrapper">
-          <p></p>
-          <p></p>
-        </div>
-      </div>
-    </template>
+		<template class="popup-tap">
+			<div>
+				<img src="" alt="" />
+				<div id="info-wrapper">
+					<p></p>
+					<p></p>
+				</div>
+			</div>
+		</template>
 
-    <template class="storage">
-      <div>
-        <p class="name"></p>
-        <img src="../assets/storage_icon.svg" alt="" />
-        <p class="number"></p>
-      </div>
-    </template>
+		<template class="storage">
+			<div>
+				<p class="name"></p>
+				<img src="../assets/storage_icon.svg" alt="" />
+				<p class="number"></p>
+			</div>
+		</template>
 
-    <!-- <script type="module" src="/main.js"></script> -->
-    <script type="module" src="/barchart.js"></script>
-    <!-- <script type="module" src="/calendar.js"></script> -->
-    <!-- <script type="module" src="/components/queue.js"></script> -->
-    <!-- <script type="module" src="/components/income.js"></script> -->
-    <!-- <script type="module" src="/components/bartenders.js"></script> -->
-    <!-- <script type="module" src="/components/beer.js"></script> -->
+		<!-- <script type="module" src="/main.js"></script> -->
+		<script type="module" src="/barchart.js"></script>
+		<!-- <script type="module" src="/calendar.js"></script> -->
+		<!-- <script type="module" src="/components/queue.js"></script> -->
+		<!-- <script type="module" src="/components/income.js"></script> -->
+		<!-- <script type="module" src="/components/bartenders.js"></script> -->
+		<!-- <script type="module" src="/components/beer.js"></script> -->
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </body>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	</body>
 </html>
