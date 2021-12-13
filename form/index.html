@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>FooBar</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -65,7 +65,7 @@
       <section id="menu">
         <div class="filters_border">
           <div class="filters">
-            <button class="filter" data-action="filter" data-filter="all">
+            <button class="filter active_button" data-action="filter" data-filter="all">
               All
             </button>
             <button
@@ -112,7 +112,9 @@
         <template id="beer">
           <article class="product_container">
             <div id="text_beer">
+             
               <img data-field="imageName" class="imageName" src="" alt="" />
+              <p class="beer_name" data-field="beerName" ></p>
             </div>
             <div class="product_btn_cont">
               <button class="read_more">Read more</button>
@@ -152,7 +154,7 @@
             <button id="close">&times;</button>
             <h2>Basket</h2>
             <div class="basket_items"></div>
-            <button class="checkout">Checkout</button>
+            <button class="checkout hide">Checkout</button>
           </div>
         </div>
         <div id="blured"></div>
