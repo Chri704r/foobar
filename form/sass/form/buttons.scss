@@ -8,6 +8,7 @@ button {
   border-top: solid 2px colors.$primary-color;
   border-bottom: solid 2px colors.$primary-color;
   color: colors.$primary-color;
+  cursor: pointer;
 }
 .filters button {
   white-space: nowrap;
@@ -43,6 +44,9 @@ button {
   text-transform: uppercase;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+.go_back {
+  width: 33vw;
 }
 .add_to_cart {
   display: inline;
@@ -95,6 +99,10 @@ button {
   }
   .filters button {
     font-size: 1rem;
+  }
+  .go_back {
+    max-width: 12vw;
+    width: fit-content;
   }
   // .add_to_basket {
   //   display: none;
