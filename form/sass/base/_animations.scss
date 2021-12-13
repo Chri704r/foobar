@@ -1,0 +1,16 @@
+.checkmark {
+	width: 13px;
+}
+
+#saved {
+	width: 13px !important;
+	animation: checkmark_kf 5s 1 forwards;
+	stroke-dasharray: 10;
+	stroke-dashoffset: 100px;
+}
+
+@keyframes checkmark_kf {
+	100% {
+		stroke-dashoffset: 10;
+	}
+}
