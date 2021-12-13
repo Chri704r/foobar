@@ -1,284 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FooBar</title>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/x-icon" href="/assets/favicon_favicon.svg?v1" />
+		<title>FooBar</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      (function () {
-        emailjs.init("user_brjtWXyTrJKCrVW2Tcmnm");
-      })();
-    </script>
-  </head>
-  <body>
-    <header>
-      <button class="go_back hide">Back to menu</button>
-      <div class="logo">
-  <img src="img/foobar_logo-59.svg" alt="FooBar logo">
-    </div>
-      <div class="shoppingcart">
-        <p class="number_in_basket"></p>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 580">
-          <g id="fill">
-            <rect x="21.58" y="15.84" width="398.18" height="548.31" />
-          </g>
-          <g id="glas">
-            <path
-              d="M433.58,50.23V2.69H4.82l0,0c-2.48.06,1.28,574.66,1.28,574.66h427.5V469.12l138.05-89.7,4.42-329.19Zm-40,487.1H45.82c-1.1-176.6-2.19-406-1.8-494.64H393.58ZM531.92,357.52l-98.34,63.9V90.23H535.51Z"
-              fill="#eed6b3"
-            />
-          </g>
-        </svg>
-      </div>
-    </header>
-    <main>
-      <!-- <form> -->
-      <section id="menu">
-        <div class="filters_border">
-          <div class="filters">
-            <button class="filter active_button" data-action="filter" data-filter="all">
-              All
-            </button>
-            <button
-              class="filter"
-              data-action="filter"
-              data-filter="Belgian Specialty Ale"
-            >
-              Belgian Specialty Ale
-            </button>
-            <button class="filter" data-action="filter" data-filter="IPA">
-              IPA
-            </button>
-            <button
-              class="filter"
-              data-action="filter"
-              data-filter="California Common"
-            >
-              California Common
-            </button>
-            <button
-              class="filter"
-              data-action="filter"
-              data-filter="Hefeweizen"
-            >
-              Hefeweizen
-            </button>
-            <button class="filter" data-action="filter" data-filter="Stout">
-              Stout
-            </button>
-            <button
-              class="filter"
-              data-action="filter"
-              data-filter="Oktoberfest"
-            >
-              Oktoberfest
-            </button>
-          </div>
-        </div>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+			rel="stylesheet"
+		/>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+		<script type="text/javascript">
+			(function () {
+				emailjs.init("user_brjtWXyTrJKCrVW2Tcmnm");
+			})();
+		</script>
+	</head>
+	<body>
+		<header>
+			<button class="go_back hide">Back to menu</button>
+			<div class="logo">
+				<img src="img/foobar_logo-59.svg" alt="FooBar logo" />
+			</div>
+			<div class="shoppingcart">
+				<p class="number_in_basket"></p>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 580">
+					<g id="fill">
+						<rect x="21.58" y="15.84" width="398.18" height="548.31" />
+					</g>
+					<g id="glas">
+						<path
+							d="M433.58,50.23V2.69H4.82l0,0c-2.48.06,1.28,574.66,1.28,574.66h427.5V469.12l138.05-89.7,4.42-329.19Zm-40,487.1H45.82c-1.1-176.6-2.19-406-1.8-494.64H393.58ZM531.92,357.52l-98.34,63.9V90.23H535.51Z"
+							fill="#eed6b3"
+						/>
+					</g>
+				</svg>
+			</div>
+		</header>
+		<main>
+			<!-- <form> -->
+			<section id="menu">
+				<div class="filters_border">
+					<div class="filters">
+						<button class="filter active_button" data-action="filter" data-filter="all">All</button>
+						<button class="filter" data-action="filter" data-filter="Belgian Specialty Ale">Belgian Specialty Ale</button>
+						<button class="filter" data-action="filter" data-filter="IPA">IPA</button>
+						<button class="filter" data-action="filter" data-filter="California Common">California Common</button>
+						<button class="filter" data-action="filter" data-filter="Hefeweizen">Hefeweizen</button>
+						<button class="filter" data-action="filter" data-filter="Stout">Stout</button>
+						<button class="filter" data-action="filter" data-filter="Oktoberfest">Oktoberfest</button>
+					</div>
+				</div>
 
-        <section id="beers"></section>
-        <div class="popup_border hide">
-          <div id="popup"></div>
-        </div>
-        <template id="beer">
-          <article class="product_container">
-            <div id="text_beer">
-             
-              <img data-field="imageName" class="imageName" src="" alt="" />
-              <p class="beer_name" data-field="beerName" ></p>
-            </div>
-            <div class="product_btn_cont">
-              <button class="read_more">Read more</button>
-              <button class="add_to_cart">+</button>
-            </div>
-          </article>
-        </template>
-        <template id="information">
-          <button id="close">&times;</button>
-          <div class="main_info static">
-            <div class="information_popup">
-              <img data-field="imageName" class="imageName" src="" alt="" />
-              <h2 class="text_info" data-field="beerName"></h2>
+				<section id="beers"></section>
+				<div class="popup_border hide">
+					<div id="popup"></div>
+				</div>
+				<template id="beer">
+					<article class="product_container">
+						<div id="text_beer">
+							<img data-field="imageName" class="imageName" src="" alt="" />
+							<p class="beer_name" data-field="beerName"></p>
+						</div>
+						<div class="product_btn_cont">
+							<button class="read_more">Read more</button>
+							<button class="add_to_cart">+</button>
+						</div>
+					</article>
+				</template>
+				<template id="information">
+					<button id="close">&times;</button>
+					<div class="main_info static">
+						<div class="information_popup">
+							<img data-field="imageName" class="imageName" src="" alt="" />
+							<h2 class="text_info" data-field="beerName"></h2>
 
-              <p class="text_info" data-field="alc"></p>
-              <p class="text_info" data-field="price"></p>
-              <button class="add_to_basket">Add to cart</button>
-            </div>
-            <div class="description">
-              <h3>Description</h3>
-              <h4>Aroma</h4>
-              <p class="text_info" data-field="aroma"></p>
-              <h4>Appearance</h4>
-              <p class="text_info" data-field="appearance"></p>
-              <h4>Flavor</h4>
-              <p class="text_info" data-field="flavor"></p>
-              <h4>Mouthfeel</h4>
-              <p class="text_info" data-field="mouthfeel"></p>
-              <h4>Overall Impression</h4>
-              <p class="text_info" data-field="overallImpression"></p>
-            </div>
-          </div>
-        </template>
+							<p class="text_info" data-field="alc"></p>
+							<p class="text_info" data-field="price"></p>
+							<button class="add_to_basket">Add to cart</button>
+						</div>
+						<div class="description">
+							<h3>Description</h3>
+							<h4>Aroma</h4>
+							<p class="text_info" data-field="aroma"></p>
+							<h4>Appearance</h4>
+							<p class="text_info" data-field="appearance"></p>
+							<h4>Flavor</h4>
+							<p class="text_info" data-field="flavor"></p>
+							<h4>Mouthfeel</h4>
+							<p class="text_info" data-field="mouthfeel"></p>
+							<h4>Overall Impression</h4>
+							<p class="text_info" data-field="overallImpression"></p>
+						</div>
+					</div>
+				</template>
 
-        <div class="basket_border">
-          <div class="basket">
-            <button id="close">&times;</button>
-            <h2>Basket</h2>
-            <div class="basket_items"></div>
-            <button class="checkout hide">Checkout</button>
-          </div>
-        </div>
-        <div id="blured"></div>
-      </section>
+				<div class="basket_border">
+					<div class="basket">
+						<button id="close">&times;</button>
+						<h2>Basket</h2>
+						<div class="basket_items"></div>
+						<button class="checkout hide">Checkout</button>
+					</div>
+				</div>
+				<div id="blured"></div>
+			</section>
 
-      <form id="payment-form" >
-        <section id="payment" class="hide">
-          <div class="product_overview">
-            <h2>Your order</h2>
-            <div class="order_txt_parent"></div>
-            <div class="total_wrapper">
-              <h2>Total</h2>
-              <h2 class="total_amount"></h2>
-            </div>
-          </div>
-          <div class="pay_container">
-            <div class="input_wrapper">
-              <label for="mail">Your E-mail</label>
-              <input id="mail" type="email" placeholder=" " required />
-            </div>
-            <div class="payment_wrapper">
-              <p class="label_text">Payment</p>
-              <div class="payment_options">
-                <button class="card">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 537.62 397.23"
-                  >
-                    <g id="Layer_9" data-name="Layer 9">
-                      <path
-                        d="M456.29,26.63h-375A67.46,67.46,0,0,0,14,94V303.23a67.46,67.46,0,0,0,67.38,67.38h375a67.45,67.45,0,0,0,67.38-67.38V94A67.46,67.46,0,0,0,456.29,26.63Zm22.38,276.6a22.41,22.41,0,0,1-22.38,22.38h-375A22.41,22.41,0,0,1,59,303.23V167.55H478.67Zm0-180.68H59V94A22.41,22.41,0,0,1,81.33,71.63h375A22.41,22.41,0,0,1,478.67,94Z"
-                        fill="#efd7b3"
-                      />
-                    </g>
-                  </svg>
-                </button>
-                <button class="applepay">
-                  <img src="img/Apple_Pay_Mark_RGB_041619.svg" alt="" />
-                </button>
-                <button class="mobilepay">
-                  <img
-                    src="img/MP_RGB_NoTM_Logo+Type Horisontal Blue.svg"
-                    alt=""
-                  />
-                </button>
-              </div>
-            </div>
-            <div class="card_payment hide">
-              <div class="card_wrapper">
-                <div class="firstrow">
-                  <div class="input_wrapper">
-                    <label for="cardNumber">CARD NUMBER</label>
-                    <input
-                      id="cardNumber"
-                      name="cardNumber"
-                      type="text"
-                      placeholder="XXXX XXXX XXXX XXXX "
-                      maxlength="16"
-                      minlength="16"
-                      pattern="^4[0-9]{12}(?:[0-9]{3})?$"
-                      required
-                    />
-                  </div>
-                </div>
+			<form id="payment-form">
+				<section id="payment" class="hide">
+					<div class="product_overview">
+						<h2>Your order</h2>
+						<div class="order_txt_parent"></div>
+						<div class="total_wrapper">
+							<h2>Total</h2>
+							<h2 class="total_amount"></h2>
+						</div>
+					</div>
+					<div class="pay_container">
+						<div class="input_wrapper">
+							<label for="mail">Your E-mail</label>
+							<input id="mail" type="email" placeholder=" " required />
+						</div>
+						<div class="payment_wrapper">
+							<p class="label_text">Payment</p>
+							<div class="payment_options">
+								<button class="card">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 537.62 397.23">
+										<g id="Layer_9" data-name="Layer 9">
+											<path
+												d="M456.29,26.63h-375A67.46,67.46,0,0,0,14,94V303.23a67.46,67.46,0,0,0,67.38,67.38h375a67.45,67.45,0,0,0,67.38-67.38V94A67.46,67.46,0,0,0,456.29,26.63Zm22.38,276.6a22.41,22.41,0,0,1-22.38,22.38h-375A22.41,22.41,0,0,1,59,303.23V167.55H478.67Zm0-180.68H59V94A22.41,22.41,0,0,1,81.33,71.63h375A22.41,22.41,0,0,1,478.67,94Z"
+												fill="#efd7b3"
+											/>
+										</g>
+									</svg>
+								</button>
+								<button class="applepay">
+									<img src="img/Apple_Pay_Mark_RGB_041619.svg" alt="" />
+								</button>
+								<button class="mobilepay">
+									<img src="img/MP_RGB_NoTM_Logo+Type Horisontal Blue.svg" alt="" />
+								</button>
+							</div>
+						</div>
+						<div class="card_payment hide">
+							<div class="card_wrapper">
+								<div class="firstrow">
+									<div class="input_wrapper">
+										<label for="cardNumber">CARD NUMBER</label>
+										<input
+											id="cardNumber"
+											name="cardNumber"
+											type="text"
+											placeholder="XXXX XXXX XXXX XXXX "
+											maxlength="16"
+											minlength="16"
+											pattern="^4[0-9]{12}(?:[0-9]{3})?$"
+											required
+										/>
+									</div>
+								</div>
 
-                <div class="input_wrapper cardname">
-                  <label for="name">CARDHOLDERS NAME</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    pattern="[^0-9]*"
-                    placeholder=" "
-                    required
-                  />
-                  <!-- <div class="invalid_wrapper">
+								<div class="input_wrapper cardname">
+									<label for="name">CARDHOLDERS NAME</label>
+									<input type="text" id="name" name="name" pattern="[^0-9]*" placeholder=" " required />
+									<!-- <div class="invalid_wrapper">
                       <img src="img/Invalid.svg" alt="invalid sign" />
                       <p>This field is required</p>
                     </div> -->
-                </div>
+								</div>
 
-                <div class="input_wrapper month_year">
-                  <label for="month/year">MONTH/YEAR</label>
-                  <div class="month-year-input-wrapper">
-                    <input
-                      id="month_year"
-                      type="text"
-                      placeholder=" "
-                      pattern="\d*"
-                      maxlength="2"
-                      minlength="2"
-                      size="2"
-                      required
-                    />
-                    <span>/</span>
-                    <input
-                      id="year"
-                      type="text"
-                      placeholder=" "
-                      pattern="\d*"
-                      maxlength="2"
-                      minlength="2"
-                      size="2"
-                      required
-                    />
-                  </div>
-                </div>
+								<div class="input_wrapper month_year">
+									<label for="month/year">MONTH/YEAR</label>
+									<div class="month-year-input-wrapper">
+										<input id="month_year" type="text" placeholder=" " pattern="\d*" maxlength="2" minlength="2" size="2" required />
+										<span>/</span>
+										<input id="year" type="text" placeholder=" " pattern="\d*" maxlength="2" minlength="2" size="2" required />
+									</div>
+								</div>
 
-                <div class="input_wrapper cvc">
-                  <label for="cvc">CVC</label>
-                  <input
-                    id="cvc"
-                    type="text"
-                    pattern="\d*"
-                    maxlength="3"
-                    minlength="3"
-                    placeholder=" "
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="pay_button_container">
-              <button type="submit" id="sendButton" class="pay">Pay</button>
-            </div>
-          </div>
-        </section>
-        <section id="receipt" class="hide">
-          <h2>THANK YOU FOR YOUR ORDER</h2>
-          <h3>YOUR ORDER NUMBER IS:</h3>
-          <span id="your-order"></span>
-          <p>
-            Follow your order on the screen by finding your order number. You
-            will receive an email with your order and your order number.
-          </p>
-          <div class="goback_container">
-            <button class="goback">Back to menu</button>
-          </div>
-        </section>
-      </form>
-    </main>
-    <script type="module" src="/main.js"></script>
-  </body>
+								<div class="input_wrapper cvc">
+									<label for="cvc">CVC</label>
+									<input id="cvc" type="text" pattern="\d*" maxlength="3" minlength="3" placeholder=" " required />
+								</div>
+							</div>
+						</div>
+						<div class="pay_button_container">
+							<button type="submit" id="sendButton" class="pay">Pay</button>
+						</div>
+					</div>
+				</section>
+				<section id="receipt" class="hide">
+					<h2>THANK YOU FOR YOUR ORDER</h2>
+					<h3>YOUR ORDER NUMBER IS:</h3>
+					<span id="your-order"></span>
+					<p>Follow your order on the screen by finding your order number. You will receive an email with your order and your order number.</p>
+					<div class="goback_container">
+						<button class="goback">Back to menu</button>
+					</div>
+				</section>
+			</form>
+		</main>
+		<script type="module" src="/main.js"></script>
+	</body>
 </html>
