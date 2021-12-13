@@ -116,7 +116,13 @@ function selectFilter(event) {
 function setFilter(filter) {
 	settings.filterBy = filter;
 	buildList();
+  const filter = event.target.dataset.filter;
+  console.log(`User selcted ${filter}`);
+  document.querySelector("[data-filter=all]").classList.remove("active_button");
+
+  setFilter(filter);
 }
+
 function buildList() {
 	const currentList = filterList(allBeers);
 	displayList(currentList);
@@ -167,14 +173,15 @@ function displayList(beers) {
 
 function displayBeer(beer) {
 	const clone = document.querySelector("#beer").content.cloneNode(true);
-
 	//Set clone data
 	clone.querySelector("[data-field=imageName]").src = beer.imageName;
+  clone.querySelector("[data-field=beerName]").textContent = `${beer.beerName}`;
 	//add to cart
 	clone.querySelector(".add_to_cart").addEventListener("click", (e) => {
 		e.target.innerHTML = `<img class="checkmark" src="../assets/checkmark.svg" >`;
 		basketCheck(beer);
 	});
+
 
 	//click to see details
 	clone.querySelector(".read_more").addEventListener("click", () => showDetails(beer));
@@ -184,34 +191,35 @@ function displayBeer(beer) {
 	document.querySelector("#beers").appendChild(clone);
 }
 function showDetails(beer) {
-	document.querySelector("main").classList.add("no_scroll");
-	const clone = document.querySelector("#information").cloneNode(true).content;
-	popup.textContent = "";
-	clone.querySelector("[data-field=imageName]").src = beer.imageName;
-	clone.querySelector("[data-field=beerName]").textContent = `${beer.beerName}`;
 
-	clone.querySelector("[data-field=aroma]").textContent = `${beer.description.aroma}`;
-	clone.querySelector("[data-field=appearance]").textContent = `${beer.description.appearance}`;
-	clone.querySelector("[data-field=flavor]").textContent = `${beer.description.flavor}`;
-	clone.querySelector("[data-field=mouthfeel]").textContent = `${beer.description.mouthfeel}`;
-	clone.querySelector("[data-field=overallImpression]").textContent = `${beer.description.overallImpression}`;
-	clone.querySelector("[data-field=alc]").textContent = `${beer.alc}% Alc`;
-	clone.querySelector("[data-field=price]").textContent = `50 -kr.`;
+  document.querySelector("main").classList.add("no_scroll");
+  const clone = document.querySelector("#information").cloneNode(true).content;
+  popup.textContent = "";
+  clone.querySelector("[data-field=imageName]").src = beer.imageName;
+  clone.querySelector("[data-field=beerName]").textContent = `${beer.beerName}`;
 
-	//add to cart from the popup view
-	clone.querySelector(".add_to_basket").addEventListener("click", basketClicked);
+  clone.querySelector("[data-field=aroma]").textContent = `${beer.description.aroma}`;
+  clone.querySelector("[data-field=appearance]").textContent = `${beer.description.appearance}`;
+  clone.querySelector("[data-field=flavor]").textContent = `${beer.description.flavor}`;
+  clone.querySelector("[data-field=mouthfeel]").textContent = `${beer.description.mouthfeel}`;
+  clone.querySelector("[data-field=overallImpression]").textContent = `${beer.description.overallImpression}`;
+  clone.querySelector("[data-field=alc]").textContent = `${beer.alc}% Alc`;
+  clone.querySelector("[data-field=price]").textContent = `50,-`;
 
-	function basketClicked() {
-		basketCheck(beer);
-	}
-	popup.classList.add("active");
-	document.querySelector(".popup_border").classList.remove("hide");
-	blured.classList.add("active");
-	document.querySelector("header").classList.add("blurr");
-	document.querySelector(".basket_border").classList.add("blurr");
+  //add to cart from the popup view
+  clone.querySelector(".add_to_basket").addEventListener("click", basketClicked);
 
-	clone.querySelector("#close").addEventListener("click", closeDetails);
-	popup.appendChild(clone);
+  function basketClicked() {
+    basketCheck(beer);
+  }
+  popup.classList.add("active");
+  document.querySelector(".popup_border").classList.remove("hide");
+  blured.classList.add("active");
+  document.querySelector("header").classList.add("blurr");
+  document.querySelector(".basket_border").classList.add("blurr");
+
+  clone.querySelector("#close").addEventListener("click", closeDetails);
+  popup.appendChild(clone);
 }
 function closeDetails() {
 	popup.classList.remove("active");
@@ -221,7 +229,16 @@ function closeDetails() {
 	document.querySelector(".basket_border").classList.remove("blurr");
 	document.querySelector("main").classList.remove("no_scroll");
 }
-
+function basketStatus() {
+  console.log("basket status, basketdata length", basketData.length);
+  if (basketData.length > 0) {
+    fill.style.fill = "#eed6b3";
+    document.querySelector(".basket .checkout").classList.remove("hide");
+    document.querySelector(".basket .checkout").addEventListener("click", goToCheckout);
+  } else {
+    fill.style.fill = "transparent";
+  }
+}
 function showBasket() {
 	console.log("show basket");
 	const basket = document.querySelector(".basket");
@@ -278,160 +295,159 @@ function basketCheck(selectedBeer) {
 
 	console.log("add to basket", selectedBeer);
 
-	fill.style.fill = "#eed6b3";
-
 	document.querySelector(".basket .checkout").addEventListener("click", goToCheckout);
 
-	function saveDataInfo(selectedBeer) {
-		console.log("basketData i save data info", basketData);
-		// sends the beerName to basketData
-		basketData.push(selectedBeer);
-		//adds the selected beer to basket
-		addToBasket(selectedBeer);
-
-		//show number of beers in basket
-		let showNumberInBasket = document.querySelector(".number_in_basket");
-		showNumberInBasket.textContent = `${basketData.length}`;
-	}
+  function saveDataInfo(selectedBeer) {
+    console.log("basketData i save data info", basketData);
+    // sends the beerName to basketData
+    basketData.push(selectedBeer);
+    //adds the selected beer to basket
+    addToBasket(selectedBeer);
+    // fill.style.fill = "#eed6b3";
+    //show number of beers in basket
+    let showNumberInBasket = document.querySelector(".number_in_basket");
+    showNumberInBasket.textContent = `${basketData.length}`;
+    basketStatus();
+  }
 }
 // when going back from order screen to the basket, it has to remake itself from the updated basketData
 function remakeBasket() {
-	console.log("remakeBasket");
-	console.log("remakeBasket", basketData);
+  console.log("remakeBasket");
+  console.log("remakeBasket", basketData);
+  basketStatus();
+  //find out beer is in basket
+  prepareElHefe();
+  prepareFairy();
+  prepareGithop();
+  prepareHollaBack();
+  prepareHoppily();
+  prepareMowntime();
+  prepareRow();
+  prepareRuinedChildhood();
+  prepareSleighride();
+  prepareSteampunk();
 
-	//find out beer is in basket
-	prepareElHefe();
-	prepareFairy();
-	prepareGithop();
-	prepareHollaBack();
-	prepareHoppily();
-	prepareMowntime();
-	prepareRow();
-	prepareRuinedChildhood();
-	prepareSleighride();
-	prepareSteampunk();
+  function prepareElHefe() {
+    const prepElHefe = basketData.filter((beer) => beer.beerName === "El Hefe");
 
-	function prepareElHefe() {
-		const prepElHefe = basketData.filter((beer) => beer.beerName === "El Hefe");
+    if (prepElHefe.length > 0) {
+      console.log("hæhæhæh el hefe");
+      const selectedBeerForBasket = prepElHefe[prepElHefe.length - 1];
+      // const selectedBeerForBasket = prepElHefe;
+      const numberOfBeerBasket = prepElHefe.length;
 
-		if (prepElHefe.length > 0) {
-			console.log("hæhæhæh el hefe");
-			const selectedBeerForBasket = prepElHefe[prepElHefe.length - 1];
-			// const selectedBeerForBasket = prepElHefe;
-			const numberOfBeerBasket = prepElHefe.length;
+      remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
+    }
+  }
+  function prepareFairy() {
+    const prepFairy = basketData.filter((beer) => beer.beerName === "Fairy Tale Ale");
 
-			remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
-		}
-	}
-	function prepareFairy() {
-		const prepFairy = basketData.filter((beer) => beer.beerName === "Fairy Tale Ale");
+    if (prepFairy.length > 0) {
+      console.log("hæhæhæh fairy");
+      const selectedBeerForBasket = prepFairy[prepFairy.length - 1];
+      // const selectedBeerForBasket = prepFairy;
 
-		if (prepFairy.length > 0) {
-			console.log("hæhæhæh fairy");
-			const selectedBeerForBasket = prepFairy[prepFairy.length - 1];
-			// const selectedBeerForBasket = prepFairy;
+      const numberOfBeerBasket = prepFairy.length;
 
-			const numberOfBeerBasket = prepFairy.length;
+      remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
+    }
+  }
+  function prepareGithop() {
+    const prepGithop = basketData.filter((beer) => beer.beerName === "GitHop");
+    if (prepGithop.length > 0) {
+      console.log("hæhæhæh githop");
+      const selectedBeerForBasket = prepGithop[prepGithop.length - 1];
+      // const selectedBeerForBasket = prepGithop;
+      const numberOfBeerBasket = prepGithop.length;
 
-			remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
-		}
-	}
-	function prepareGithop() {
-		const prepGithop = basketData.filter((beer) => beer.beerName === "GitHop");
-		if (prepGithop.length > 0) {
-			console.log("hæhæhæh githop");
-			const selectedBeerForBasket = prepGithop[prepGithop.length - 1];
-			// const selectedBeerForBasket = prepGithop;
-			const numberOfBeerBasket = prepGithop.length;
+      remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
+    }
+  }
+  function prepareHollaBack() {
+    const prepHollaBack = basketData.filter((beer) => beer.beerName === "Hollaback Lager");
+    if (prepHollaBack.length > 0) {
+      console.log("hæhæhæh Hollaback Lager");
+      const selectedBeerForBasket = prepHollaBack[prepHollaBack.length - 1];
+      // const selectedBeerForBasket = prepHollaBack;
 
-			remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
-		}
-	}
-	function prepareHollaBack() {
-		const prepHollaBack = basketData.filter((beer) => beer.beerName === "Hollaback Lager");
-		if (prepHollaBack.length > 0) {
-			console.log("hæhæhæh Hollaback Lager");
-			const selectedBeerForBasket = prepHollaBack[prepHollaBack.length - 1];
-			// const selectedBeerForBasket = prepHollaBack;
+      const numberOfBeerBasket = prepHollaBack.length;
 
-			const numberOfBeerBasket = prepHollaBack.length;
+      remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
+    }
+  }
+  function prepareHoppily() {
+    const prepHoppily = basketData.filter((beer) => beer.beerName === "Hoppily Ever After");
+    if (prepHoppily.length > 0) {
+      console.log("hæhæhæh Hoppily Ever After");
+      const selectedBeerForBasket = prepHoppily[prepHoppily.length - 1];
+      // const selectedBeerForBasket = prepHoppily;
+      const numberOfBeerBasket = prepHoppily.length;
 
-			remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
-		}
-	}
-	function prepareHoppily() {
-		const prepHoppily = basketData.filter((beer) => beer.beerName === "Hoppily Ever After");
-		if (prepHoppily.length > 0) {
-			console.log("hæhæhæh Hoppily Ever After");
-			const selectedBeerForBasket = prepHoppily[prepHoppily.length - 1];
-			// const selectedBeerForBasket = prepHoppily;
-			const numberOfBeerBasket = prepHoppily.length;
+      remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
+    }
+  }
 
-			remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
-		}
-	}
+  function prepareMowntime() {
+    const prepMowntime = basketData.filter((beer) => beer.beerName === "Mowintime");
+    if (prepMowntime.length > 0) {
+      console.log("hæhæhæh Mowintime");
+      const selectedBeerForBasket = prepMowntime[prepMowntime.length - 1];
+      // const selectedBeerForBasket = prepMowntime;
+      const numberOfBeerBasket = prepMowntime.length;
 
-	function prepareMowntime() {
-		const prepMowntime = basketData.filter((beer) => beer.beerName === "Mowintime");
-		if (prepMowntime.length > 0) {
-			console.log("hæhæhæh Mowintime");
-			const selectedBeerForBasket = prepMowntime[prepMowntime.length - 1];
-			// const selectedBeerForBasket = prepMowntime;
-			const numberOfBeerBasket = prepMowntime.length;
+      remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
+    }
+  }
 
-			remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
-		}
-	}
+  function prepareRow() {
+    const prepRow = basketData.filter((beer) => beer.beerName === "Row 26");
+    if (prepRow.length > 0) {
+      console.log("hæhæhæh Row 26");
+      const selectedBeerForBasket = prepRow[prepRow.length - 1];
+      // const selectedBeerForBasket = prepRow;
 
-	function prepareRow() {
-		const prepRow = basketData.filter((beer) => beer.beerName === "Row 26");
-		if (prepRow.length > 0) {
-			console.log("hæhæhæh Row 26");
-			const selectedBeerForBasket = prepRow[prepRow.length - 1];
-			// const selectedBeerForBasket = prepRow;
+      const numberOfBeerBasket = prepRow.length;
 
-			const numberOfBeerBasket = prepRow.length;
+      remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
+    }
+  }
 
-			remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
-		}
-	}
+  function prepareRuinedChildhood() {
+    const prepRuinedChildhood = basketData.filter((beer) => beer.beerName === "Ruined Childhood");
+    if (prepRuinedChildhood.length > 0) {
+      console.log("hæhæhæh Ruined Childhood");
+      const selectedBeerForBasket = prepRuinedChildhood[prepRuinedChildhood.length - 1];
+      // const selectedBeerForBasket = prepRuinedChildhood;
 
-	function prepareRuinedChildhood() {
-		const prepRuinedChildhood = basketData.filter((beer) => beer.beerName === "Ruined Childhood");
-		if (prepRuinedChildhood.length > 0) {
-			console.log("hæhæhæh Ruined Childhood");
-			const selectedBeerForBasket = prepRuinedChildhood[prepRuinedChildhood.length - 1];
-			// const selectedBeerForBasket = prepRuinedChildhood;
+      const numberOfBeerBasket = prepRuinedChildhood.length;
 
-			const numberOfBeerBasket = prepRuinedChildhood.length;
+      remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
+    }
+  }
 
-			remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
-		}
-	}
+  function prepareSleighride() {
+    const prepSleighride = basketData.filter((beer) => beer.beerName === "Sleighride");
+    if (prepSleighride.length > 0) {
+      console.log("hæhæhæh Sleighride");
+      const selectedBeerForBasket = prepSleighride[prepSleighride.length - 1];
+      // const selectedBeerForBasket = prepSleighride;
 
-	function prepareSleighride() {
-		const prepSleighride = basketData.filter((beer) => beer.beerName === "Sleighride");
-		if (prepSleighride.length > 0) {
-			console.log("hæhæhæh Sleighride");
-			const selectedBeerForBasket = prepSleighride[prepSleighride.length - 1];
-			// const selectedBeerForBasket = prepSleighride;
+      const numberOfBeerBasket = prepSleighride.length;
 
-			const numberOfBeerBasket = prepSleighride.length;
+      remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
+    }
+  }
+  function prepareSteampunk() {
+    const prepSteampunk = basketData.filter((beer) => beer.beerName === "Steampunk");
+    if (prepSteampunk.length > 0) {
+      const selectedBeerForBasket = prepSteampunk[prepSteampunk.length - 1];
+      // const selectedBeerForBasket = prepSleighride;
 
-			remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
-		}
-	}
-	function prepareSteampunk() {
-		const prepSteampunk = basketData.filter((beer) => beer.beerName === "Steampunk");
-		if (prepSteampunk.length > 0) {
-			const selectedBeerForBasket = prepSteampunk[prepSteampunk.length - 1];
-			// const selectedBeerForBasket = prepSleighride;
+      const numberOfBeerBasket = prepSteampunk.length;
 
-			const numberOfBeerBasket = prepSteampunk.length;
-
-			remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
-		}
-	}
+      remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket);
+    }
+  }
 }
 
 function addToBasket(selectedBeer) {
@@ -506,117 +522,129 @@ function addToBasket(selectedBeer) {
 }
 
 function remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket) {
-	// // objects for basket
-	// name out of selected beer
-	console.log("selected", selectedBeerForBasket);
-	let classNameBeer = selectedBeerForBasket.beerName.replaceAll(" ", "_").toLowerCase();
+  // // objects for basket
+  // name out of selected beer
 
-	//number of beers in basket
-	const quantity = document.createElement("p");
-	quantity.classList.add("quantity");
-	quantity.classList.add(`${classNameBeer}`);
+  console.log("selected", selectedBeerForBasket);
+  let classNameBeer = selectedBeerForBasket.beerName.replaceAll(" ", "_").toLowerCase();
 
-	// div for details, + and number of beers, - and price
-	const detailsCont = document.createElement("div");
-	detailsCont.classList.add("details_container");
-	// div for each added beer to the basket
-	const basketTxtCont = document.createElement("div");
-	basketTxtCont.classList.add("basket_order_cont");
-	basketTxtCont.classList.add(`${classNameBeer}`);
-	//price
-	const price = document.createElement("p");
-	price.classList.add("price");
-	price.classList.add(`${classNameBeer}`);
-	const priceValue = 50;
+  //number of beers in basket
+  const quantity = document.createElement("p");
+  quantity.classList.add("quantity");
+  quantity.classList.add(`${classNameBeer}`);
 
-	const plus = document.createElement("p");
-	plus.classList.add("quant_border");
-	plus.classList.add(`${classNameBeer}_plus`);
+  // div for details, + and number of beers, - and price
+  const detailsCont = document.createElement("div");
+  detailsCont.classList.add("details_container");
+  // div for each added beer to the basket
+  const basketTxtCont = document.createElement("div");
+  basketTxtCont.classList.add("basket_order_cont");
+  basketTxtCont.classList.add(`${classNameBeer}`);
+  //price
+  const price = document.createElement("p");
+  price.classList.add("price");
+  price.classList.add(`${classNameBeer}`);
+  const priceValue = 50;
 
-	const minus = document.createElement("p");
-	minus.classList.add("quant_border");
-	minus.classList.add(`${classNameBeer}_minus`);
+  const plus = document.createElement("p");
+  plus.classList.add("quant_border");
+  plus.classList.add(`${classNameBeer}_plus`);
 
-	// beer name on list and puttet inside the basket container in the basket
-	const p = document.createElement("p");
-	p.textContent = `${selectedBeerForBasket.beerName}`;
-	basketTxtCont.append(p);
+  const minus = document.createElement("p");
+  minus.classList.add("quant_border");
+  minus.classList.add(`${classNameBeer}_minus`);
 
-	// minus to minus one beer at a time beer inside the details container
-	minus.textContent = "-";
-	detailsCont.append(minus);
+  // beer name on list and puttet inside the basket container in the basket
+  const p = document.createElement("p");
+  p.textContent = `${selectedBeerForBasket.beerName}`;
+  basketTxtCont.append(p);
 
-	quantity.textContent = `${numberOfBeerBasket}`;
-	detailsCont.append(quantity);
+  // minus to minus one beer at a time beer inside the details container
+  minus.textContent = "-";
+  detailsCont.append(minus);
 
-	// plus to add more beers inside the details container
-	// // TO DO:
-	plus.textContent = "+";
-	detailsCont.append(plus);
+  quantity.textContent = `${numberOfBeerBasket}`;
+  detailsCont.append(quantity);
 
-	//basketTxtCont.append(detailsCont);
-	// price tag
+  // plus to add more beers inside the details container
+  // // TO DO:
+  plus.textContent = "+";
+  detailsCont.append(plus);
 
-	price.textContent = `${priceValue * numberOfBeerBasket}-,`;
-	detailsCont.append(price);
+  //basketTxtCont.append(detailsCont);
+  // price tag
 
-	basketTxtCont.append(detailsCont);
-	// puts the div with each beer type on the list
-	document.querySelector(".basket_items").append(basketTxtCont);
+  price.textContent = `${priceValue * numberOfBeerBasket}-,`;
+  detailsCont.append(price);
 
-	registerPlusAndMinusButtons(selectedBeerForBasket, classNameBeer);
+  basketTxtCont.append(detailsCont);
+  // puts the div with each beer type on the list
+  document.querySelector(".basket_items").append(basketTxtCont);
 
-	//show number of beers in basket
-	let showNumberInBasket = document.querySelector(".number_in_basket");
-	showNumberInBasket.textContent = `${basketData.length}`;
+  registerPlusAndMinusButtons(selectedBeerForBasket, classNameBeer);
+
+  //show number of beers in basket
+  let showNumberInBasket = document.querySelector(".number_in_basket");
+  showNumberInBasket.textContent = `${basketData.length}`;
+  basketStatus();
 }
 function plusBeerInBasket(beerName) {
-	console.log("plusBeer In Basket");
-	const selectedBeer = beerName;
-	const priceValue = 50;
-	basketData.push(selectedBeer);
-	//updates the number of each beer in basket
-	let other = basketData.filter((beer) => beer.beerName === selectedBeer.beerName);
-	let numberOfBeer = other.length;
-	let classNameBeer = selectedBeer.beerName.replaceAll(" ", "_").toLowerCase();
+  console.log("plusBeer In Basket");
+  const selectedBeer = beerName;
+  const priceValue = 50;
+  basketData.push(selectedBeer);
+  //updates the number of each beer in basket
+  let other = basketData.filter((beer) => beer.beerName === selectedBeer.beerName);
+  let numberOfBeer = other.length;
+  let classNameBeer = selectedBeer.beerName.replaceAll(" ", "_").toLowerCase();
 
-	//change the number of beers in basket from new basket data
-	document.querySelector(`.quantity.${classNameBeer}`).textContent = `${numberOfBeer}`;
-	// Price of beers in basket
-	document.querySelector(`.price.${classNameBeer}`).textContent = `${priceValue * numberOfBeer}-,`;
+  //change the number of beers in basket from new basket data
+  document.querySelector(`.quantity.${classNameBeer}`).textContent = `${numberOfBeer}`;
+  // Price of beers in basket
+  document.querySelector(`.price.${classNameBeer}`).textContent = `${priceValue * numberOfBeer}-,`;
 
-	//show number of beers in basket
-	let showNumberInBasket = document.querySelector(".number_in_basket");
-	showNumberInBasket.textContent = `${basketData.length}`;
+  //show number of beers in basket
+  let showNumberInBasket = document.querySelector(".number_in_basket");
+  showNumberInBasket.textContent = `${basketData.length}`;
+  basketStatus();
 }
 
 function minusBeerFromBasket(beerName) {
-	console.log("minusBeerFromBasket");
-	const selectedBeer = beerName;
-	const priceValue = 50;
-	//take the beer from basket data
-	basketData.splice(
-		basketData.findIndex((a) => a.beerName === selectedBeer.beerName),
-		1
-	);
-	//updates the number of each beer in basket
-	let other = basketData.filter((beer) => beer.beerName === selectedBeer.beerName);
-	let numberOfBeer = other.length;
-	let classNameBeer = selectedBeer.beerName.replaceAll(" ", "_").toLowerCase();
+  console.log("minusBeerFromBasket");
+  const selectedBeer = beerName;
+  const priceValue = 50;
+  //take the beer from basket data
+  basketData.splice(
+    basketData.findIndex((a) => a.beerName === selectedBeer.beerName),
+    1
+  );
+  //updates the number of each beer in basket
+  let other = basketData.filter((beer) => beer.beerName === selectedBeer.beerName);
+  let numberOfBeer = other.length;
+  let classNameBeer = selectedBeer.beerName.replaceAll(" ", "_").toLowerCase();
 
-	if (numberOfBeer <= 0) {
-		console.log("less than one in basket");
-		document.querySelector(`.basket_order_cont.${classNameBeer}`).remove();
-	} else {
-		//change the number of beers in basket from new basket data
-		document.querySelector(`.quantity.${classNameBeer}`).textContent = `${numberOfBeer}`;
-		// Price of beers in basket
-		document.querySelector(`.price.${classNameBeer}`).textContent = `${priceValue * numberOfBeer}-,`;
-	}
+  if (numberOfBeer <= 0) {
+    console.log("less than one in basket");
+    document.querySelector(`.basket_order_cont.${classNameBeer}`).remove();
+  } else {
+    //change the number of beers in basket from new basket data
+    document.querySelector(`.quantity.${classNameBeer}`).textContent = `${numberOfBeer}`;
+    // Price of beers in basket
+    document.querySelector(`.price.${classNameBeer}`).textContent = `${priceValue * numberOfBeer}-,`;
+  }
 
-	//show number of beers in basket
-	let showNumberInBasket = document.querySelector(".number_in_basket");
-	showNumberInBasket.textContent = `${basketData.length}`;
+  //show number of beers in basket
+  let showNumberInBasket = document.querySelector(".number_in_basket");
+  showNumberInBasket.textContent = `${basketData.length}`;
+  basketStatus();
+
+  console.log("basket lenght", basketData.length);
+
+  // if (basketData.length > 0) {
+  //   fill.style.fill = "#eed6b3";
+  // } else {
+  //   fill.style.fill = "transparent";
+  // }
 }
 function registerPlusAndMinusButtons(beerName, classNameBeer) {
 	console.log("register plus and minus buttons");
