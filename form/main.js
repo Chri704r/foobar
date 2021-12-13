@@ -1245,7 +1245,7 @@ function createObject() {
 function payWithCard() {
   //document.querySelector(".card_payment").classList.remove("hide");
   const cardFillout = document.querySelector(".card_payment");
-  //document.getElementById("sendButton").addEventListener("click", sendMail);
+
   if (cardFillout.classList.contains("hide")) {
     cardFillout.classList.remove("hide");
   } else {
@@ -1259,6 +1259,7 @@ function goToReceipt(data) {
   document.querySelector("#your-order").textContent = id;
   document.querySelector("#payment").classList.add("hide");
   document.querySelector("#receipt").classList.remove("hide");
+  document.querySelector(".go_back").style.visibility = "hidden";
 
   //document.querySelector("header").classList.remove("responsive_header");
 }
