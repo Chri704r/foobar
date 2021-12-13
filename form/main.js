@@ -202,6 +202,7 @@ function displayBeer(beer) {
   document.querySelector("#beers").appendChild(clone);
 }
 function showDetails(beer) {
+  document.querySelector("#blured").addEventListener("click", closeDetails);
   document.querySelector("main").classList.add("no_scroll");
   const clone = document.querySelector("#information").cloneNode(true).content;
   popup.textContent = "";
@@ -247,6 +248,7 @@ function basketStatus() {
     document.querySelector(".basket .checkout").addEventListener("click", goToCheckout);
   } else {
     fill.style.fill = "transparent";
+    document.querySelector(".basket .checkout").classList.add("hide");
   }
 }
 function showBasket() {
@@ -258,6 +260,7 @@ function showBasket() {
   basketBorder.style.visibility = "visible";
   basket.classList.add("active");
   blured.classList.add("active");
+  document.querySelector("#blured").addEventListener("click", closeBasket);
   document.querySelector(".basket #close").addEventListener("click", closeBasket);
 }
 function closeBasket() {
