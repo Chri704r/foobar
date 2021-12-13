@@ -1,15 +1,19 @@
 @use "../variabels/colors";
 
 #dash-content-wrapper {
-	#dash-bartenders {
-		cursor: pointer;
-		border: none;
-		padding: 0;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 1rem;
-		margin-top: 20px;
-	}
+
+  #dash-bartenders {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 20px;
+    background: transparent !important;
+  }
+
+	
 
 	article {
 		border: solid 3px colors.$primary-color;
