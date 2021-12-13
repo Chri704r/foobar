@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 161 161">
+  <defs>
+    <clipPath id="clip-checkmark">
+      <rect width="161" height="161"/>
+    </clipPath>
+  </defs>
+  <g id="checkmark" clip-path="url(#clip-checkmark)">
+    <path id="saved" data-name="Union 2" d="M109-1849l-80,99Zm-129,44,49,55Z" transform="translate(36 1885.5)" fill="none" stroke="#efd7b3" stroke-linecap="round" stroke-linejoin="round" stroke-width="19"/>
+  </g>
+</svg>
