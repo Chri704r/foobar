@@ -2,109 +2,111 @@
 @use "../base/typography";
 
 button {
-  background-color: transparent;
-  border-left: none;
-  border-right: none;
-  border-top: solid 2px colors.$primary-color;
-  border-bottom: solid 2px colors.$primary-color;
-  color: colors.$primary-color;
-  cursor: pointer;
+	background-color: transparent;
+	border-left: none;
+	border-right: none;
+	border-top: solid 2px colors.$primary-color;
+	border-bottom: solid 2px colors.$primary-color;
+	color: colors.$primary-color;
+	cursor: pointer;
+	padding: 4px 0;
 }
 .filters button {
-  white-space: nowrap;
-  transform-origin: center;
-  transform: rotate(-90deg);
-  width: fit-content;
-  font-size: 0.8rem;
-  width: fit-content;
-  height: fit-content;
+	white-space: nowrap;
+	transform-origin: center;
+	transform: rotate(-90deg);
+	width: fit-content;
+	font-size: 0.8rem;
+	width: fit-content;
+	height: fit-content;
 }
 
 .active_button,
 .filters button:hover {
-  background-color: colors.$primary-color;
-  color: colors.$background-color;
+	background-color: colors.$primary-color;
+	color: colors.$background-color;
 }
 .payment_options button {
-  border: solid 2px colors.$primary-color;
-  // height: 6vh;
-  padding: 0.5rem;
-  width: 23vw;
+	border: solid 2px colors.$primary-color;
+	// height: 6vh;
+	padding: 0.5rem;
+	width: 23vw;
 }
 .payment_options button img {
-  width: 15vw;
+	width: 15vw;
 }
 .pay {
-  font-size: 2rem;
-  text-transform: uppercase;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+	font-size: 2rem;
+	text-transform: uppercase;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }
 .goback {
-  text-transform: uppercase;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+	text-transform: uppercase;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }
 .go_back {
-  width: 33vw;
+	width: 33vw;
 }
 .add_to_cart {
-  display: inline;
-  margin-left: 1rem;
+	display: inline;
+	margin-left: 1rem;
+	width: 30px;
 }
 #close {
-  display: flex;
-  cursor: pointer;
-  font-weight: bold;
-  float: right;
-  margin: 0.5rem;
-  position: absolute;
-  font-size: 2rem;
-  border: none;
-  color: colors.$primary-color;
-  background-color: transparent;
+	display: flex;
+	cursor: pointer;
+	font-weight: bold;
+	float: right;
+	margin: 0.5rem;
+	position: absolute;
+	font-size: 2rem;
+	border: none;
+	color: colors.$primary-color;
+	background-color: transparent;
 }
 .basket #close {
-  left: 86%;
-  margin: 0;
+	left: 86%;
+	margin: 0;
 }
 .checkout {
-  position: absolute;
-  top: 43vh;
+	position: absolute;
+	top: 43vh;
 }
 .x {
-  font-size: 2rem;
-  padding: 0px;
-  line-height: 0.1rem;
-  font-family: sans-serif;
+	font-size: 2rem;
+	padding: 0px;
+	line-height: 0.1rem;
+	font-family: sans-serif;
 }
 @media only screen and (min-width: 700px) {
-  .filters button {
-    transform: rotate(0deg);
-  }
-  .payment_options button {
-    width: 7vw;
-  }
-  .checkout {
-    top: 72vh;
-  }
-  .payment_options button img {
-    width: 5vw;
-  }
-  .cart {
-    display: none;
-  }
-  .basket #close {
-    display: none;
-  }
-  .filters button {
-    font-size: 1rem;
-  }
-  .go_back {
-    max-width: 12vw;
-    width: fit-content;
-  }
-  // .add_to_basket {
-  //   display: none;
-  // }
+	.filters button {
+		transform: rotate(0deg);
+	}
+	.payment_options button {
+		width: 7vw;
+	}
+	.checkout {
+		top: 72vh;
+	}
+	.payment_options button img {
+		width: 5vw;
+	}
+	.cart {
+		display: none;
+	}
+	.basket #close {
+		display: none;
+	}
+	.filters button {
+		font-size: 1rem;
+	}
+	.go_back {
+		max-width: 12vw;
+		width: fit-content;
+	}
+	// .add_to_basket {
+	//   display: none;
+	// }
 }
