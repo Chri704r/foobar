@@ -19,6 +19,11 @@ button {
   height: fit-content;
 }
 
+.active_button,
+.filters button:hover {
+  background-color: colors.$primary-color;
+  color: colors.$background-color;
+}
 .payment_options button {
   border: solid 2px colors.$primary-color;
   // height: 6vh;

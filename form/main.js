@@ -111,10 +111,13 @@ function getCategory(category) {
 function selectFilter(event) {
   const filter = event.target.dataset.filter;
   console.log(`User selcted ${filter}`);
+
   setFilter(filter);
 }
 function setFilter(filter) {
   settings.filterBy = filter;
+  document.querySelector("[data-filter=all]").classList.remove("active_button");
+
   buildList();
 }
 function buildList() {
@@ -169,7 +172,10 @@ function displayBeer(beer) {
   const clone = document.querySelector("#beer").content.cloneNode(true);
 
   //Set clone data
+
   clone.querySelector("[data-field=imageName]").src = beer.imageName;
+  // clone.querySelector("[data-field=beerName]").src = beer.beerName;
+  clone.querySelector("[data-field=beerName]").textContent = `${beer.beerName}`;
   //add to cart
   clone.querySelector(".add_to_cart").addEventListener("click", basketClicked);
 
@@ -197,7 +203,7 @@ function showDetails(beer) {
   clone.querySelector("[data-field=mouthfeel]").textContent = `${beer.description.mouthfeel}`;
   clone.querySelector("[data-field=overallImpression]").textContent = `${beer.description.overallImpression}`;
   clone.querySelector("[data-field=alc]").textContent = `${beer.alc}% Alc`;
-  clone.querySelector("[data-field=price]").textContent = `50 -kr.`;
+  clone.querySelector("[data-field=price]").textContent = `50,-`;
 
   //add to cart from the popup view
   clone.querySelector(".add_to_basket").addEventListener("click", basketClicked);
@@ -222,7 +228,16 @@ function closeDetails() {
   document.querySelector(".basket_border").classList.remove("blurr");
   document.querySelector("main").classList.remove("no_scroll");
 }
-
+function basketStatus() {
+  console.log("basket status, basketdata length", basketData.length);
+  if (basketData.length > 0) {
+    fill.style.fill = "#eed6b3";
+    document.querySelector(".basket .checkout").classList.remove("hide");
+    document.querySelector(".basket .checkout").addEventListener("click", goToCheckout);
+  } else {
+    fill.style.fill = "transparent";
+  }
+}
 function showBasket() {
   console.log("show basket");
   const basket = document.querySelector(".basket");
@@ -279,27 +294,24 @@ function basketCheck(selectedBeer) {
 
   console.log("add to basket", selectedBeer);
 
-  fill.style.fill = "#eed6b3";
-
-  document.querySelector(".basket .checkout").addEventListener("click", goToCheckout);
-
   function saveDataInfo(selectedBeer) {
     console.log("basketData i save data info", basketData);
     // sends the beerName to basketData
     basketData.push(selectedBeer);
     //adds the selected beer to basket
     addToBasket(selectedBeer);
-
+    // fill.style.fill = "#eed6b3";
     //show number of beers in basket
     let showNumberInBasket = document.querySelector(".number_in_basket");
     showNumberInBasket.textContent = `${basketData.length}`;
+    basketStatus();
   }
 }
 // when going back from order screen to the basket, it has to remake itself from the updated basketData
 function remakeBasket() {
   console.log("remakeBasket");
   console.log("remakeBasket", basketData);
-
+  basketStatus();
   //find out beer is in basket
   prepareElHefe();
   prepareFairy();
@@ -509,6 +521,7 @@ function addToBasket(selectedBeer) {
 function remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket) {
   // // objects for basket
   // name out of selected beer
+
   console.log("selected", selectedBeerForBasket);
   let classNameBeer = selectedBeerForBasket.beerName.replaceAll(" ", "_").toLowerCase();
 
@@ -570,6 +583,7 @@ function remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket) {
   //show number of beers in basket
   let showNumberInBasket = document.querySelector(".number_in_basket");
   showNumberInBasket.textContent = `${basketData.length}`;
+  basketStatus();
 }
 function plusBeerInBasket(beerName) {
   console.log("plusBeer In Basket");
@@ -589,6 +603,7 @@ function plusBeerInBasket(beerName) {
   //show number of beers in basket
   let showNumberInBasket = document.querySelector(".number_in_basket");
   showNumberInBasket.textContent = `${basketData.length}`;
+  basketStatus();
 }
 
 function minusBeerFromBasket(beerName) {
@@ -618,6 +633,15 @@ function minusBeerFromBasket(beerName) {
   //show number of beers in basket
   let showNumberInBasket = document.querySelector(".number_in_basket");
   showNumberInBasket.textContent = `${basketData.length}`;
+  basketStatus();
+
+  console.log("basket lenght", basketData.length);
+
+  // if (basketData.length > 0) {
+  //   fill.style.fill = "#eed6b3";
+  // } else {
+  //   fill.style.fill = "transparent";
+  // }
 }
 function registerPlusAndMinusButtons(beerName, classNameBeer) {
   console.log("register plus and minus buttons");
