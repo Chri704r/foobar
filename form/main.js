@@ -28,13 +28,6 @@ function init() {
 	fill.style.fill = "transparent";
 }
 
-function registerButtons() {
-	console.log("registered buttons");
-	document.querySelectorAll("[data-action='filter']").forEach((button) => {
-		button.addEventListener("click", selectFilter);
-	});
-	document.querySelector(".shoppingcart").addEventListener("click", showBasket);
-}
 
 //loading json
 async function getData() {
@@ -56,6 +49,14 @@ async function getData() {
 	}
 
 	dataLoop();
+}
+
+function registerButtons() {
+  console.log("registered buttons");
+  document.querySelectorAll("[data-action='filter']").forEach((button) => {
+    button.addEventListener("click", selectFilter);
+  });
+  document.querySelector(".shoppingcart").addEventListener("click", showBasket);
 }
 //prepare objects
 function prepareObjects(beers, taps) {
@@ -109,16 +110,22 @@ function getCategory(category) {
 }
 
 function selectFilter(event) {
-	const filter = event.target.dataset.filter;
-	console.log(`User selcted ${filter}`);
-
-	setFilter(filter);
+  const filter = event.target.dataset.filter;
+  console.log(`User selcted ${filter}`);
+  
+  const selectedFilters = document.querySelectorAll(".active_button");
+ 
+  selectedFilters.forEach((filter) => {
+    filter.classList.remove("active_button");
+  });
+  setFilter(filter);
 }
 function setFilter(filter) {
-	settings.filterBy = filter;
-	document.querySelector("[data-filter=all]").classList.remove("active_button");
+  settings.filterBy = filter;
 
-	buildList();
+  document.querySelector(`[data-filter=${filter}]`).classList.add("active_button");
+
+  buildList();
 }
 function buildList() {
 	const currentList = filterList(allBeers);
