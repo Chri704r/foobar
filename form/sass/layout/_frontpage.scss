@@ -1,5 +1,6 @@
 @use "../base/colors";
-
+//beer_order_name
+//beer_name_class
 * {
   box-sizing: border-box;
   // max-width: 100vw;
@@ -13,6 +14,7 @@ body {
 body {
   background-image: url(../assets/noise-bg.png);
 }
+//extra classes
 .hide {
   display: none !important;
   // visibility: hidden;
@@ -25,6 +27,8 @@ body {
   position: static !important;
   overflow-y: scroll !important;
 }
+//extra classes -finish
+//header desktop
 header {
   z-index: 100;
   display: flex;
@@ -62,6 +66,8 @@ header {
   color: colors.$background-color;
   margin-right: 0.7rem;
 }
+//header desktop
+//Menu - form frontpage - desktop
 #menu {
   width: 100vw;
   height: 100vh;
@@ -114,109 +120,6 @@ header {
 }
 .product {
   visibility: visible;
-}
-#payment {
-  width: 100vw;
-  margin-top: 25vh;
-}
-
-#payment .product_overview {
-  border: solid 2px colors.$primary-color;
-  background-color: transparent;
-  margin: 2rem;
-  min-height: 60vh;
-  padding: 1rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.payment_wrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 2rem;
-  gap: 1rem;
-}
-.payment_options {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.card_wrapper {
-  border: solid 4px colors.$primary-color;
-  background: colors.$gradient-1-3;
-
-  border-radius: 5%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 0.6rem;
-  grid-row-gap: 0.6rem;
-  margin: auto;
-  width: 96vw;
-  max-height: 41vh;
-  padding: 1rem;
-
-  span {
-    color: colors.$primary-color;
-    font-size: 1.5rem;
-  }
-}
-.card_wrapper label {
-  font-size: 0.53rem;
-}
-.card_wrapper .input_wrapper {
-  margin: 0;
-}
-.firstrow {
-  grid-area: 1 / 1 / 2 / 4;
-  width: 85vw;
-}
-
-.cardname {
-  grid-area: 2 / 1 / 3 / 4;
-  width: 85vw;
-}
-.month_year {
-  grid-row-start: 3;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  width: 100%;
-
-  .month-year-input-wrapper {
-    display: flex;
-    gap: 0.5rem;
-
-    input {
-      width: 100%;
-    }
-  }
-}
-.cvc {
-  grid-area: 3 / 3;
-}
-#cvc {
-  width: 15vw;
-}
-
-#receipt {
-  margin-top: 25vh;
-}
-.pay_button_container,
-.goback_container,
-#receipt {
-  text-align: center;
-}
-
-#receipt span {
-  font-size: 3rem;
-  color: colors.$primary-color;
-  text-decoration: underline;
-}
-
-#receipt p {
-  width: 40ch;
-  margin: auto;
 }
 .basket,
 .basket_border {
@@ -391,7 +294,115 @@ header {
 }
 
 /* Pop-up & details finish */
+//Menu - form frontpage - desktop - finish
+//Checkout - desktop
+#payment {
+  width: 100vw;
+  margin-top: 25vh;
+}
+
+#payment .product_overview {
+  border: solid 2px colors.$primary-color;
+  background-color: transparent;
+  margin: 2rem;
+  min-height: 60vh;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.payment_wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  gap: 1rem;
+}
+.payment_options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card_wrapper {
+  border: solid 4px colors.$primary-color;
+  background: colors.$gradient-1-3;
+
+  border-radius: 5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0.6rem;
+  grid-row-gap: 0.6rem;
+  margin: auto;
+  width: 96vw;
+  max-height: 41vh;
+  padding: 1rem;
+
+  span {
+    color: colors.$primary-color;
+    font-size: 1.5rem;
+  }
+}
+.card_wrapper label {
+  font-size: 0.53rem;
+}
+.card_wrapper .input_wrapper {
+  margin: 0;
+}
+.firstrow {
+  grid-area: 1 / 1 / 2 / 4;
+  width: 85vw;
+}
+
+.cardname {
+  grid-area: 2 / 1 / 3 / 4;
+  width: 85vw;
+}
+.month_year {
+  grid-row-start: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+
+  .month-year-input-wrapper {
+    display: flex;
+    gap: 0.5rem;
+
+    input {
+      width: 100%;
+    }
+  }
+}
+.cvc {
+  grid-area: 3 / 3;
+}
+#cvc {
+  width: 15vw;
+}
+//Checkout - desktop - finish
+//Receipt - desktop
+#receipt {
+  margin-top: 25vh;
+}
+.pay_button_container,
+.goback_container,
+#receipt {
+  text-align: center;
+}
+
+#receipt span {
+  font-size: 3rem;
+  color: colors.$primary-color;
+  text-decoration: underline;
+}
+
+#receipt p {
+  width: 40ch;
+  margin: auto;
+}
+
 @media only screen and (min-width: 700px) {
+  //header - mobil
   header {
     justify-content: center;
     margin-left: 0;
@@ -409,6 +420,8 @@ header {
   .shoppingcart {
     display: none;
   }
+  //header - mobil - finish
+  //Menu - mobil
   #menu {
     width: 100vw;
     min-height: 100vh;
@@ -534,7 +547,8 @@ header {
   .product_overview h2 {
     text-align: center;
   }
-
+  //Menu - mobil - finish
+  //Checkout - mobil
   #payment {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -579,7 +593,7 @@ header {
     width: 4vw;
   }
 }
-
+//Checkout - mobil - finish
 @media only screen and (min-width: 1000px) {
   .month_year {
     grid-row-start: 3;
