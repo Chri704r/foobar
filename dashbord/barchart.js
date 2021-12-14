@@ -83,7 +83,10 @@ function init() {
 
   if (realTime.isOpen) {
     getData();
+  } else {
+    getStorage();
   }
+
   registerButtons();
   claculateCalendar();
   getUserLogin();
@@ -99,18 +102,21 @@ function checkURLParameters() {
     if (state === "happyhour") {
       realTime.isHappyHour = true;
       realTime.isOpen = true;
+      realTime.isSimulation = true;
       realTime.stateParam = "happyhour";
     } else if (state === "lastcall") {
       realTime.isLastCall = true;
       realTime.isOpen = true;
+      realTime.isSimulation = true;
       realTime.stateParam = "lastcall";
     } else if (state === "open") {
       realTime.isOpen = true;
-      realTime.stateParam = "open";
-    }
-
-    if (realTime.isHappyHour || realTime.isOpen) {
       realTime.isSimulation = true;
+      realTime.stateParam = "open";
+    } else if (state === "closed") {
+      realTime.isOpen = false;
+      realTime.isSimulation = true;
+      realTime.stateParam = "closed";
     }
   }
 }
@@ -837,4 +843,23 @@ async function dispayDashCalendar(day, month) {
   const eventData = await fetchfunction("events.json");
 
   displayEvents(eventData, selector);
+}
+
+async function getStorage() {
+  const dataUrl = "https://groupfoobar.herokuapp.com/";
+
+  const data = await fetchfunction(dataUrl);
+
+  document.querySelector("#popup-storage").innerHTML = "";
+
+  data.storage.forEach((beerType) => {
+    const clone = document
+      .querySelector("template.storage")
+      .content.cloneNode(true);
+
+    clone.querySelector(".name").textContent = beerType.name;
+    clone.querySelector(".number").textContent = beerType.amount;
+
+    document.querySelector("#popup-storage").appendChild(clone);
+  });
 }
