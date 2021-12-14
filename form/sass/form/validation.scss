@@ -1,0 +1,28 @@
+@use "../base/colors";
+
+.pay_container {
+  .error-message {
+    color: colors.$red-color;
+    font-size: 0.8rem;
+  }
+
+  .valid {
+    border: 2px solid colors.$third-green-color;
+    background-color: rgba(0, 255, 0, 0.137);
+  }
+
+  .invalid {
+    border: 2px solid colors.$red-color !important;
+    background-color: rgba(255, 0, 0, 0.137) !important;
+  }
+
+  #payment-form input:not(:focus, :placeholder-shown):invalid {
+    border: 2px solid colors.$red-color;
+    background-color: rgba(255, 0, 0, 0.137);
+  }
+
+  #payment-form input:not(:focus, :placeholder-shown):valid {
+    border: 2px solid colors.$third-green-color;
+    background-color: rgba(0, 255, 0, 0.137);
+  }
+}
