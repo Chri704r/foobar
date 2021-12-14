@@ -271,6 +271,10 @@ header {
   gap: 1rem;
   flex-direction: column;
   margin-top: 1rem;
+
+  .price {
+    width: 2rem;
+  }
 }
 .details_container,
 .details_container_order,
