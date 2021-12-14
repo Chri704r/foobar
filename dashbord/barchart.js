@@ -4,8 +4,10 @@ window.addEventListener("DOMContentLoaded", init);
 
 const realTime = {
   isHappyHour: false, //When this is true the bar has happyhour
+  isLastCall: false,
   isOpen: false, //When this is true the bar is open
   isSimulation: false, //When this is true the bar does not automaticaly calculate the time as real time and can be simulated
+  stateParam: "", //Saves the parameter
 };
 
 const calendarData = {
@@ -97,8 +99,14 @@ function checkURLParameters() {
     if (state === "happyhour") {
       realTime.isHappyHour = true;
       realTime.isOpen = true;
+      realTime.stateParam = "happyhour";
+    } else if (state === "lastcall") {
+      realTime.isLastCall = true;
+      realTime.isOpen = true;
+      realTime.stateParam = "lastcall";
     } else if (state === "open") {
       realTime.isOpen = true;
+      realTime.stateParam = "open";
     }
 
     if (realTime.isHappyHour || realTime.isOpen) {
@@ -111,7 +119,7 @@ function calculateTime() {
   //get current date and time
   const now = new Date();
 
-  //get current seconds, minutes and hour
+  //get current hour
   const hours = now.getHours();
 
   console.log("hours", hours);
@@ -130,6 +138,14 @@ function registerButtons() {
   document.querySelector(".burger-menu").addEventListener("click", () => {
     document.querySelector(".burger-menu").classList.toggle("change");
     document.querySelector("#dash-nav-mobil").classList.toggle("hide");
+  });
+
+  //Button to go to the custumerdashboard
+  document.querySelectorAll(".to-cust-dash").forEach((button) => {
+    button.addEventListener("click", () => {
+      //Loads the page using the state parameters
+      window.location.href = `index.html?state=${realTime.stateParam}`;
+    });
   });
 
   //button for signing out on web version
@@ -358,14 +374,16 @@ function displayBartenders(data) {
         bartender.usingTap = "None";
       }
 
-
-			//Insert bartender in clone
-			clone.querySelector(".bartender_photo").src = `assets/${bartender.name}_edit.png`;
-			clone.querySelector(".bartender-name").textContent = bartender.name;
-			clone.querySelector(".status").textContent = bartender.status;
-			clone.querySelector(".status-detail").textContent = workstatus[bartender.statusDetail];
-			clone.querySelector(".using-tap").textContent = "Using tab: " + bartender.usingTap;
-
+      //Insert bartender in clone
+      clone.querySelector(
+        ".bartender_photo"
+      ).src = `assets/${bartender.name}_edit.png`;
+      clone.querySelector(".bartender-name").textContent = bartender.name;
+      clone.querySelector(".status").textContent = bartender.status;
+      clone.querySelector(".status-detail").textContent =
+        workstatus[bartender.statusDetail];
+      clone.querySelector(".using-tap").textContent =
+        "Using tab: " + bartender.usingTap;
 
       clone
         .querySelector(".bart-article")
@@ -679,15 +697,17 @@ async function displayCalendar(month, year) {
 }
 
 async function displayEventMarkers() {
-	const eData = await fetchfunction("events.json");
+  const eData = await fetchfunction("events.json");
 
-	eData.forEach((event) => {
-		if (calendarData.currentYear == event.date.year) {
-			if (calendarData.currentMonth == event.date.month) {
-				document.querySelector(`td[id="${event.date.day}"]`).classList.add("has-event");
-			}
-		}
-	});
+  eData.forEach((event) => {
+    if (calendarData.currentYear == event.date.year) {
+      if (calendarData.currentMonth == event.date.month) {
+        document
+          .querySelector(`td[id="${event.date.day}"]`)
+          .classList.add("has-event");
+      }
+    }
+  });
 }
 
 function displayEvents(events, selector) {
@@ -725,7 +745,6 @@ function displayEvents(events, selector) {
   if (!hasEvent) {
     let span = document.createElement("span");
     span.textContent = "No events planned";
-
 
     selector.appendChild(span);
   }
