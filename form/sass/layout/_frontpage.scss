@@ -66,7 +66,7 @@ header {
   color: colors.$background-color;
   margin-right: 0.7rem;
 }
-//header desktop
+//header mobil
 //Menu - form frontpage - desktop
 #menu {
   width: 100vw;
@@ -294,8 +294,8 @@ header {
 }
 
 /* Pop-up & details finish */
-//Menu - form frontpage - desktop - finish
-//Checkout - desktop
+//Menu - form frontpage - mobil - finish
+//Checkout - mobil
 #payment {
   width: 100vw;
   margin-top: 25vh;
@@ -400,41 +400,25 @@ header {
   width: 40ch;
   margin: auto;
 }
-
+//ipad
 @media only screen and (min-width: 700px) {
-  //header - mobil
-  header {
-    justify-content: center;
-    margin-left: 0;
-    width: 90vw;
-    gap: 0;
+  // Header
+  .number_in_basket {
+    font-size: 2.6rem;
+    margin-right: 1.2rem;
   }
-  .logo {
-    width: 12vw;
-    height: 12vh;
-  }
-  .responsive_header {
-    margin-left: 1rem;
-    gap: 35vw;
-  }
-  .shoppingcart {
-    display: none;
-  }
-  //header - mobil - finish
-  //Menu - mobil
-  #menu {
-    width: 100vw;
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 20% 50% 30%;
-    margin-top: 10vh;
-  }
+  //header - ipad - finish
+  //Menu - ipad
   .filters_border {
     border: solid 4px colors.$primary-color;
     padding: 0.5rem;
-    width: 19vw;
+    width: 27vw;
     height: 70vh;
     margin: 1rem;
+  }
+  #menu {
+    grid-template-columns: 30% 70%;
+    margin-top: 15vh;
   }
   #menu .filters {
     border: solid 2px colors.$primary-color;
@@ -442,94 +426,15 @@ header {
     gap: 0;
     // height: 40vh;
     justify-content: normal;
-    width: 17vw;
+    width: 24vw;
     height: 67vh !important;
   }
   .filters button {
     margin-top: 3vh;
   }
-  .popup_border {
-    width: 52vw;
-    height: 84vh;
-    position: absolute;
-    left: 13%;
-    top: -10%;
-    z-index: 100;
-    /* margin: 24vw; 
-   margin-top: -2vh;*/
-  }
-  .main_info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* text-align: center; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    margin-bottom: 2rem;
-    position: static;
-    overflow-y: scroll;
-    margin: auto 1rem;
-    margin-bottom: 1rem;
-    gap: 1rem;
-    align-items: start;
-  }
-  #popup {
-    width: 50vw;
-    left: 46%;
-  }
-  #popup .imageName {
-    width: 17vw;
-    height: 17vw;
-  }
-  .information_popup {
-    margin-top: 5vh;
-  }
   .imageName {
-    width: 10vw;
-    height: 10vw;
-  }
-  .description {
-    position: static;
-    height: 82vh;
-    margin-top: 5vh;
-    overflow-y: scroll;
-    width: 23vw;
-    text-align: left;
-    margin-left: 1rem;
-  }
-  .basket_border {
-    visibility: visible;
-    position: relative;
-    width: 25vw;
-    height: 80vh;
-    margin: 1rem;
-    justify-content: center;
-    align-items: center;
-  }
-  .basket {
-    visibility: visible;
-    border: solid 2px colors.$primary-color;
-    width: 23vw;
-    height: 77vh;
-    position: initial;
-    transform: none;
-  }
-  .basket h2 {
-    text-align: center;
-    text-decoration: underline;
-    font-weight: 100;
-    text-transform: uppercase;
-    margin-top: 3vh;
-  }
-  .basket_order_cont,
-  .basket_order_cont_order {
-    width: 19vw;
-
-    .x {
-      cursor: pointer;
-    }
-  }
-  .total_wrapper {
-    top: 61%;
+    width: 15vw;
+    height: 15vw;
   }
   #beers {
     display: grid;
@@ -540,15 +445,58 @@ header {
     margin: 1rem;
     height: fit-content;
   }
+  .basket_border {
+    margin-top: 8.5vh;
+  }
+  .popup_border {
+    height: 64vh;
+    position: absolute;
 
-  .product_btn_cont {
-    display: inline;
+    z-index: 100;
+    margin-top: 3vh;
   }
-  .product_overview h2 {
-    text-align: center;
+
+  #popup {
+    height: 60vh;
+    justify-content: center;
   }
-  //Menu - mobil - finish
-  //Checkout - mobil
+  .main_info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 2rem;
+    position: static;
+    overflow-y: scroll;
+    margin: auto 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    align-items: start;
+    width: 80vw;
+    height: 59vh;
+  }
+
+  #popup .imageName {
+    width: 17vw;
+    height: 17vw;
+  }
+  .information_popup {
+    margin-top: 5vh;
+    height: 40vh;
+    width: 20vh;
+  }
+  .description {
+    position: static;
+    height: 54vh;
+    margin-top: 5vh;
+    overflow-y: scroll;
+    width: 38vw;
+    text-align: left;
+    margin-left: 1rem;
+  }
+
+  //Checkout - ipad
+  .x {
+    cursor: pointer;
+  }
   #payment {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -593,8 +541,119 @@ header {
     width: 4vw;
   }
 }
-//Checkout - mobil - finish
-@media only screen and (min-width: 1000px) {
+//Checkout - ipad - finish
+//Desktop
+@media only screen and (min-width: 1200px) {
+  //Header - desktop
+  .shoppingcart {
+    display: none;
+  }
+  header {
+    justify-content: center;
+    margin-left: 0;
+    width: 90vw;
+    gap: 0;
+  }
+  .logo {
+    width: 12vw;
+    height: 12vh;
+  }
+  .responsive_header {
+    margin-left: 1rem;
+    gap: 35vw;
+  }
+  //Header - desktop - finish
+
+  //Menu - desktop
+  #menu {
+    grid-template-columns: 20% 50% 30%;
+  }
+  .filters_border {
+    padding: 0.5rem;
+    width: 19vw;
+    height: 70vh;
+    margin: 1rem;
+  }
+  #menu .filters {
+    width: 12vw;
+    gap: 0;
+    // height: 40vh;
+    justify-content: normal;
+    width: 17vw;
+    height: 67vh !important;
+  }
+  .basket_border {
+    visibility: visible;
+    position: relative;
+    width: 25vw;
+    height: 80vh;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .basket {
+    visibility: visible;
+    border: solid 2px colors.$primary-color;
+    width: 23vw;
+    height: 77vh;
+    position: initial;
+    transform: none;
+  }
+  .basket h2 {
+    text-align: center;
+    text-decoration: underline;
+    font-weight: 100;
+    text-transform: uppercase;
+    margin-top: 3vh;
+  }
+  .basket_order_cont,
+  .basket_order_cont_order {
+    width: 19vw;
+  }
+
+  .popup_border {
+    width: 52vw;
+    height: 84vh;
+
+    left: 13%;
+    top: -10%;
+    z-index: 100;
+  }
+  #popup {
+    width: 50vw;
+    height: 80vh;
+    left: 46%;
+  }
+  .main_info {
+    height: 78vh;
+  }
+  .information_popup {
+    margin-top: 5vh;
+    height: 50vh;
+    width: 19vw;
+  }
+  .imageName {
+    width: 10vw;
+    height: 10vw;
+  }
+  .description {
+    width: 23vw;
+    height: 75vh;
+  }
+
+  .total_wrapper {
+    top: 67%;
+  }
+
+  .product_btn_cont {
+    display: inline;
+  }
+  .product_overview h2 {
+    text-align: center;
+  }
+
+  //Menu - desktop - finish
+  //checkout - desktop
   .month_year {
     grid-row-start: 3;
     grid-column-start: 1;
@@ -614,4 +673,5 @@ header {
   #payment {
     width: 80vw;
   }
+  //checkout - desktop - finish
 }

@@ -101,6 +101,7 @@ button {
   line-height: 0.1rem;
   font-family: sans-serif;
 }
+//ipad
 @media only screen and (min-width: 700px) {
   .filters button {
     transform: rotate(0deg);
@@ -109,8 +110,9 @@ button {
     width: 7vw;
   }
   .checkout {
-    top: 72vh;
+    top: 43vh;
   }
+
   .payment_options button img {
     width: 5vw;
   }
@@ -132,5 +134,10 @@ button {
     left: 10vw;
     margin: 0.5rem;
     margin-right: 1rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .checkout {
+    top: 72vh;
   }
 }
