@@ -285,7 +285,7 @@ function goToCheckout() {
   document.querySelector(".basket_items").innerHTML = "";
   prepareOrder();
   registerPayment();
-  if (screen.width < 700) {
+  if (screen.width < 1000) {
     closeBasket();
   } else {
   }
