@@ -229,6 +229,8 @@ function showBeer(data, beertype) {
 		const clone = document.querySelector("template.tap").content.cloneNode(true);
 
 		clone.querySelector("img").src = `assets/${beertype.name}.svg`;
+		clone.querySelector("img").setAttribute("width", "20px");
+		clone.querySelector("img").setAttribute("height", "100px");
 		clone.querySelector("p").textContent = beertype.name;
 
 		//if beer is on tap then remove opacity

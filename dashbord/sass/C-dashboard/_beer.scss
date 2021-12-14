@@ -19,7 +19,7 @@
 #taps img {
 	width: 55px;
 	display: block;
-	margin: 0 auto;
+	margin: 0 auto -10px;
 	opacity: 25%;
 }
 
@@ -51,14 +51,14 @@
 	#taps img {
 		width: 50px;
 		display: block;
-		margin: 0 auto;
+		margin: 0 auto -12px;
 	}
 
 	#taps {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
 		grid-template-rows: repeat(2, 1fr);
-		row-gap: 5px;
+		row-gap: 0px;
 		border: none;
 		margin: 0 auto;
 		padding: 0 10px;
