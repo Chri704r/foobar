@@ -1,144 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/x-icon" href="/assets/favicon_favicon.svg" />
-    <title>FooBar Dashboard</title>
-  </head>
-  <body>
-    <div id="main-container">
-      <div id="inner-container">
-        <header>
-          <img class="logo" src="assets/foobar_logo.svg" alt="logo" />
-        </header>
-        <main>
-          <div class="top-wrapper">
-            <section id="clock">
-              <p class="clock-event"></p>
-              <div class="clock-wrapper">
-                <div class="clock-base">
-                  <div class="clock-indicator"></div>
-                  <div class="clock-indicator"></div>
-                  <div class="clock-indicator"></div>
-                  <div class="clock-indicator"></div>
-                  <div class="clock-face">
-                    <div>
-                      <div class="hand clock-hour"></div>
-                      <div class="hand clock-minute"></div>
-                      <div class="hand clock-seconds"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="digital-clock-container">
-                <p class="digital-clock"></p>
-              </div>
-            </section>
-            <section id="taps">
-              <div>
-                <img src="assets/beer-placeholder.svg" alt="" />
-                <p>-</p>
-              </div>
-              <div>
-                <img src="assets/beer-placeholder.svg" alt="" />
-                <p>-</p>
-              </div>
-              <div>
-                <img src="assets/beer-placeholder.svg" alt="" />
-                <p>-</p>
-              </div>
-              <div>
-                <img src="assets/beer-placeholder.svg" alt="" />
-                <p>-</p>
-              </div>
-              <div>
-                <img src="assets/beer-placeholder.svg" alt="" />
-                <p>-</p>
-              </div>
-              <div>
-                <img src="assets/beer-placeholder.svg" alt="" />
-                <p>-</p>
-              </div>
-              <div>
-                <img src="assets/beer-placeholder.svg" alt="" />
-                <p>-</p>
-              </div>
-            </section>
-          </div>
-          <div class="bottom-wrapper">
-            <section id="queue">
-              <h2>queue</h2>
-              <div id="queue-container"></div>
-            </section>
-            <section id="serving">
-              <h2>serving</h2>
-              <div id="serving-container"></div>
-            </section>
-          </div>
-        </main>
-      </div>
-    </div>
-    <section id="login-section">
-      <div class="outer close-popup">
-        <div class="inner">
-          <label id="close-text">back</label>
-        </div>
-      </div>
-      <h2>LOGIN TO ACCOUNT</h2>
-      <form>
-        <p class="invalid-input"></p>
-        <div>
-          <label for="">username</label>
-          <input type="text" placeholder=" " minlength="3" maxlength="15" />
-          <p class="invalid-message">
-            Username has to be at least 3 characters and a maximum of 15
-          </p>
-        </div>
-        <div>
-          <label for="">Password</label>
-          <div id="password-wrapper">
-            <input
-              id="password"
-              type="password"
-              placeholder=" "
-              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-            />
-            <img id="password-toggle" src="../assets/eye-01.svg" alt="eye" />
-            <p class="invalid-message">
-              Requires at least 8 characters, at least one letter and one number
-            </p>
-          </div>
-        </div>
-        <button id="login-button">LOGIN</button>
-      </form>
-    </section>
-    <footer>
-      <button id="dashboard-button">go to dashboard</button>
-      <p>©Copyrights reserved, foobar 2021</p>
-    </footer>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="description"
+			content="The bar with wonderful beer that will cheer you up. Have a great experience with our digital solution, that makes it quick and easy to order beer for you and your friends. 
+    "
+		/>
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="icon" type="image/x-icon" href="/assets/favicon_favicon.svg" />
+		<title>FooBar Dashboard</title>
+	</head>
+	<body>
+		<div id="main-container">
+			<div id="inner-container">
+				<header>
+					<img class="logo" src="assets/foobar_logo.svg" width="80" height="80" alt="logo" />
+				</header>
+				<main>
+					<div class="top-wrapper">
+						<section id="clock">
+							<p class="clock-event"></p>
+							<div class="clock-wrapper">
+								<div class="clock-base">
+									<div class="clock-indicator"></div>
+									<div class="clock-indicator"></div>
+									<div class="clock-indicator"></div>
+									<div class="clock-indicator"></div>
+									<div class="clock-face">
+										<div>
+											<div class="hand clock-hour"></div>
+											<div class="hand clock-minute"></div>
+											<div class="hand clock-seconds"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="digital-clock-container">
+								<p class="digital-clock"></p>
+							</div>
+						</section>
+						<section id="taps">
+							<div>
+								<img src="assets/beer-placeholder.svg" alt="" />
+								<p>-</p>
+							</div>
+							<div>
+								<img src="assets/beer-placeholder.svg" alt="" />
+								<p>-</p>
+							</div>
+							<div>
+								<img src="assets/beer-placeholder.svg" alt="" />
+								<p>-</p>
+							</div>
+							<div>
+								<img src="assets/beer-placeholder.svg" alt="" />
+								<p>-</p>
+							</div>
+							<div>
+								<img src="assets/beer-placeholder.svg" alt="" />
+								<p>-</p>
+							</div>
+							<div>
+								<img src="assets/beer-placeholder.svg" alt="" />
+								<p>-</p>
+							</div>
+							<div>
+								<img src="assets/beer-placeholder.svg" alt="" />
+								<p>-</p>
+							</div>
+						</section>
+					</div>
+					<div class="bottom-wrapper">
+						<section id="queue">
+							<h2>queue</h2>
+							<div id="queue-container"></div>
+						</section>
+						<section id="serving">
+							<h2>serving</h2>
+							<div id="serving-container"></div>
+						</section>
+					</div>
+				</main>
+			</div>
+		</div>
+		<section id="login-section">
+			<div class="outer close-popup">
+				<div class="inner">
+					<label id="close-text">back</label>
+				</div>
+			</div>
+			<h2>LOGIN TO ACCOUNT</h2>
+			<form>
+				<p class="invalid-input"></p>
+				<div>
+					<label for="">username</label>
+					<input type="text" placeholder=" " minlength="3" maxlength="15" />
+					<p class="invalid-message">Username has to be at least 3 characters and a maximum of 15</p>
+				</div>
+				<div>
+					<label for="">Password</label>
+					<div id="password-wrapper">
+						<input id="password" type="password" placeholder=" " pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" />
+						<img id="password-toggle" src="../assets/eye-01.svg" alt="eye" />
+						<p class="invalid-message">Requires at least 8 characters, at least one letter and one number</p>
+					</div>
+				</div>
+				<button id="login-button">LOGIN</button>
+			</form>
+		</section>
+		<footer>
+			<button id="dashboard-button">go to dashboard</button>
+			<p>©Copyrights reserved, foobar 2021</p>
+		</footer>
 
-    <template class="customer-dashboard">
-      <div class="order-wrapper">
-        <p class="order"></p>
-        <p class="ordernumber"></p>
-      </div>
-    </template>
+		<template class="customer-dashboard">
+			<div class="order-wrapper">
+				<p class="order"></p>
+				<p class="ordernumber"></p>
+			</div>
+		</template>
 
-    <template class="tap">
-      <div>
-        <img src="" alt="" />
-        <p></p>
-      </div>
-    </template>
+		<template class="tap">
+			<div>
+				<img src="" alt="" />
+				<p></p>
+			</div>
+		</template>
 
-    <script type="module" src="/main.js"></script>
-  </body>
+		<script type="module" src="/main.js"></script>
+	</body>
 </html>
