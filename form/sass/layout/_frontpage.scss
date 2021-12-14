@@ -510,6 +510,10 @@ header {
   .basket_order_cont,
   .basket_order_cont_order {
     width: 19vw;
+
+    .x {
+      cursor: pointer;
+    }
   }
   .total_wrapper {
     top: 61%;
