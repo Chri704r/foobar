@@ -13,7 +13,7 @@
 }
 
 body {
-	background-image: url(../assets/noise-bg.png);
+	background-image: url(../assets/noise-bg-optimized.jpg);
 }
 
 button {
@@ -101,15 +101,15 @@ footer {
 	.bottom-wrapper {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		margin: 0 10px;
+		margin: 30px 10px 0;
 		gap: 10px;
-		max-height: 40vh;
+		max-height: 43vh;
 	}
 
 	#queue,
 	#serving {
 		margin: 0px 0px 15px;
-		height: 45vh;
+		height: 43vh;
 	}
 
 	#serving-container,
@@ -128,5 +128,12 @@ footer {
 @media only screen and (min-width: 1200px) {
 	.top-wrapper {
 		grid-template-columns: 1fr 4fr;
+	}
+	.bottom-wrapper {
+		margin: 0 10px;
+	}
+	#queue,
+	#serving {
+		height: 45vh;
 	}
 }
