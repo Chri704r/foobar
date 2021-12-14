@@ -19,10 +19,16 @@ button {
   font-size: 0.8rem;
   width: fit-content;
   height: fit-content;
+  padding: 0.3rem;
 }
 
-.active_button,
 .filters button:hover {
+  border: solid 2px colors.$primary-color;
+}
+.active_button {
+  // border: solid 2px colors.$third-green-color;
+  // border-top: solid 2px colors.$primary-color;
+  // border-bottom: solid 2px colors.$primary-color;
   background-color: colors.$primary-color;
   color: colors.$background-color;
 }
