@@ -504,6 +504,7 @@ function addToBasket(selectedBeer) {
   } else {
     // beer name on list and puttet inside the basket container in the basket
     const p = document.createElement("p");
+    p.classList.add("beer_name_class");
     p.textContent = `${selectedBeerForBasket.beerName}`;
     basketTxtCont.append(p);
 
@@ -567,6 +568,7 @@ function remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket) {
 
   // beer name on list and puttet inside the basket container in the basket
   const p = document.createElement("p");
+  p.classList.add("beer_name_class");
   p.textContent = `${selectedBeerForBasket.beerName}`;
   basketTxtCont.append(p);
 
