@@ -48,18 +48,21 @@ function checkURLParameters() {
     if (state === "happyhour") {
       realTime.isHappyHour = true;
       realTime.isOpen = true;
+      realTime.isSimulation = true;
       realTime.stateParam = "happyhour";
     } else if (state === "lastcall") {
       realTime.isLastCall = true;
       realTime.isOpen = true;
+      realTime.isSimulation = true;
       realTime.stateParam = "lastcall";
     } else if (state === "open") {
       realTime.isOpen = true;
-      realTime.stateParam = "open";
-    }
-
-    if (realTime.isHappyHour || realTime.isOpen) {
       realTime.isSimulation = true;
+      realTime.stateParam = "open";
+    } else if (state === "closed") {
+      realTime.isOpen = false;
+      realTime.isSimulation = true;
+      realTime.stateParam = "closed";
     }
   }
 }
