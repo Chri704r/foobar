@@ -1,5 +1,7 @@
 import "./style.scss";
 
+
+
 window.addEventListener("DOMContentLoaded", init);
 
 const realTime = {
@@ -341,7 +343,8 @@ function displayBartenders(data) {
 			}
 
 			//Insert bartender in clone
-			clone.querySelector(".bartender_photo").src = `assets/${bartender.name}_edit.png`;
+			//clone.querySelector(".bartender_photo").src = `assets/${bartender.name}_edit.png`;
+			clone.querySelector(".bartender_photo").src = new URL(`./assets/${bartender.name}_edit.png`, import.meta.url).href;
 			clone.querySelector(".bartender-name").textContent = bartender.name;
 			clone.querySelector(".status").textContent = bartender.status;
 			clone.querySelector(".status-detail").textContent = workstatus[bartender.statusDetail];
@@ -484,7 +487,8 @@ function showBeer(data) {
 	data.taps.forEach((beer) => {
 		const clone = document.querySelector("template.tap").content.cloneNode(true);
 
-		clone.querySelector("img").src = `assets/${beer.beer}.svg`;
+		//clone.querySelector("img").src = `assets/${beer.beer}.svg`;
+		clone.querySelector("img").src = new URL(`./assets/${beer.beer}.svg`, import.meta.url).href;
 		clone.querySelector("p").textContent = beer.beer;
 
 		document.querySelector("#dash-taps").appendChild(clone);
@@ -496,7 +500,8 @@ function showBeer(data) {
 	data.taps.forEach((beer) => {
 		const clone = document.querySelector("template.popup-tap").content.cloneNode(true);
 
-		clone.querySelector("img").src = `assets/${beer.beer}.svg`;
+		//clone.querySelector("img").src = `assets/${beer.beer}.svg`;
+		clone.querySelector("img").src = new URL(`./assets/${beer.beer}.svg`, import.meta.url).href;
 		clone.querySelector("p").textContent = beer.beer;
 		clone.querySelector("p:nth-child(2)").textContent = `${beer.level}/${beer.capacity}`;
 

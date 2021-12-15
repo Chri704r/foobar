@@ -230,7 +230,8 @@ function showBeer(data, beertype) {
 	beertype.forEach((beertype) => {
 		const clone = document.querySelector("template.tap").content.cloneNode(true);
 
-		clone.querySelector("img").src = `assets/${beertype.name}.svg`;
+		//clone.querySelector("img").src = `assets/${beertype.name}.svg`;
+		clone.querySelector("img").src = new URL(`./assets/${beertype.name}.svg`, import.meta.url).href;
 		clone.querySelector("img").setAttribute("width", "20px");
 		clone.querySelector("img").setAttribute("height", "100px");
 		clone.querySelector("p").textContent = beertype.name;
@@ -258,7 +259,8 @@ function clickLogin() {
 
 	//toggle password visibility
 	document.querySelector("#password-toggle").addEventListener("click", () => {
-		document.querySelector("#password-toggle").src = "../assets/eye-02.svg";
+		//document.querySelector("#password-toggle").src = "../assets/eye-02.svg";
+		document.querySelector("#password-toggle").src = new URL(`./assets/eye-02.svg`, import.meta.url).href;
 		const password = document.querySelector("#password");
 		//if password is hidden
 		if (password.getAttribute("type") === "password") {
@@ -267,7 +269,8 @@ function clickLogin() {
 		} else {
 			//hide password if not hidden
 			password.setAttribute("type", "password");
-			document.querySelector("#password-toggle").src = "../assets/eye-01.svg";
+			//document.querySelector("#password-toggle").src = "../assets/eye-01.svg";
+			document.querySelector("#password-toggle").src = new URL(`./assets/eye-01.svg`, import.meta.url).href;
 		}
 	});
 
