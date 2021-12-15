@@ -4,6 +4,7 @@ window.addEventListener("DOMContentLoaded", init);
 //array for all beers
 let allBeers = [];
 console.log("allBeers", allBeers);
+// Variable for Beer
 let Beer = {
   beerName: "",
   imageName: "",
@@ -16,9 +17,11 @@ let Beer = {
   overallImpression: "",
   alc: "",
 };
+//Variable til filtering
 const settings = {
   filter: "all",
 };
+//Array for all beers in basket
 let basketData = [];
 
 const validation = {
@@ -42,9 +45,8 @@ async function getData() {
   // const response = await fetch("https://groupfoobar.herokuapp.com/");
   // const data = await response.json();
 
-  const responseBeer = await fetch(
-    "https://groupfoobar.herokuapp.com/beertypes"
-  );
+  const responseBeer = await fetch("https://groupfoobar.herokuapp.com/beertypes");
+
   const beerData = await responseBeer.json();
   console.log("beer Data", beerData);
 
@@ -133,9 +135,7 @@ function selectFilter(event) {
 function setFilter(filter) {
   settings.filterBy = filter;
 
-  document
-    .querySelector(`[data-filter=${filter}]`)
-    .classList.add("active_button");
+  document.querySelector(`[data-filter=${filter}]`).classList.add("active_button");
 
   buildList();
 }
@@ -202,14 +202,8 @@ function displayBeer(beer) {
     basketCheck(beer);
   });
 
-  // basket on the mobile view was clicked
-  function basketClicked() {
-    basketCheck(beer);
-  }
   //click to see details
-  clone
-    .querySelector(".read_more")
-    .addEventListener("click", () => showDetails(beer));
+  clone.querySelector(".read_more").addEventListener("click", () => showDetails(beer));
 
   // append clone to list
 
@@ -223,28 +217,16 @@ function showDetails(beer) {
   clone.querySelector("[data-field=imageName]").src = beer.imageName;
   clone.querySelector("[data-field=beerName]").textContent = `${beer.beerName}`;
 
-  clone.querySelector(
-    "[data-field=aroma]"
-  ).textContent = `${beer.description.aroma}`;
-  clone.querySelector(
-    "[data-field=appearance]"
-  ).textContent = `${beer.description.appearance}`;
-  clone.querySelector(
-    "[data-field=flavor]"
-  ).textContent = `${beer.description.flavor}`;
-  clone.querySelector(
-    "[data-field=mouthfeel]"
-  ).textContent = `${beer.description.mouthfeel}`;
-  clone.querySelector(
-    "[data-field=overallImpression]"
-  ).textContent = `${beer.description.overallImpression}`;
+  clone.querySelector("[data-field=aroma]").textContent = `${beer.description.aroma}`;
+  clone.querySelector("[data-field=appearance]").textContent = `${beer.description.appearance}`;
+  clone.querySelector("[data-field=flavor]").textContent = `${beer.description.flavor}`;
+  clone.querySelector("[data-field=mouthfeel]").textContent = `${beer.description.mouthfeel}`;
+  clone.querySelector("[data-field=overallImpression]").textContent = `${beer.description.overallImpression}`;
   clone.querySelector("[data-field=alc]").textContent = `${beer.alc}% Alc`;
   clone.querySelector("[data-field=price]").textContent = `50,-`;
 
   //add to cart from the popup view
-  clone
-    .querySelector(".add_to_basket")
-    .addEventListener("click", basketClicked);
+  clone.querySelector(".add_to_basket").addEventListener("click", basketClicked);
 
   function basketClicked() {
     basketCheck(beer);
@@ -271,9 +253,7 @@ function basketStatus() {
   if (basketData.length > 0) {
     fill.style.fill = "#eed6b3";
     document.querySelector(".basket .checkout").classList.remove("hide");
-    document
-      .querySelector(".basket .checkout")
-      .addEventListener("click", goToCheckout);
+    document.querySelector(".basket .checkout").addEventListener("click", goToCheckout);
   } else {
     fill.style.fill = "transparent";
     document.querySelector(".basket .checkout").classList.add("hide");
@@ -289,9 +269,7 @@ function showBasket() {
   basket.classList.add("active");
   blured.classList.add("active");
   document.querySelector("#blured").addEventListener("click", closeBasket);
-  document
-    .querySelector(".basket #close")
-    .addEventListener("click", closeBasket);
+  document.querySelector(".basket #close").addEventListener("click", closeBasket);
 }
 function closeBasket() {
   const basket = document.querySelector(".basket");
@@ -415,9 +393,7 @@ function remakeBasket() {
     }
   }
   function prepareFairy() {
-    const prepFairy = basketData.filter(
-      (beer) => beer.beerName === "Fairy Tale Ale"
-    );
+    const prepFairy = basketData.filter((beer) => beer.beerName === "Fairy Tale Ale");
 
     if (prepFairy.length > 0) {
       console.log("hæhæhæh fairy");
@@ -440,9 +416,7 @@ function remakeBasket() {
     }
   }
   function prepareHollaBack() {
-    const prepHollaBack = basketData.filter(
-      (beer) => beer.beerName === "Hollaback Lager"
-    );
+    const prepHollaBack = basketData.filter((beer) => beer.beerName === "Hollaback Lager");
     if (prepHollaBack.length > 0) {
       console.log("hæhæhæh Hollaback Lager");
       const selectedBeerForBasket = prepHollaBack[prepHollaBack.length - 1];
@@ -453,9 +427,7 @@ function remakeBasket() {
     }
   }
   function prepareHoppily() {
-    const prepHoppily = basketData.filter(
-      (beer) => beer.beerName === "Hoppily Ever After"
-    );
+    const prepHoppily = basketData.filter((beer) => beer.beerName === "Hoppily Ever After");
     if (prepHoppily.length > 0) {
       console.log("hæhæhæh Hoppily Ever After");
       const selectedBeerForBasket = prepHoppily[prepHoppily.length - 1];
@@ -466,9 +438,7 @@ function remakeBasket() {
   }
 
   function prepareMowntime() {
-    const prepMowntime = basketData.filter(
-      (beer) => beer.beerName === "Mowintime"
-    );
+    const prepMowntime = basketData.filter((beer) => beer.beerName === "Mowintime");
     if (prepMowntime.length > 0) {
       console.log("hæhæhæh Mowintime");
       const selectedBeerForBasket = prepMowntime[prepMowntime.length - 1];
@@ -491,14 +461,11 @@ function remakeBasket() {
   }
 
   function prepareRuinedChildhood() {
-    const prepRuinedChildhood = basketData.filter(
-      (beer) => beer.beerName === "Ruined Childhood"
-    );
+    const prepRuinedChildhood = basketData.filter((beer) => beer.beerName === "Ruined Childhood");
     if (prepRuinedChildhood.length > 0) {
       console.log("hæhæhæh Ruined Childhood");
 
       const selectedBeerForBasket = prepRuinedChildhood[prepRuinedChildhood.length - 1];
-
 
       const numberOfBeerBasket = prepRuinedChildhood.length;
 
@@ -507,9 +474,7 @@ function remakeBasket() {
   }
 
   function prepareSleighride() {
-    const prepSleighride = basketData.filter(
-      (beer) => beer.beerName === "Sleighride"
-    );
+    const prepSleighride = basketData.filter((beer) => beer.beerName === "Sleighride");
     if (prepSleighride.length > 0) {
       console.log("hæhæhæh Sleighride");
       const selectedBeerForBasket = prepSleighride[prepSleighride.length - 1];
@@ -520,9 +485,7 @@ function remakeBasket() {
     }
   }
   function prepareSteampunk() {
-    const prepSteampunk = basketData.filter(
-      (beer) => beer.beerName === "Steampunk"
-    );
+    const prepSteampunk = basketData.filter((beer) => beer.beerName === "Steampunk");
     if (prepSteampunk.length > 0) {
       const selectedBeerForBasket = prepSteampunk[prepSteampunk.length - 1];
 
@@ -538,13 +501,9 @@ function addToBasket(selectedBeer) {
   // name out of selected beer
   const selectedBeerForBasket = selectedBeer;
   console.log("selected", selectedBeer);
-  let classNameBeer = selectedBeerForBasket.beerName
-    .replaceAll(" ", "_")
-    .toLowerCase();
+  let classNameBeer = selectedBeerForBasket.beerName.replaceAll(" ", "_").toLowerCase();
 
-  let otherBeersInBasket = basketData.filter(
-    (beer) => beer.beerName === selectedBeer.beerName
-  );
+  let otherBeersInBasket = basketData.filter((beer) => beer.beerName === selectedBeer.beerName);
   let numberOfBeerBasket = otherBeersInBasket.length;
   //number of beers in basket
   const quantity = document.createElement("p");
@@ -574,13 +533,9 @@ function addToBasket(selectedBeer) {
 
   // if there is another beer of the same type it changes the number of beers and price value
   if (numberOfBeerBasket > 1 && basketData.includes(selectedBeerForBasket)) {
-
     document.querySelector(`.price.${classNameBeer}`).textContent = `${priceValue * numberOfBeerBasket},-`;
 
-
-    document.querySelector(
-      `.quantity.${classNameBeer}`
-    ).textContent = `${numberOfBeerBasket}`;
+    document.querySelector(`.quantity.${classNameBeer}`).textContent = `${numberOfBeerBasket}`;
   } else {
     // beer name on list and puttet inside the basket container in the basket
     const p = document.createElement("p");
@@ -615,9 +570,7 @@ function remakeOfBasket(selectedBeerForBasket, numberOfBeerBasket) {
   // name out of selected beer
 
   console.log("selected", selectedBeerForBasket);
-  let classNameBeer = selectedBeerForBasket.beerName
-    .replaceAll(" ", "_")
-    .toLowerCase();
+  let classNameBeer = selectedBeerForBasket.beerName.replaceAll(" ", "_").toLowerCase();
 
   //number of beers in basket
   const quantity = document.createElement("p");
@@ -684,20 +637,15 @@ function plusBeerInBasket(beerName) {
   const priceValue = 50;
   basketData.push(selectedBeer);
   //updates the number of each beer in basket
-  let other = basketData.filter(
-    (beer) => beer.beerName === selectedBeer.beerName
-  );
+  let other = basketData.filter((beer) => beer.beerName === selectedBeer.beerName);
   let numberOfBeer = other.length;
   let classNameBeer = selectedBeer.beerName.replaceAll(" ", "_").toLowerCase();
 
   //change the number of beers in basket from new basket data
-  document.querySelector(
-    `.quantity.${classNameBeer}`
-  ).textContent = `${numberOfBeer}`;
+  document.querySelector(`.quantity.${classNameBeer}`).textContent = `${numberOfBeer}`;
   // Price of beers in basket
 
   document.querySelector(`.price.${classNameBeer}`).textContent = `${priceValue * numberOfBeer},-`;
-
 
   //show number of beers in basket
   let showNumberInBasket = document.querySelector(".number_in_basket");
@@ -715,9 +663,7 @@ function minusBeerFromBasket(beerName) {
     1
   );
   //updates the number of each beer in basket
-  let other = basketData.filter(
-    (beer) => beer.beerName === selectedBeer.beerName
-  );
+  let other = basketData.filter((beer) => beer.beerName === selectedBeer.beerName);
   let numberOfBeer = other.length;
   let classNameBeer = selectedBeer.beerName.replaceAll(" ", "_").toLowerCase();
 
@@ -726,13 +672,10 @@ function minusBeerFromBasket(beerName) {
     document.querySelector(`.basket_order_cont.${classNameBeer}`).remove();
   } else {
     //change the number of beers in basket from new basket data
-    document.querySelector(
-      `.quantity.${classNameBeer}`
-    ).textContent = `${numberOfBeer}`;
+    document.querySelector(`.quantity.${classNameBeer}`).textContent = `${numberOfBeer}`;
     // Price of beers in basket
 
     document.querySelector(`.price.${classNameBeer}`).textContent = `${priceValue * numberOfBeer},-`;
-
   }
 
   //show number of beers in basket
@@ -745,12 +688,8 @@ function minusBeerFromBasket(beerName) {
 function registerPlusAndMinusButtons(beerName, classNameBeer) {
   console.log("register plus and minus buttons");
   console.log("register button class name beer", classNameBeer);
-  document
-    .querySelector(`.quant_border.${classNameBeer}_plus`)
-    .addEventListener("click", plusClicked);
-  document
-    .querySelector(`.quant_border.${classNameBeer}_minus`)
-    .addEventListener("click", minusClicked);
+  document.querySelector(`.quant_border.${classNameBeer}_plus`).addEventListener("click", plusClicked);
+  document.querySelector(`.quant_border.${classNameBeer}_minus`).addEventListener("click", minusClicked);
 }
 
 function plusClicked(event) {
@@ -774,32 +713,23 @@ function minusClicked(event) {
 }
 function plusBeerBasket(classNameOfBeer) {
   console.log("plus beer in basket");
-  let firstNameOfClassName = classNameOfBeer.substring(
-    0,
-    classNameOfBeer.indexOf("_")
-  );
+  let firstNameOfClassName = classNameOfBeer.substring(0, classNameOfBeer.indexOf("_"));
 
   if (firstNameOfClassName == "el") {
     const selectedBeer = allBeers.find((beer) => beer.beerName === "El Hefe");
 
     plusBeerInBasket(selectedBeer);
   } else if (firstNameOfClassName == "fairy") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Fairy Tale Ale"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Fairy Tale Ale");
     plusBeerInBasket(selectedBeer);
   } else if (firstNameOfClassName == "githop") {
     const selectedBeer = allBeers.find((beer) => beer.beerName === "GitHop");
     plusBeerInBasket(selectedBeer);
   } else if (firstNameOfClassName == "hollaback") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Hollaback Lager"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Hollaback Lager");
     plusBeerInBasket(selectedBeer);
   } else if (firstNameOfClassName == "hoppily") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Hoppily Ever After"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Hoppily Ever After");
     plusBeerInBasket(selectedBeer);
   } else if (firstNameOfClassName == "mowintime") {
     const selectedBeer = allBeers.find((beer) => beer.beerName === "Mowintime");
@@ -808,14 +738,10 @@ function plusBeerBasket(classNameOfBeer) {
     const selectedBeer = allBeers.find((beer) => beer.beerName === "Row 26");
     plusBeerInBasket(selectedBeer);
   } else if (firstNameOfClassName == "ruined") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Ruined Childhood"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Ruined Childhood");
     plusBeerInBasket(selectedBeer);
   } else if (firstNameOfClassName == "sleighride") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Sleighride"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Sleighride");
     plusBeerInBasket(selectedBeer);
   } else {
     const selectedBeer = allBeers.find((beer) => beer.beerName === "Steampunk");
@@ -825,10 +751,7 @@ function plusBeerBasket(classNameOfBeer) {
 
 function minusBeerBasket(classNameOfBeer) {
   console.log("minus beer in basket");
-  let firstNameOfClassName = classNameOfBeer.substring(
-    0,
-    classNameOfBeer.indexOf("_")
-  );
+  let firstNameOfClassName = classNameOfBeer.substring(0, classNameOfBeer.indexOf("_"));
   console.log("first name", firstNameOfClassName);
 
   if (firstNameOfClassName == "el") {
@@ -836,9 +759,7 @@ function minusBeerBasket(classNameOfBeer) {
     console.log("found", selectedBeer);
     minusBeerFromBasket(selectedBeer);
   } else if (firstNameOfClassName == "fairy") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Fairy Tale Ale"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Fairy Tale Ale");
     console.log("found", selectedBeer);
     minusBeerFromBasket(selectedBeer);
   } else if (firstNameOfClassName == "githop") {
@@ -846,15 +767,11 @@ function minusBeerBasket(classNameOfBeer) {
     console.log("found", selectedBeer);
     minusBeerFromBasket(selectedBeer);
   } else if (firstNameOfClassName == "hollaback") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Hollaback Lager"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Hollaback Lager");
     console.log("found", selectedBeer);
     minusBeerFromBasket(selectedBeer);
   } else if (firstNameOfClassName == "hoppily") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Hoppily Ever After"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Hoppily Ever After");
     console.log("found", selectedBeer);
     minusBeerFromBasket(selectedBeer);
   } else if (firstNameOfClassName == "mowintime") {
@@ -866,15 +783,11 @@ function minusBeerBasket(classNameOfBeer) {
     console.log("found", selectedBeer);
     minusBeerFromBasket(selectedBeer);
   } else if (firstNameOfClassName == "ruined") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Ruined Childhood"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Ruined Childhood");
     console.log("found", selectedBeer);
     minusBeerFromBasket(selectedBeer);
   } else if (firstNameOfClassName == "sleighride") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Sleighride"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Sleighride");
     console.log("found", selectedBeer);
     minusBeerFromBasket(selectedBeer);
   } else {
@@ -909,9 +822,7 @@ function prepareOrder() {
     }
   }
   function prepareFairy() {
-    const prepFairy = basketData.filter(
-      (beer) => beer.beerName === "Fairy Tale Ale"
-    );
+    const prepFairy = basketData.filter((beer) => beer.beerName === "Fairy Tale Ale");
 
     if (prepFairy.length > 0) {
       const selectedBeerForOrder = prepFairy[prepFairy.length - 1];
@@ -932,9 +843,7 @@ function prepareOrder() {
     }
   }
   function prepareHollaBack() {
-    const prepHollaBack = basketData.filter(
-      (beer) => beer.beerName === "Hollaback Lager"
-    );
+    const prepHollaBack = basketData.filter((beer) => beer.beerName === "Hollaback Lager");
     if (prepHollaBack.length > 0) {
       const selectedBeerForOrder = prepHollaBack[prepHollaBack.length - 1];
 
@@ -944,9 +853,7 @@ function prepareOrder() {
     }
   }
   function prepareHoppily() {
-    const prepHoppily = basketData.filter(
-      (beer) => beer.beerName === "Hoppily Ever After"
-    );
+    const prepHoppily = basketData.filter((beer) => beer.beerName === "Hoppily Ever After");
     if (prepHoppily.length > 0) {
       const selectedBeerForOrder = prepHoppily[prepHoppily.length - 1];
 
@@ -957,9 +864,7 @@ function prepareOrder() {
   }
 
   function prepareMowntime() {
-    const prepMowntime = basketData.filter(
-      (beer) => beer.beerName === "Mowintime"
-    );
+    const prepMowntime = basketData.filter((beer) => beer.beerName === "Mowintime");
     if (prepMowntime.length > 0) {
       const selectedBeerForOrder = prepMowntime[prepMowntime.length - 1];
 
@@ -981,12 +886,9 @@ function prepareOrder() {
   }
 
   function prepareRuinedChildhood() {
-    const prepRuinedChildhood = basketData.filter(
-      (beer) => beer.beerName === "Ruined Childhood"
-    );
+    const prepRuinedChildhood = basketData.filter((beer) => beer.beerName === "Ruined Childhood");
     if (prepRuinedChildhood.length > 0) {
-      const selectedBeerForOrder =
-        prepRuinedChildhood[prepRuinedChildhood.length - 1];
+      const selectedBeerForOrder = prepRuinedChildhood[prepRuinedChildhood.length - 1];
 
       const numberOfBeerOrder = prepRuinedChildhood.length;
 
@@ -995,9 +897,7 @@ function prepareOrder() {
   }
 
   function prepareSleighride() {
-    const prepSleighride = basketData.filter(
-      (beer) => beer.beerName === "Sleighride"
-    );
+    const prepSleighride = basketData.filter((beer) => beer.beerName === "Sleighride");
     if (prepSleighride.length > 0) {
       const selectedBeerForOrder = prepSleighride[prepSleighride.length - 1];
 
@@ -1007,9 +907,7 @@ function prepareOrder() {
     }
   }
   function prepareSteampunk() {
-    const prepSteampunk = basketData.filter(
-      (beer) => beer.beerName === "Steampunk"
-    );
+    const prepSteampunk = basketData.filter((beer) => beer.beerName === "Steampunk");
     if (prepSteampunk.length > 0) {
       const selectedBeerForOrder = prepSteampunk[prepSteampunk.length - 1];
 
@@ -1022,9 +920,7 @@ function prepareOrder() {
 function addToOrder(selectedBeerForOrder, numberOfBeerOrder) {
   console.log("add to order");
 
-  let classNameBeer = selectedBeerForOrder.beerName
-    .replaceAll(" ", "_")
-    .toLowerCase();
+  let classNameBeer = selectedBeerForOrder.beerName.replaceAll(" ", "_").toLowerCase();
   console.log("classNameBeer", classNameBeer);
 
   const quantity = document.createElement("p");
@@ -1095,15 +991,9 @@ function registerPlusAndMinusButtonsOrder(classNameBeer) {
   console.log("register plus and minus buttons");
   console.log("register button class name beer", classNameBeer);
 
-  document
-    .querySelector(`.quant_border_order.${classNameBeer}_minus`)
-    .addEventListener("click", minusClicked);
-  document
-    .querySelector(`.quant_border_order.${classNameBeer}_plus`)
-    .addEventListener("click", plusClicked);
-  document
-    .querySelector(`.x.${classNameBeer}`)
-    .addEventListener("click", xClicked);
+  document.querySelector(`.quant_border_order.${classNameBeer}_minus`).addEventListener("click", minusClicked);
+  document.querySelector(`.quant_border_order.${classNameBeer}_plus`).addEventListener("click", plusClicked);
+  document.querySelector(`.x.${classNameBeer}`).addEventListener("click", xClicked);
 }
 function xClicked(event) {
   let classNameOfBeer = event.target.classList[1];
@@ -1117,9 +1007,7 @@ function removeBeer(classNameOfBeer) {
     console.log("found", orderBeerName);
     removeBeerFromOrder(orderBeerName);
   } else if (classNameOfBeer == "fairy_tale_ale") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Fairy Tale Ale"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Fairy Tale Ale");
     console.log("found", orderBeerName);
     removeBeerFromOrder(orderBeerName);
   } else if (classNameOfBeer == "githop") {
@@ -1127,21 +1015,15 @@ function removeBeer(classNameOfBeer) {
     console.log("found", orderBeerName);
     removeBeerFromOrder(orderBeerName);
   } else if (classNameOfBeer == "hollaback_lager") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Hollaback Lager"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Hollaback Lager");
     console.log("found", orderBeerName);
     removeBeerFromOrder(orderBeerName);
   } else if (classNameOfBeer == "hoppily_ever_after") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Hoppily Ever After"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Hoppily Ever After");
     console.log("found", orderBeerName);
     removeBeerFromOrder(orderBeerName);
   } else if (classNameOfBeer == "mowintime") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Mowintime"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Mowintime");
     console.log("found", orderBeerName);
     removeBeerFromOrder(orderBeerName);
   } else if (classNameOfBeer == "row_26") {
@@ -1149,21 +1031,15 @@ function removeBeer(classNameOfBeer) {
     console.log("found", orderBeerName);
     removeBeerFromOrder(orderBeerName);
   } else if (classNameOfBeer == "ruined_childhood") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Ruined Childhood"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Ruined Childhood");
     console.log("found", orderBeerName);
     removeBeerFromOrder(orderBeerName);
   } else if (classNameOfBeer == "sleighride") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Sleighride"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Sleighride");
     console.log("found", orderBeerName);
     removeBeerFromOrder(orderBeerName);
   } else if (classNameOfBeer == "steampunk") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Steampunk"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Steampunk");
     console.log("found", orderBeerName);
     removeBeerFromOrder(orderBeerName);
   } else {
@@ -1178,9 +1054,7 @@ function removeBeerFromOrder(beerName) {
 
   document.querySelector(`.basket_order_cont_order.${classNameBeer}`).remove();
 
-  let other = basketData.filter(
-    (beer) => beer.beerName === orderBeerName.beerName
-  );
+  let other = basketData.filter((beer) => beer.beerName === orderBeerName.beerName);
   let numberOfBeer = other.length;
   basketData.splice(
     basketData.findIndex((a) => a.beerName === orderBeerName.beerName),
@@ -1193,10 +1067,7 @@ function removeBeerFromOrder(beerName) {
 }
 function minusBeerOrder(classNameOfBeer) {
   console.log("minus beer in order");
-  let firstNameOfClassName = classNameOfBeer.substring(
-    0,
-    classNameOfBeer.indexOf("_")
-  );
+  let firstNameOfClassName = classNameOfBeer.substring(0, classNameOfBeer.indexOf("_"));
   console.log("first name", firstNameOfClassName);
   // TO DO: push another selected beer to basketData and override quantity
 
@@ -1205,9 +1076,7 @@ function minusBeerOrder(classNameOfBeer) {
     console.log("found", orderBeerName);
     minusBeerFromOrder(orderBeerName);
   } else if (firstNameOfClassName == "fairy") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Fairy Tale Ale"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Fairy Tale Ale");
     console.log("found", orderBeerName);
     minusBeerFromOrder(orderBeerName);
   } else if (firstNameOfClassName == "githop") {
@@ -1215,21 +1084,15 @@ function minusBeerOrder(classNameOfBeer) {
     console.log("found", orderBeerName);
     minusBeerFromOrder(orderBeerName);
   } else if (firstNameOfClassName == "hollaback") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Hollaback Lager"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Hollaback Lager");
     console.log("found", orderBeerName);
     minusBeerFromOrder(orderBeerName);
   } else if (firstNameOfClassName == "hoppily") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Hoppily Ever After"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Hoppily Ever After");
     console.log("found", orderBeerName);
     minusBeerFromOrder(orderBeerName);
   } else if (firstNameOfClassName == "mowintime") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Mowintime"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Mowintime");
     console.log("found", orderBeerName);
     minusBeerFromOrder(orderBeerName);
   } else if (firstNameOfClassName == "row") {
@@ -1237,21 +1100,15 @@ function minusBeerOrder(classNameOfBeer) {
     console.log("found", orderBeerName);
     minusBeerFromOrder(orderBeerName);
   } else if (firstNameOfClassName == "ruined") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Ruined Childhood"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Ruined Childhood");
     console.log("found", orderBeerName);
     minusBeerFromOrder(orderBeerName);
   } else if (firstNameOfClassName == "sleighride") {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Sleighride"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Sleighride");
     console.log("found", orderBeerName);
     minusBeerFromOrder(orderBeerName);
   } else {
-    const orderBeerName = allBeers.find(
-      (beer) => beer.beerName === "Steampunk"
-    );
+    const orderBeerName = allBeers.find((beer) => beer.beerName === "Steampunk");
     console.log("found", orderBeerName);
     minusBeerFromOrder(orderBeerName);
   }
@@ -1267,26 +1124,19 @@ function minusBeerFromOrder(beerName) {
     1
   );
   //updates the number of each beer in basket
-  let other = basketData.filter(
-    (beer) => beer.beerName === orderBeerName.beerName
-  );
+  let other = basketData.filter((beer) => beer.beerName === orderBeerName.beerName);
   let numberOfBeer = other.length;
   let classNameBeer = orderBeerName.beerName.replaceAll(" ", "_").toLowerCase();
 
   if (numberOfBeer <= 0) {
     console.log("less than one in basket");
-    document
-      .querySelector(`.basket_order_cont_order.${classNameBeer}`)
-      .remove();
+    document.querySelector(`.basket_order_cont_order.${classNameBeer}`).remove();
   } else {
     //change the number of beers in basket from new basket data
-    document.querySelector(
-      `.quantity_order.${classNameBeer}`
-    ).textContent = `${numberOfBeer}`;
+    document.querySelector(`.quantity_order.${classNameBeer}`).textContent = `${numberOfBeer}`;
     // Price of beers in basket
 
     document.querySelector(`.price_order.${classNameBeer}`).textContent = `${priceValue * numberOfBeer},-`;
-
   }
 
   let amountOfBeers = basketData.length;
@@ -1297,10 +1147,7 @@ function minusBeerFromOrder(beerName) {
 function plusBeerOrder(classNameOfBeer) {
   console.log("plus beer in basket");
 
-  let firstNameOfClassName = classNameOfBeer.substring(
-    0,
-    classNameOfBeer.indexOf("_")
-  );
+  let firstNameOfClassName = classNameOfBeer.substring(0, classNameOfBeer.indexOf("_"));
 
   // TO DO: push another selected beer to basketData and override quantity
 
@@ -1309,22 +1156,16 @@ function plusBeerOrder(classNameOfBeer) {
     console.log("first name of calss", firstNameOfClassName);
     plusBeerInOrder(selectedBeer);
   } else if (firstNameOfClassName == "fairy") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Fairy Tale Ale"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Fairy Tale Ale");
     plusBeerInOrder(selectedBeer);
   } else if (firstNameOfClassName == "githop") {
     const selectedBeer = allBeers.find((beer) => beer.beerName === "GitHop");
     plusBeerInOrder(selectedBeer);
   } else if (firstNameOfClassName == "hollaback") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Hollaback Lager"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Hollaback Lager");
     plusBeerInOrder(selectedBeer);
   } else if (firstNameOfClassName == "hoppily") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Hoppily Ever After"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Hoppily Ever After");
     plusBeerInOrder(selectedBeer);
   } else if (firstNameOfClassName == "mowintime") {
     const selectedBeer = allBeers.find((beer) => beer.beerName === "Mowintime");
@@ -1333,14 +1174,10 @@ function plusBeerOrder(classNameOfBeer) {
     const selectedBeer = allBeers.find((beer) => beer.beerName === "Row 26");
     plusBeerInOrder(selectedBeer);
   } else if (firstNameOfClassName == "ruined") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Ruined Childhood"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Ruined Childhood");
     plusBeerInOrder(selectedBeer);
   } else if (firstNameOfClassName == "sleighride") {
-    const selectedBeer = allBeers.find(
-      (beer) => beer.beerName === "Sleighride"
-    );
+    const selectedBeer = allBeers.find((beer) => beer.beerName === "Sleighride");
     plusBeerInOrder(selectedBeer);
   } else {
     const selectedBeer = allBeers.find((beer) => beer.beerName === "Steampunk");
@@ -1353,20 +1190,15 @@ function plusBeerInOrder(beerName) {
   const priceValue = 50;
   basketData.push(selectedBeer);
   //updates the number of each beer in basket
-  let other = basketData.filter(
-    (beer) => beer.beerName === selectedBeer.beerName
-  );
+  let other = basketData.filter((beer) => beer.beerName === selectedBeer.beerName);
   let numberOfBeer = other.length;
   let classNameBeer = selectedBeer.beerName.replaceAll(" ", "_").toLowerCase();
 
   //change the number of beers in basket from new basket data
-  document.querySelector(
-    `.quantity_order.${classNameBeer}`
-  ).textContent = `${numberOfBeer}`;
+  document.querySelector(`.quantity_order.${classNameBeer}`).textContent = `${numberOfBeer}`;
   // Price of beers in basket
 
   document.querySelector(`.price_order.${classNameBeer}`).textContent = `${priceValue * numberOfBeer},-`;
-
 
   let amountOfBeers = basketData.length;
   let totalAmount = amountOfBeers * priceValue;
@@ -1444,7 +1276,6 @@ function payWithCard() {
   }
 }
 
-//Missing to go back
 function goToReceipt(data) {
   const id = data.id;
   document.querySelector("#your-order").textContent = id;
@@ -1514,22 +1345,16 @@ function sendMail(data) {
     message: document.querySelector("#mail_order_container").textContent,
   };
 
-  emailjs
-    .send("service_m4us0sl", "template_l9e40k3", mailTemplate)
-    .then(function (res) {
-      console.log("success", res.status);
-    });
+  emailjs.send("service_m4us0sl", "template_l9e40k3", mailTemplate).then(function (res) {
+    console.log("success", res.status);
+  });
 }
 
 function registerValidation() {
   document.querySelector("#mail").addEventListener("change", validateMail);
-  document
-    .querySelector("#cardNumber")
-    .addEventListener("change", validateCardnumber);
+  document.querySelector("#cardNumber").addEventListener("change", validateCardnumber);
 
-  document
-    .querySelector("#month_year")
-    .addEventListener("change", validateMonth);
+  document.querySelector("#month_year").addEventListener("change", validateMonth);
 
   document.querySelector("#year").addEventListener("change", validateYear);
 
@@ -1778,8 +1603,7 @@ function checkValidation() {
     }
   }
 
-  const validated =
-    Object.values(validation).filter((val) => val === false).length === 0;
+  const validated = Object.values(validation).filter((val) => val === false).length === 0;
 
   return validated;
 }
