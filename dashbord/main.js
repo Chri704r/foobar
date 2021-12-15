@@ -12,7 +12,10 @@ const realTime = {
 	stateParam: "",
 };
 
-function init() {
+async function init() {
+	userData = await fetchfunction("users.json");
+	console.log("users", userData);
+
 	checkURLParameters();
 
 	if (!realTime.isSimulation) {
@@ -25,8 +28,10 @@ function init() {
 
 	//call clock function every second
 	setInterval(setDate, 1000);
+
 	//hide login popup section
 	document.querySelector("#login-section").classList.add("hide");
+
 	//listen for click on "GO TO DASHBOARD" button
 	document.querySelector("#dashboard-button").addEventListener("click", () => {
 		if (localStorage.login) {
@@ -91,12 +96,10 @@ function calculateTime() {
 
 async function getData() {
 	const data = await fetchfunction("https://groupfoobar.herokuapp.com/");
-	userData = await fetchfunction("users.json");
 	const beertypeData = await fetchfunction("https://groupfoobar.herokuapp.com/beertypes");
 
 	console.log("data", data);
 	console.log("Beer data", beertypeData);
-	console.log("users", userData);
 
 	showQueue(data);
 	showServing(data);
