@@ -1,5 +1,6 @@
 @use "../variabels/colors";
 
+
 * {
 	margin: 0;
 	padding: 0;
@@ -13,7 +14,7 @@
 }
 
 body {
-	background-image: url(../assets/noise-bg-optimized.jpg);
+	background-image: url(./assets/noise-bg-optimized.jpg);
 }
 
 button {
