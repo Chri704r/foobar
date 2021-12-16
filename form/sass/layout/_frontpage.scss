@@ -39,7 +39,7 @@ header {
   gap: 15vw;
   height: 10vh;
   flex-direction: row;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 .logo {
   width: 32vw;
@@ -59,6 +59,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -0.5rem;
 }
 .number_in_basket {
   position: absolute;
@@ -408,9 +409,26 @@ header {
 //ipad
 @media only screen and (min-width: 700px) {
   // Header
-  .number_in_basket {
-    font-size: 2.6rem;
-    margin-right: 1.2rem;
+  header {
+    width: 100%;
+    margin: auto;
+    gap: 20vw;
+
+    .shoppingcart {
+      .number_in_basket {
+        font-size: 1.6rem;
+      }
+
+      svg {
+        height: 5vh;
+      }
+    }
+
+    .logo {
+      img {
+        height: 8vh;
+      }
+    }
   }
   //header - ipad - finish
   //Menu - ipad
