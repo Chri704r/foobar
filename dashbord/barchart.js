@@ -392,6 +392,7 @@ function displayBartenders(data) {
       }
 
       //Insert bartender in clone
+
       //clone.querySelector(".bartender_photo").src = `assets/${bartender.name}_edit.png`;
       clone.querySelector(".bartender_photo").src = new URL(
         `./assets/${bartender.name}_edit.png`,
