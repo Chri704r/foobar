@@ -3,7 +3,7 @@ const { resolve } = require("path");
 const { defineConfig } = require("vite");
 
 module.exports = defineConfig({
-  base: "/kea/14_eksamen/dash_b/",
+  base: "/kea/14_eksamen/tester/",
   build: {
     rollupOptions: {
       input: {
