@@ -37,7 +37,7 @@ async function init() {
 		if (localStorage.login) {
 			window.location.href = `dashboard.html?state=${realTime.stateParam}`;
 		} else {
-			clickLogin();
+			login();
 		}
 	});
 }
@@ -248,43 +248,17 @@ function showBeer(data, beertype) {
 	});
 }
 
-//open login popup
-function clickLogin() {
+function login() {
 	//show popup and add styling to background
 	document.querySelector("#login-section").classList.remove("hide");
 	document.querySelector("#main-container").classList.add("popup-blur");
 
-	//call login function
-	login();
-
-	//toggle password visibility
-	document.querySelector("#password-toggle").addEventListener("click", () => {
-		//document.querySelector("#password-toggle").src = "../assets/eye-02.svg";
-		document.querySelector("#password-toggle").src = new URL(`./assets/eye-02.svg`, import.meta.url).href;
-		const password = document.querySelector("#password");
-		//if password is hidden
-		if (password.getAttribute("type") === "password") {
-			//show password
-			password.setAttribute("type", "text");
-		} else {
-			//hide password if not hidden
-			password.setAttribute("type", "password");
-			//document.querySelector("#password-toggle").src = "../assets/eye-01.svg";
-			document.querySelector("#password-toggle").src = new URL(`./assets/eye-01.svg`, import.meta.url).href;
-		}
-	});
-
 	//listen for click on close button
 	document.querySelector(".close-popup").addEventListener("click", closeLogin);
-}
 
-//close login popup
-function closeLogin() {
-	document.querySelector("#login-section").classList.add("hide");
-	document.querySelector("#main-container").classList.remove("popup-blur");
-}
+	//call function that toggles password visibility
+	togglePassword();
 
-function login() {
 	let usernameInput;
 	let passwordInput;
 
@@ -329,6 +303,31 @@ function login() {
 			window.localStorage.setItem("login", userName);
 			//go to manager and worker dashboard
 			window.location.href = `dashboard.html?state=${realTime.stateParam}`;
+		}
+	});
+}
+
+//close login popup
+function closeLogin() {
+	document.querySelector("#login-section").classList.add("hide");
+	document.querySelector("#main-container").classList.remove("popup-blur");
+}
+
+function togglePassword() {
+	//toggle password visibility
+	document.querySelector("#password-toggle").addEventListener("click", () => {
+		//document.querySelector("#password-toggle").src = "../assets/eye-02.svg";
+		document.querySelector("#password-toggle").src = new URL(`./assets/eye-02.svg`, import.meta.url).href;
+		const password = document.querySelector("#password");
+		//if password is hidden
+		if (password.getAttribute("type") === "password") {
+			//show password
+			password.setAttribute("type", "text");
+		} else {
+			//hide password if not hidden
+			password.setAttribute("type", "password");
+			//document.querySelector("#password-toggle").src = "../assets/eye-01.svg";
+			document.querySelector("#password-toggle").src = new URL(`./assets/eye-01.svg`, import.meta.url).href;
 		}
 	});
 }
