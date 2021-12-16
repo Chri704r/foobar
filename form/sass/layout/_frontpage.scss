@@ -53,6 +53,7 @@ header {
   justify-content: flex-start;
 }
 .shoppingcart {
+  cursor: pointer;
   width: 10vw;
   height: 10vh;
   // margin-top: 1rem;
@@ -193,6 +194,7 @@ header {
   width: 1.5rem;
   font-size: 0.9rem;
   text-align: center;
+  cursor: pointer;
 }
 .total_wrapper {
   top: 77%;
