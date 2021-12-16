@@ -235,7 +235,7 @@ function showDetails(beer) {
   console.log("beer", beer.imageName);
   //clone.querySelector("[data-field=imageName]").src = beer.imageName;
   clone.querySelector("[data-field=imageName]").src = new URL(
-    beer.imageName,
+    `./psb_img/${getImage(beer.beerName)}.png`,
     import.meta.url
   ).href;
   clone.querySelector("[data-field=beerName]").textContent = `${beer.beerName}`;
@@ -1575,6 +1575,10 @@ function validateMail() {
 
     validation.mail = false;
   } else {
+    if (mail.classList.contains("invalid")) {
+      mail.classList.remove("invalid");
+    }
+
     validation.mail = true;
   }
 }
@@ -1596,6 +1600,10 @@ function validateName() {
 
     validation.name = false;
   } else {
+    if (name.classList.contains("invalid")) {
+      name.classList.remove("invalid");
+    }
+
     validation.name = true;
   }
 }
