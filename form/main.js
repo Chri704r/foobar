@@ -150,17 +150,17 @@ function buildList() {
 }
 
 function filterList(filteredList) {
-  if (settings.filterBy === "Belgian Specialty Ale") {
+  if (settings.filterBy === "belgian_specialty_ale") {
     filteredList = allBeers.filter(isBelgian);
-  } else if (settings.filterBy === "IPA") {
+  } else if (settings.filterBy === "ipa") {
     filteredList = allBeers.filter(isIPA);
-  } else if (settings.filterBy === "California Common") {
+  } else if (settings.filterBy === "california_common") {
     filteredList = allBeers.filter(isCalifornia);
-  } else if (settings.filterBy === "Hefeweizen") {
+  } else if (settings.filterBy === "hefeweizen") {
     filteredList = allBeers.filter(isHefeweizen);
-  } else if (settings.filterBy === "Stout") {
+  } else if (settings.filterBy === "stout") {
     filteredList = allBeers.filter(isStout);
-  } else if (settings.filterBy === "Oktoberfest") {
+  } else if (settings.filterBy === "oktoberfest") {
     filteredList = allBeers.filter(isOktoberfest);
   }
 
@@ -196,8 +196,6 @@ function displayBeer(beer) {
   const clone = document.querySelector("#beer").content.cloneNode(true);
 
   //Set clone data
-
-  console.log("beername", beer.beerName);
 
   //clone.querySelector("[data-field=imageName]").src = beer.imageName;
   clone.querySelector("[data-field=imageName]").src = new URL(
